@@ -1,0 +1,10 @@
+ul { list-style-type: none;}
+#logo {
+    color: black; font-family: cursive;
+ }
+.headerbar {}
+.header ul { display: inline;}
+.header li {color: black;
+    font: 400 18px / 30px OpenSans; display: inline; }
+#login {color: black;
+    font: 700 18px / 30px OpenSans;}
