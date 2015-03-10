@@ -8,3 +8,9 @@ ul { list-style-type: none;}
     font: 400 18px / 30px OpenSans; display: inline; }
 #login {color: black;
     font: 700 18px / 30px OpenSans;}
+.mainbackground {
+   background-color: #ffffff;
+}
+.headerimage {
+    background: url(images/IMG_1275-1300x866.png);
+}

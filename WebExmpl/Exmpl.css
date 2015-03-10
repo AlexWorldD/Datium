@@ -1,0 +1,138 @@
+body {
+    min-width: 920px;
+    background-color: #ffffff;
+    background-image: url(images/IMG_header.png);
+    position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.headerbar {
+    float: both;
+    height: 15vh;
+}
+
+.headerbar li {
+    vertical-align: center;
+}
+
+.logo {
+    color: #ffffff;
+    font-family: Blessed Day;
+    font-size: 6vw;
+    float: left;
+    margin-left: 18vw;
+}
+
+.menu {
+    color: #ffffff;
+    font-family: "Open Sans", Arial;
+    float: right;
+    list-style: none;
+    margin-top: 3.34vw;
+    text-align: right;
+    margin-right: 18vw;
+}
+
+.menu > li {
+    opacity: 0.6;
+    display: inline;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.3vw;
+}
+
+.menu > li:hover {
+    opacity: 1.0;
+}
+
+#login {
+    opacity: 0.8;
+    margin-left: 2vw;
+}
+
+#login:hover {
+    opacity: 1.0;
+}
+
+.nav {
+    display: inline-block;
+    width: 100%;
+    height: 40vw;
+    margin-top: 5vw;
+}
+
+#ipad {
+    margin-left: 18vw;
+    float: left;
+    width: 30vw;
+}
+
+.info {
+    margin-top: 3vw;
+    margin-left: 5vw;
+    margin-right: 15vw;
+    float: right;
+    width: 32vw;
+    height: 30vh;
+}
+
+.info h3 {
+    font-size: 2.2vw;
+    align-content: center;
+    color: #ffffff;
+    font-family: Open Sans;
+}
+
+.info p {
+    color: #ffffff;
+    font-size: 1.5vw;
+    opacity: 0.8;
+    margin-top: 2vh;
+    font-size: font-family: Open Sans;
+}
+.joinbtn {
+margin-top: 5vw;
+height: 10vh;}
+
+.joinbtn > li {
+    display: inline;
+
+    
+}
+
+#join {
+    padding: 2vh 2vw 2vh 2vw;
+    background-color: #1abc9c;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: Open Sans; 
+    font-size: 1.5vw;
+}
+
+#more {
+    padding: 2vh 2vw 2vh 2vw;
+    background-color: #3498db;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: Open Sans;
+       font-size: 1.5vw;
+}
+
+#or {
+    z-index: 9990;
+    background-color: #ffffff;
+    padding: 0.7vh 0.7vw 0.7vh 0.7vw;
+    -moz-border-radius: 60px;
+    -webkit-border-radius: 60px;
+    border-radius: 50%;
+    color: #34495e;
+    font-family: Open Sans;
+    font-size: 1.5vw;
+
+}
