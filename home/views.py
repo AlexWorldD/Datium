@@ -6,6 +6,6 @@ from django.http.response import  HttpResponse
 
 
 def home(request):
-    view = "home"
-    html = "<html><body>This is %s view</body></html>" % view
+    view = "Hi, Stas!"
+    html = "<html><body>%s</body></html>" % view
     return HttpResponse(html)
