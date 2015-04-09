@@ -10,6 +10,7 @@ from comments.models import CommentsTable
 class Student(models.Model):
     user = models.OneToOneField(User)
     group = models.ForeignKey('StudentGroup')
+    avatar = models.ImageField()
 
     def __str__(self):
         return self.user.username
@@ -31,6 +32,7 @@ class News(models.Model):
     group = models.ForeignKey(StudentGroup)
     tags = models.ManyToManyField('Tag')
     comments = models.OneToOneField(CommentsTable)
+    documents = models.ManyToManyField('Document')
 
     def __str__(self):
         return self.title
@@ -41,6 +43,7 @@ class Tag(models.Model):
 
 
 class Document(models.Model):
+    file = models.FileField()
     name = models.CharField(max_length = 200)
     group = models.ForeignKey(StudentGroup)
     tags = models.ManyToManyField(Tag)

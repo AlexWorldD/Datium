@@ -3,7 +3,7 @@
 
 from django.db import models
 
-from student_groups.models import StudentGroup
+from student_groups.models import StudentGroup, Document
 
 # Create your models here.
 
@@ -63,6 +63,7 @@ class LessonInTimeTable(models.Model):
 class Homework(models.Model):
     text = models.TextField()
     deadline = models.ForeignKey(LessonInTimeTable)
+    documents = models.ManyToManyField(Document)
 
 class Timetable(models.Model):
     student_group = models.ForeignKey(StudentGroup)
