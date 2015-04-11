@@ -88,10 +88,13 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=14)
 }
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    PROJECT_ROOT + '/static/',
 )
+
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
@@ -113,5 +116,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
+
 
 STATIC_URL = '/static/'
