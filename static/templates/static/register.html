@@ -1,0 +1,39 @@
+<div class="col-lg-4 col-lg-offset-4">
+  <form role="form" ng-submit="vm.register()">
+    <div class="form-group">
+      <label for="register__username">Username</label>
+      <input type="text"
+             name="register__username"
+             id="register__username"
+             class="form-control"
+             placeholder="Username"
+             ng-model="vm.username" />
+    </div>
+
+    <div class="form-group">
+      <label for="register__email">Email</label>
+      <input type="email"
+             name="register__email"
+             id="register__email"
+             class="form-control"
+             placeholder="Email"
+             ng-model="vm.email" />
+    </div>
+
+    <div class="form-group">
+      <label for="register__password">Password</label>
+      <input type="password"
+             name="register__password"
+             id="register__password"
+             class="form-control"
+             placeholder="Password"
+             ng-model="vm.password" />
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">
+        Register
+      </button>
+    </div>
+  </form>
+</div>
