@@ -8,8 +8,8 @@ from student_groups.models import StudentGroup, Document
 # Create your models here.
 
 class LessonType(models.Model):
-
     what_type = models.CharField(max_length = 200)
+
 
 class Teacher(models.Model):
     name = models.CharField(max_length = 200)
