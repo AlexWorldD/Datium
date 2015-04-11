@@ -88,12 +88,11 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=14)
 }
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    PROJECT_ROOT + '/static/',
+    os.path.join(BASE_DIR, '/static'),
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, '/django_project/static/')
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
