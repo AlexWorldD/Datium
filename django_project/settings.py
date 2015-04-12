@@ -89,10 +89,10 @@ JWT_AUTH = {
 }
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '/static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
-STATIC_ROOT = '/home/django/django_project/django_project/static/'
+#STATIC_ROOT = '/home/django/django_project/django_project/static/'
 
 
 TEMPLATE_DIRS = (
