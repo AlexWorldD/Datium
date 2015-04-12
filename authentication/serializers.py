@@ -7,7 +7,7 @@ from django.templatetags.static import static
 
 class StudentSerializer(serializers.ModelSerializer):
     #user = UserSerializer()
-    student_group = serializers.SlugRelatedField(slug_field = 'name')
+    student_group = serializers.SlugRelatedField(queryset = StudentGroup.objects.all(), slug_field = 'name')
     class Meta:
         model = Student
         #fields = ('user', 'student_group')
