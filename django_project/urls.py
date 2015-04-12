@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 
-from authentication.views import UserListCreateAPIView
+from authentication.views import UserListCreateAPIView, StudentListCreateAPIView
 from timetable.views import SubjectDetailAPIView
 
 admin.autodiscover()

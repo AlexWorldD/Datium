@@ -14,7 +14,8 @@ class UserListCreateAPIView(generics.ListCreateAPIView):
         if self.request.method in permissions.SAFE_METHODS:
             return permissions.IsAuthenticated(),
         return permissions.AllowAny(),
-        
+
+
 class StudentListCreateAPIView(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
