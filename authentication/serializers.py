@@ -17,6 +17,7 @@ class StudentSerializer(serializers.ModelSerializer):
         #student = Student.objects.create(user = validated_data['user'], group = StudentGroup.objects.get(name = validated_data['student_group']), avatar = static('images/avatars/default_avatar.png'))
         #return student
 
+
 class UserSerializer(serializers.ModelSerializer):
     student = StudentSerializer()
     class Meta:
