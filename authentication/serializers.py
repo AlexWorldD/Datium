@@ -1,6 +1,6 @@
 __author__ = 'Kirov'
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from student_groups.models import Student
 
@@ -26,6 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
         student_data = validated_data.pop('student')
         user = User.objects.create(**validated_data)
         user.set_password(validated_data['password'])
+        user.groups.add(Group.objects.get(name = 'registered'))
         user.save()
         Student.objects.create(user=user, **student_data)
         return user

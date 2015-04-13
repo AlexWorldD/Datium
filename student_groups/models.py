@@ -17,6 +17,17 @@ class Student(models.Model):
 
 
 class StudentGroup(models.Model):
+    class Meta:
+        permissions = (
+            ("view_timetable", "Can see timetable of the group"), # groups: 'registered', 'students', 'group admin'
+            ("view_grouplist", "Can see the list of students in the group"), # groups: 'registered', 'students', 'group admin'
+            ("view_news", "Can see news of the group"), # groups: 'students', 'group admin'
+            ("view_homeworks", "Can see homeworks"), # groups: 'students', 'group admin'
+            ("view_documents", "Can see documents"), # groups: 'students', 'group admin'
+            ("add_and_edit_news", "Can add and edit news of the group"), # groups: 'group admin'
+            ("add_and_edit_homeworks", "Can add and edit homeworks"), # groups: 'group admin'
+            ("add_and_edit_documents", "Can add and edit documents"), # groups: 'group admin'
+        )
     name = models.CharField(max_length = 200)
     study_year = models.IntegerField()
 
