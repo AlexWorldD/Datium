@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sancho.testauth.Activity3"/>
+      <point      
+        x = "428"      
+        y = "1772"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sancho.testauth.Activity3"/>
+      <point      
+        x = "1696"      
+        y = "1772"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sancho.testauth.Activity2Activity"/>
+      <point      
+        x = "1876"      
+        y = "1668"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sancho.testauth.Activity2Activity"/>
+      <point      
+        x = "3144"      
+        y = "1668"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sancho.testauth.LoginActivity"/>
+      <point      
+        x = "2820"      
+        y = "2280"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sancho.testauth.MainActivity"/>
+      <point      
+        x = "500"      
+        y = "100"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sancho.testauth.MainActivity"/>
+      <point      
+        x = "1768"      
+        y = "100"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sancho.testauth.SuccessLog"/>
+      <point      
+        x = "432"      
+        y = "3240"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sancho.testauth.SuccessLog"/>
+      <point      
+        x = "1700"      
+        y = "3240"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sancho.testauth.SuccessReg"/>
+      <point      
+        x = "1804"      
+        y = "3448"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sancho.testauth.SuccessReg"/>
+      <point      
+        x = "3072"      
+        y = "3448"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>
