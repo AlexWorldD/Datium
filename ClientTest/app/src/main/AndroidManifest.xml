@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sancho.clienttest" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".Registration_Activity"
+            android:label="@string/title_activity_registration_" >
+        </activity>
+        <activity
+            android:name=".SuccessLog"
+            android:label="@string/title_activity_success_log" >
+        </activity>
+        <activity
+            android:name=".SuccessReg"
+            android:label="@string/title_activity_success_reg" >
+        </activity>
+    </application>
+
+</manifest>
