@@ -72,7 +72,7 @@ public class Activity3 extends ActionBarActivity {
 
 
         @POST(AUTH_SIGNIN)
-        void sign(@Body SignRequest, Callback<SignResponse> callback);
+        void sign(@Body SignRequest request, Callback<SignResponse> callback);
 
 
 
