@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import generics, permissions
-from authentication.serializers import UserSerializer, StudentSerializer
+# from authentication.serializers import UserSerializer, StudentSerializer
+from authentication.serializers import UserSerializer
 from student_groups.models import Student
 
 # Create your views here.
@@ -15,7 +16,7 @@ class UserListCreateAPIView(generics.ListCreateAPIView):
             return permissions.IsAuthenticated(),
         return permissions.AllowAny(),
 
-
+"""
 class StudentListCreateAPIView(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
@@ -24,3 +25,4 @@ class StudentListCreateAPIView(generics.ListCreateAPIView):
         if self.request.method in permissions.SAFE_METHODS:
             return permissions.IsAuthenticated(),
         return permissions.AllowAny(),
+"""

@@ -8,8 +8,8 @@ from django.templatetags.static import static
 
 # Create your models here.
 class Student(models.Model):
-    user = models.OneToOneField(User, default=0)
-    group = models.ForeignKey('StudentGroup')
+    user = models.OneToOneField(User, related_name = 'student')
+    group = models.ForeignKey('StudentGroup', blank = True)
     avatar = models.ImageField(default=static('images/avatars/default_avatar.png'))
 
     def __str__(self):
@@ -28,7 +28,7 @@ class StudentGroup(models.Model):
             ("add_and_edit_homeworks", "Can add and edit homeworks"), # groups: 'group admin'
             ("add_and_edit_documents", "Can add and edit documents"), # groups: 'group admin'
         )
-    name = models.CharField(max_length = 200)
+    name = models.CharField(max_length = 200, unique = True)
     study_year = models.IntegerField()
 
     def __str__(self):
@@ -50,7 +50,7 @@ class News(models.Model):
 
 
 class Tag(models.Model):
-    name = models.SlugField(max_length = 200)
+    name = models.SlugField(max_length = 200, unique = True)
 
 
 class Document(models.Model):

@@ -2,9 +2,9 @@ __author__ = 'Kirov'
 
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from student_groups.models import Student
+from student_groups.models import Student, StudentGroup
 
-
+"""
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
@@ -13,13 +13,14 @@ class StudentSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return Student.objects.create(**validated_data)
 
+"""
 
 class UserSerializer(serializers.ModelSerializer):
-    student = StudentSerializer()
+    group = serializers.SlugRelatedField(source = 'student.group', queryset = StudentGroup.objects.all(), slug_field = 'name')
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password', 'student')
+        fields = ('id', 'username', 'email', 'password', 'group')
         write_only_fields = ('password',)
 
     def create(self, validated_data):
@@ -28,10 +29,5 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.groups.add(Group.objects.get(name = 'registered'))
         user.save()
-        Student.objects.create(user=user, **student_data)
+        Student.objects.create(user=user, group = student_data['group'])
         return user
-
-
-
-
-
