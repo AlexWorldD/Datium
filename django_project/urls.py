@@ -3,19 +3,16 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 # from authentication.views import UserListCreateAPIView, StudentListCreateAPIView
-from authentication.views import UserListCreateAPIView
+from authentication.views import UserListCreateAPIView, UserDetailAPIView
 from timetable.views import SubjectDetailAPIView
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       # Examples:
-                       # url(r'^$', 'django_project.views.authentication', name='authentication'),
-                       # url(r'^blog/', include('blog.urls')),
-
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'api/v1/auth/login/', 'rest_framework_jwt.views.obtain_jwt_token'),
                        url(r'api/v1/users/', UserListCreateAPIView.as_view()),
+                       url(r'api/v1/users/(?P<pk>[0-9]+)/$', UserDetailAPIView.as_view()),
                        url(r'api/v1/', include('timetable.urls')),
                        url(r'^.*$', TemplateView.as_view(template_name='index.html')),
 
