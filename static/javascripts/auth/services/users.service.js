@@ -15,7 +15,7 @@
     return Users;
 
     function all() {
-      return $http.get('/api/v1/users/');
+      return $http.get('/api/v1/authentication/');
     }
   }
 })();

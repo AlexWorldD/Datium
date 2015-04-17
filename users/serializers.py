@@ -7,7 +7,7 @@ from django.templatetags.static import static
 
 
 class UserSerializer(serializers.ModelSerializer):
-    group = serializers.SlugRelatedField(source='student.group', queryset = StudentGroup.objects.all(), slug_field = 'name')
+    group = serializers.SlugRelatedField(source='student.group', queryset=StudentGroup.objects.all(), slug_field='name')
     avatar = serializers.ImageField(source='student.avatar', default=static('images/avatars/default_avatar.png'))
     sex = serializers.CharField(source='student.sex', default='unknown')
 
