@@ -16,13 +16,16 @@ class UserListCreateAPIView(generics.ListCreateAPIView):
             return permissions.IsAuthenticated(),
         return permissions.AllowAny(),
 
-"""
-class StudentListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
 
-    def get_permissions(self):
-        if self.request.method in permissions.SAFE_METHODS:
-            return permissions.IsAuthenticated(),
-        return permissions.AllowAny(),
-"""
+class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(self, request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(self, request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(self, request, *args, **kwargs)

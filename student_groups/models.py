@@ -6,11 +6,13 @@ from django.contrib.auth.models import User
 from comments.models import CommentsTable
 from django.templatetags.static import static
 
+
 # Create your models here.
 class Student(models.Model):
-    user = models.OneToOneField(User, related_name = 'student')
-    group = models.ForeignKey('StudentGroup', blank = True)
+    user = models.OneToOneField(User, related_name='student')
+    group = models.ForeignKey('StudentGroup', blank=True)
     avatar = models.ImageField(default=static('images/avatars/default_avatar.png'))
+    sex = models.CharField(max_length=10, default='unknown') #male,female, unknown
 
     def __str__(self):
         return self.user.username
