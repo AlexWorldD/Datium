@@ -9,6 +9,7 @@ urlpatterns = patterns('',
                        url(r'api/v1/', include('authentication.urls')),
                        url(r'api/v1/', include('timetable.urls')),
                        url(r'api/v1/', include('users.urls')),
+                       url(r'api/v1/', include('student_groups.urls')),
                        url(r'^.*$', TemplateView.as_view(template_name='index.html')),
 
                        )
