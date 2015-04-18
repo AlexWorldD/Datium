@@ -52,12 +52,12 @@ class News(models.Model):
 
 
 class Tag(models.Model):
-    name = models.SlugField(max_length = 200, unique = True)
+    name = models.SlugField(max_length=200, unique=True)
 
 
 class Document(models.Model):
     file = models.FileField()
-    name = models.CharField(max_length = 200)
+    name = models.CharField(max_length=200)
     group = models.ForeignKey(StudentGroup)
     tags = models.ManyToManyField(Tag)
     comments = models.OneToOneField(CommentsTable)
