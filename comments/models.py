@@ -12,6 +12,7 @@ class CommentsTable(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
+
 class Comment(models.Model):
     title = models.CharField(max_length = 200)
     text = models.TextField()
