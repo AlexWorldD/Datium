@@ -13,7 +13,7 @@
     vm.register = register;
 
     function register() {
-      Auth.register(vm.username, vm.password, vm.email);
+      Auth.register(vm.username, vm.password, vm.email, vm.group);
     }
   }
 })();
