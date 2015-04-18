@@ -31,7 +31,7 @@
 
         $http({
             method: 'POST',
-            url: '/api/v1/authentication/login/',
+            url: '/api/v1/auth/login/',
             data: {username: username, password: password},
             headers: {'Content-Type': 'application/json'}
         }).then(loginSuccessFn, loginErrorFn);
@@ -54,9 +54,9 @@
       $window.location = '/';
     }
 
-    function register(username, password, email) {
-      return $http.post('/api/v1/authentication/', {
-        username: username, password: password, email: email
+    function register(username, password, email, group) {
+      return $http.post('/api/v1/users/', {
+        username: username, password: password, email: email, group: group
       }).then(registerSuccessFn);
 
       function registerSuccessFn(data, status, headers, config) {
