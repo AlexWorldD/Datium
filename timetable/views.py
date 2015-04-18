@@ -24,6 +24,7 @@ class SubjectDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         return self.destroy(self, request, *args, **kwargs)
 
 
+
 class TeacherListAPIView(generics.ListCreateAPIView):
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer

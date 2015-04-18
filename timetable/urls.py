@@ -7,5 +7,4 @@ urlpatterns = patterns('',
 
     url(r'^teachers/$', TeacherListAPIView.as_view(), name="teachers-list-create"),
     url(r'^teachers/(?P<pk>[0-9]+)/$', TeacherDetailAPIView.as_view(), name="teachers-detail"),
-
-)
+    )
