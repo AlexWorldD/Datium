@@ -11,7 +11,7 @@ class UserListCreateAPIView(generics.ListCreateAPIView):
 
     def get_queryset(self):
 
-        group = self.request.QUERY_PARAMS.get('group', None)
+        group = self.request.user.student.group
 
         try:
             students = Student.objects.filter(group=group)
