@@ -13,6 +13,7 @@
     vm.register = register;
 
     function register() {
+        console.log(vm.username);
       Auth.register(vm.username, vm.password, vm.email, vm.group);
     }
   }
