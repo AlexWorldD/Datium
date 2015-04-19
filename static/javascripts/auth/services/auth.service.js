@@ -55,7 +55,8 @@
     }
 
     function register(username, password, email, group) {
-      return $http.post('/api/v1/users/', {
+        console.log(username);
+        return $http.post('/api/v1/users/', {
         username: username, password: password, email: email, group: group
       }).then(registerSuccessFn);
 
