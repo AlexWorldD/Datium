@@ -30,7 +30,7 @@ class StudentGroup(models.Model):
             ("add_and_edit_homeworks", "Can add and edit homeworks"), # groups: 'group admin'
             ("add_and_edit_documents", "Can add and edit documents"), # groups: 'group admin'
         )
-    name = models.CharField(max_length = 200, unique = True)
+    name = models.CharField(max_length=200, unique=True)
     study_year = models.IntegerField()
 
     def __str__(self):

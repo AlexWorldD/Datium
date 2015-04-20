@@ -1,4 +1,5 @@
-from student_groups.models import StudentGroup
+from student_groups.models import StudentGroup, Tag
+
 from rest_framework import serializers
 
 
@@ -15,3 +16,21 @@ class StudentGroupSerializer(serializers.ModelSerializer):
         instance.study_year = validated_data.get('study_year', instance.study_year)
         instance.save()
         return instance
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('id', 'name')
+
+    def create(self, validated_data):
+        return TagSerializer.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.save()
+        return instance
+
+
+
+
