@@ -5,7 +5,7 @@ from rest_framework import generics, permissions
 # Create your views here.
 
 
-class StudentGroupListAPIView(generics.ListCreateAPIView):
+class StudentGroupListAPIView(generics.ListAPIView):
     queryset = StudentGroup.objects.all()
     serializer_class = StudentGroupSerializer
 
