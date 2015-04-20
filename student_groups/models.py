@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from comments.models import CommentsTable
 from django.templatetags.static import static
+from django.contrib.contenttypes.fields import GenericRelation
 
 
 # Create your models here.
@@ -44,7 +45,7 @@ class News(models.Model):
     user = models.ForeignKey(Student)
     group = models.ForeignKey(StudentGroup)
     tags = models.ManyToManyField('Tag')
-    comments = models.OneToOneField(CommentsTable)
+    comments = GenericRelation(CommentsTable, related_query_name='news')
     documents = models.ManyToManyField('Document')
 
     def __str__(self):
@@ -60,4 +61,4 @@ class Document(models.Model):
     name = models.CharField(max_length=200)
     group = models.ForeignKey(StudentGroup)
     tags = models.ManyToManyField(Tag)
-    comments = models.OneToOneField(CommentsTable)
+    comments = GenericRelation(CommentsTable, related_query_name='document')

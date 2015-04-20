@@ -13,6 +13,8 @@ class CommentsTable(models.Model):
     content_type = models.ForeignKey(ContentType, blank=True)
     object_id = models.PositiveIntegerField(blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
+    class Meta:
+        unique_together   = ('content_type', 'object_id')
 
 
 class Comment(models.Model):
