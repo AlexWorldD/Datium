@@ -8,6 +8,7 @@ from rest_framework import generics, permissions
 class StudentGroupListAPIView(generics.ListAPIView):
     queryset = StudentGroup.objects.all()
     serializer_class = StudentGroupSerializer
+    permission_classes = (permissions.AllowAny,)
 
 
 class StudentGroupDetailAPIView(generics.RetrieveAPIView):
