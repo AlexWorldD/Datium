@@ -3,10 +3,10 @@ from rest_framework import generics, permissions
 from users.serializers import UserSerializer
 from student_groups.models import Student
 from django.http import HttpResponse
+from users.permissions import IsOwnerOrReadOnly
 
 
 # Create your views here.
-
 
 class UserListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
@@ -34,12 +34,17 @@ class UserListCreateAPIView(generics.ListCreateAPIView):
 
 class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                      IsOwnerOrReadOnly,)
 
     def get_queryset(self):
+        """
         if self.request.method == 'GET':
             return User.objects.all()
         uid = self.request.user.id
         return User.objects.all().filter(id=uid)
+        """
+        return User.objects.all()
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(self, request, *args, **kwargs)
