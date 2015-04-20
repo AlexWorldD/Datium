@@ -4,6 +4,8 @@
 from django.db import models
 
 from student_groups.models import StudentGroup, Document
+from comments.models import CommentsTable
+from django.contrib.contenttypes.fields import GenericRelation
 
 # Create your models here.
 
@@ -73,6 +75,7 @@ class Homework(models.Model):
     text = models.TextField()
     deadline = models.ForeignKey(LessonInTimeTable)
     documents = models.ManyToManyField(Document)
+    comments = GenericRelation(CommentsTable, related_query_name='homework')
 
 
 class Timetable(models.Model):
