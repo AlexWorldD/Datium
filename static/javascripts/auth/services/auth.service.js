@@ -51,7 +51,7 @@
 
     function logout() {
       Auth.deleteToken();
-      $window.location = '/';
+      $window.location = '/login';
     }
 
     function register(username, password, email, group) {

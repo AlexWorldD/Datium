@@ -1,0 +1,17 @@
+<nav role="navigation" ng-show="vm.isLoggedIn">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Datium
+                </a>
+            </li>
+            <li ng-repeat="menuitem in menuitems">
+                <a href="{{ menuitem.url }}">{{menuites.item}}</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" ng-click="vm.logout()">Logout</a></li>
+            </li>
+        </ul>
+    </div>
+</nav>

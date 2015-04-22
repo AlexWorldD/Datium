@@ -7,11 +7,14 @@
 
 		<link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="/static/stylesheets/datium-main.css" />
+        <link rel="stylesheet" href="/static/stylesheets/simple-sidebar.css"/>
+        <link rel="stylesheet" href="/static/stylesheets/datium-login.css" />
 
 	</head>
 
 	<body>
-		<div ng-include="'/static/templates/static/navbar.html'" ng-controller="NavbarController as vm"></div>
+        <div ng-include="'/static/templates/static/sidebar.html'" ng-controller="NavbarController as vm"></div>
+        <div ng-include="'/static/templates/static/logo.html'" ng-controller="NavbarController as vm"></div>
 
 		<div class="container-fluid">
 			<div class="ng-view row"></div>
@@ -32,6 +35,7 @@
 		<script type="text/javascript" src="/static/javascripts/auth/controllers/register.controller.js"></script>
 		<script type="text/javascript" src="/static/javascripts/auth/interceptors/auth.interceptor.js"></script>
 		<script type="text/javascript" src="/static/javascripts/auth/services/auth.service.js"></script>
+        <script type="text/javascript" src="/static/javascripts/auth/services/users.service.js"></script>
 
 		<script type="text/javascript" src="/static/javascripts/static/static.module.js"></script>
 		<script type="text/javascript" src="/static/javascripts/static/controllers/index.controller.js"></script>
