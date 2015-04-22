@@ -20,6 +20,8 @@
       controller: 'RegisterController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/static/register.html'
+    }).otherwise({
+        redirectTo: '/'
     });
   }
 })();

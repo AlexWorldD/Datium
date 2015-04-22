@@ -1,4 +1,115 @@
-.datium-login{
-    background-image: url("../images/login-form-bg.png");
-    border: solid 4px #000000;
+
+#register__group{
+    background-color: #000000;          /*фон*/
+    opacity: 0.4;
+    border: 0;
+    border-radius: 2px;                 /*скругленные углы*/
+
+    padding: 2px 30px;              /*отступ текста от внутренней границы*/
+    height: 38px;
+    color: #ffffff;                     /*цвет вводимого текста*/
+    font: 30px Roboto Light;
+    letter-spacing: 1px;                /*межсимвольный интервал*/
+
+}
+
+.inputs{
+    margin: 0px 20px;                   /*отступы по краям*/
+    padding-top: 40px;                  /*отступ сверху*/
+}
+p[type='input-title']{
+    margin-bottom: 0;                   /*примыкание снизу к input */
+    padding: 0px 5px;                   /*отступ слева*/
+    color: #a05965;                     /*цвет текста a05965*/
+    font: 18px Roboto, bold;
+}
+
+input[type="text"]{
+    margin: 0px 0px;
+    background-color: #000000;          /*фон*/
+    opacity: 0.4;
+    border: 0;
+    border-radius: 2px;                 /*скругленные углы*/
+
+    padding: 2px 15px;              /*отступ текста от внутренней границы*/
+    height: 38px;
+    color: #ffffff;                     /*цвет вводимого текста*/
+    font: 30px Roboto Light;
+    letter-spacing: 1px;                /*межсимвольный интервал*/
+}
+
+input[type="email"]{
+    margin: 0px 0px;
+    background-color: #000000;          /*фон*/
+    opacity: 0.4;
+    border: 0;
+    border-radius: 2px;                 /*скругленные углы*/
+    padding: 2px 15px;              /*отступ текста от внутренней границы*/
+    height: 38px;
+    color: #ffffff;                     /*цвет вводимого текста*/
+    font: 30px Roboto Light;
+    letter-spacing: 1px;                /*межсимвольный интервал*/
+}
+
+input[type="password"]{
+    margin: 0px 0px;
+    background-color: #000000;          /*фон*/
+    opacity: 0.4;
+    border: 0;
+    border-radius: 2px;                 /*скругленные углы*/
+    height: 40px;
+    padding: 0px 15px 2px;              /*отступ текста от внутренней границы*/
+    color: #ffffff;                     /*цвет вводимого текста*/
+    font: 30px Roboto Light;
+    letter-spacing: 1px;                /*межсимвольный интервал*/
+}
+.btn-auth{
+    margin: 0 auto;
+    height: 50px;
+    width: 100%;
+    background-color: #000000;          /*фон*/
+    opacity: 0.4;
+    border: 0;
+    border-radius: 2px;                 /*скругленные углы*/
+    color: #ffffff;                     /*цвет надписи*/
+    font: 30px Roboto Light;
+    letter-spacing: 1px;                /*межсимвольный интервал*/
+}
+input[type="checkbox"]{
+   /* margin: 20px 5px 0 35px;*/
+    color: black;          /*фон*/
+    opacity: 0.4;
+    border: 0;
+    border-radius: 5px;                 /*скругленные углы*/
+    height: 15px;                    /*360-15-15*/
+    width: 15px;
+}
+.add{
+    margin: 20px 35px 0;
+    color: #a05965;                     /*цвет текста a05965*/
+    font: 14px Roboto, bold;
+    padding-top: 10px;
+}
+.add p{
+    float: left;
+    margin: 0px;
+}
+.add a{
+    text-decoration: none;
+    float: right;
+    margin: 0px;
+    color: #a05965;                     /*цвет текста a05965*/
+    font: 14px Roboto, bold;
+}
+a[type="register"]{
+    display: block;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    text-decoration: none;
+    color: rgba(239, 150, 164, 0.71);
+    font: 18px Roboto Light;
+}
+a[type="register"]:hover{
+    text-decoration: underline ;
 }
