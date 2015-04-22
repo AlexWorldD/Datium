@@ -1,7 +1,7 @@
 <div class="col-lg-3 col-lg-offset-4">
   <form role="form" ng-submit="vm.register()">
     <div class="form-group">
-      <label for="register__username">Username</label>
+      <label for="register__username">Имя пользователя</label>
       <input type="text"
              name="register__username"
              id="register__username"
@@ -9,14 +9,14 @@
              ng-model="vm.username" />
     </div>
 
-    <div class="form-group">
-      <label for="register__group">Group</label>
+    <div class="form-group" ng-controller="GroupsController as ctrl">
+      <label for="register__group">Группа</label>
       <select id="register__group"
               class="form-control"
               ng-model="vm.group">
-        <option value="pm">pm</option>
-        <option value="mm">mm</option>
-        <option value="mo">mo</option>
+        <option ng-repeat="group in ctrl.groups" value="{{ group.name }}">
+            {{ group.name }}
+        </option>
       </select>
     </div>
 
@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group">
-      <label for="register__password">Password</label>
+      <label for="register__password">Пароль</label>
       <input type="password"
              name="register__password"
              id="register__password"
@@ -40,9 +40,9 @@
 
     <div class="form-group">
       <button type="submit" class="btn btn-default btn-auth">
-        Register
+        Создать аккаунт
       </button>
     </div>
   </form>
-   <a type="register" href="login">Sign In</a>
+   <a type="register" href="login">Войти</a>
 </div>

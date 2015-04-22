@@ -3,10 +3,14 @@
 
   angular
     .module('application', [
-      'application.config',
-      'application.routes',
-      'application.auth',
-      'application.static'
+        'application.config',
+        'application.routes',
+        'application.auth',
+        'application.static',
+        'application.users',
+        'application.teachers',
+        'application.profile',
+        'application.groups'
     ]);  
 
   angular

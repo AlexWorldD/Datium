@@ -13,7 +13,7 @@
 	</head>
 
 	<body>
-        <div ng-include="'/static/templates/static/sidebar.html'" ng-controller="NavbarController as vm"></div>
+        <div ng-include="'/static/templates/static/sidebar.html'" ng-controller="SidebarController as vm"></div>
         <div ng-include="'/static/templates/static/logo.html'" ng-controller="NavbarController as vm"></div>
 
 		<div class="container-fluid">
@@ -29,16 +29,36 @@
 		<script type="text/javascript" src="/static/javascripts/app.js"></script>
 		<script type="text/javascript" src="/static/javascripts/app.config.js"></script>
 		<script type="text/javascript" src="/static/javascripts/app.routes.js"></script>
-
+        <!------ auth --->
 		<script type="text/javascript" src="/static/javascripts/auth/auth.module.js"></script>
 		<script type="text/javascript" src="/static/javascripts/auth/controllers/login.controller.js"></script>
 		<script type="text/javascript" src="/static/javascripts/auth/controllers/register.controller.js"></script>
 		<script type="text/javascript" src="/static/javascripts/auth/interceptors/auth.interceptor.js"></script>
 		<script type="text/javascript" src="/static/javascripts/auth/services/auth.service.js"></script>
-        <script type="text/javascript" src="/static/javascripts/auth/services/users.service.js"></script>
+        <!--- users --->
+        <script type="text/javascript" src="/static/javascripts/users/users.module.js"></script>
+        <script type="text/javascript" src="/static/javascripts/users/services/users.service.js"></script>
+        <script type="text/javascript" src="/static/javascripts/users/controllers/users.controller.js"></script>
+
+        <!--- teachers --->
+        <script type="text/javascript" src="/static/javascripts/teachers/teachers.module.js"></script>
+        <script type="text/javascript" src="/static/javascripts/teachers/services/teachers.service.js"></script>
+        <script type="text/javascript" src="/static/javascripts/teachers/controllers/teachers.controller.js"></script>
+
+        <!--- profile --->
+        <script type="text/javascript" src="/static/javascripts/profile/profile.module.js"></script>
+        <script type="text/javascript" src="/static/javascripts/profile/controllers/profile.controller.js"></script>
+
+         <!--- groups --->
+        <script type="text/javascript" src="/static/javascripts/groups/groups.module.js"></script>
+        <script type="text/javascript" src="/static/javascripts/groups/controllers/groups.controller.js"></script>
+        <script type="text/javascript" src="/static/javascripts/groups/services/groups.service.js"></script>
+
+        <!--- static --->
 
 		<script type="text/javascript" src="/static/javascripts/static/static.module.js"></script>
 		<script type="text/javascript" src="/static/javascripts/static/controllers/index.controller.js"></script>
 		<script type="text/javascript" src="/static/javascripts/static/controllers/navbar.controller.js"></script>
+		<script type="text/javascript" src="/static/javascripts/static/controllers/sidebar.controller.js"></script>
 	</body>
 </html>

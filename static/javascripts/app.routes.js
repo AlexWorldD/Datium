@@ -9,7 +9,7 @@
 
   function config($routeProvider) {
     $routeProvider.when('/', {
-      controller: 'IndexController',
+      controller: 'ProfileController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/static/index.html'
     }).when('/login', {
@@ -20,6 +20,18 @@
       controller: 'RegisterController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/static/register.html'
+    }).when('/users', {
+      controller: 'UsersController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/static/users.html'
+    }).when('/users/:userId', {
+      controller: 'UserDetailController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/static/user-detail.html'
+    }).when('/teachers', {
+      controller: 'TeachersController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/static/teachers.html'
     }).otherwise({
         redirectTo: '/'
     });

@@ -14,7 +14,8 @@
       login: login,
       logout: logout,
       register: register,
-      setToken: setToken
+      setToken: setToken,
+        user : {}
     };
 
     return Auth;
