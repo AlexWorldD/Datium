@@ -6,11 +6,11 @@
                     Datium
                 </a>
             </li>
-            <li ng-repeat="menuitem in menuitems">
-                <a href="{{ menuitem.url }}">{{menuites.item}}</a>
+            <li ng-repeat="menuitem in vm.menuitems">
+                <a href="{{ menuitem.url }}">{{menuitem.item}}</a>
             </li>
             <li>
-                <a href="javascript:void(0);" ng-click="vm.logout()">Logout</a></li>
+                <a href="javascript:void(0);" ng-click="vm.logout()">Выйти</a></li>
             </li>
         </ul>
     </div>

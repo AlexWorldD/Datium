@@ -3,10 +3,13 @@ html {
 }
 body{
     height: 100%;
-    background: linear-gradient(to top left, #5b5997, #b15959, #5b5997);
+    background: linear-gradient(to top left, #5b5997, #b15959, #5b5997) fixed;
 }
 
 .datium-logo{
     text-align: center;
     color: #ffffff;                     /*цвет вводимого текста*/
+}
+.datium-user{
+    padding: 1%;
 }

@@ -7,33 +7,32 @@
 
   SidebarController.$inject = ['Auth'];
 
-  function SidebarController($scope,Auth) {
+  function SidebarController(Auth, $scope) {
       var vm = this;
 
       vm.isLoggedIn = !!Auth.getToken();
-      $scope.menuitems = [
+      vm.menuitems = [
           {
               item: 'Главная',
               url: '/'
           },
           {
               item: 'Группа',
-              url: '/'
+              url: '/users'
           },
           {
               item: 'Преподаватели',
-              url: '/'
+              url: '/teachers'
           },
           {
               item: 'Библиотека',
               url: '/'
           }
-      ]
+      ];
     vm.logout = logout;
 
     function logout() {
       Auth.logout();
     }
-
   }
 })();
