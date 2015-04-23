@@ -15,7 +15,7 @@
       logout: logout,
       register: register,
       setToken: setToken,
-        user : {}
+      currentUser : {}
     };
 
     return Auth;
@@ -43,6 +43,12 @@
         }
 
         $window.location = '/';
+
+        Auth.currentUser = $http.get("/api/v1/users/" + username + "/").then(function (response) {
+            alert("/api/v1/users/" + username + "/");
+              return response.data;
+        });
+          console.log(Auth.currentUser);
       }
 
       function loginErrorFn(data, status, headers, config) {

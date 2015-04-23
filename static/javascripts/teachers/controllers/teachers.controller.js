@@ -3,16 +3,12 @@
 
   angular
     .module('application.teachers.controllers')
-    .controller('TeachersController', TeachersController);
+    .controller('TeachersController', function (Teachers, $scope) {
+    var vm = this;
 
-  TeachersController.$inject = ['Teachers', '$http'];
+    Teachers.all().then(function (data) {
+        vm.teachers = data;
+    });
 
-  function TeachersController($scope, $http) {
-      var vm = this;
-      vm.teachers = [];
-
-      $http.get("/api/v1/teachers/").success(function (data) {
-          vm.teachers = data;
-      })
-  }
+  });
 })();

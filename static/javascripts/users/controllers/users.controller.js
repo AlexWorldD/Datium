@@ -3,17 +3,12 @@
 
   angular
     .module('application.users.controllers')
-    .controller('UsersController', UsersController);
-
-  UsersController.$inject = ['Users', '$http'];
-
-  function UsersController($scope, $http) {
+    .controller('UsersController', function (Users, $scope) {
     var vm = this;
-    vm.hello = "Hello World";
-    vm.users = [];
 
-      $http.get("/api/v1/users/").success(function (data) {
-          vm.users = data;
-      })
-  }
+    Users.all().then(function (data) {
+        vm.users = data;
+    });
+
+  });
 })();
