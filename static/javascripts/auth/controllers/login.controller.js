@@ -11,7 +11,6 @@
     var vm = this;
 
     vm.login = login;
-    vm.user = {};
 
     function login() {
         Auth.login(vm.username, vm.password);

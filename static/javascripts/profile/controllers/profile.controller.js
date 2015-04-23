@@ -9,7 +9,6 @@
 
   function ProfileController(Auth) {
     var vm = this;
-
-    vm.username = Auth.user.username;
+    vm.user = Auth.currentUser;
   }
 })();
