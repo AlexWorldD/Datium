@@ -11,11 +11,21 @@
                         });
                 },
                 update: function(data){
-                    return $http.patch('/api/v1/users/' + data.id + "/", data)
-                        .then(updateSuccessFn);
+                    delete data['avatar'];
+                    console.log(data);
+                    return $http({
+                        method: 'PATCH',
+                        url: '/api/v1/users/' + data.id + "/",
+                        data: data,
+                        headers: {'Content-Type': 'application/json'}
+                    }).then(updateSuccessFn, updateErrorFn);
 
                     function updateSuccessFn(data, status, headers, config) {
+                        alert("Данные изменены");
+                    }
 
+                    function updateErrorFn(data, status, headers, config){
+                        alert(data.data);
                     }
 
                 }

@@ -26,10 +26,13 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
-        student_data = validated_data.pop('student')
-        student = instance.student
-        student.sex = student_data.get('sex', student.sex)
-        student.avatar = student_data.get('avatar', student.avatar)
-        student.save()
+        if 'student' in validated_data:
+            student_data = validated_data.pop('student')
+            student = instance.student
+            student.sex = student_data.get('sex', student.sex)
+            student.avatar = student_data.get('avatar', student.avatar)
+            student.save()
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
         instance.save()
         return instance
