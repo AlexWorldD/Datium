@@ -7,7 +7,7 @@
 
   Auth.$inject = ['$http', '$window'];
 
-  function Auth($http, $window) {
+  function Auth($http, $window, $rootScope) {
     var Auth = {
       deleteToken: deleteToken,
       getToken: getToken,
@@ -15,10 +15,16 @@
       logout: logout,
       register: register,
       setToken: setToken,
-      currentUser : {}
+      getUsername: getUsername,
+      deleteUsername: deleteUsername,
+      setUsername: setUsername
     };
 
     return Auth;
+
+      function deleteUsername(){
+          $window.localStorage.removeItem('username');
+      }
 
     function deleteToken() {
       $window.localStorage.removeItem('token');
@@ -41,14 +47,8 @@
         if (data.data.token) {
           Auth.setToken(data.data.token);
         }
-
+        Auth.setUsername(username);
         $window.location = '/';
-
-        Auth.currentUser = $http.get("/api/v1/users/" + username + "/").then(function (response) {
-            alert("/api/v1/users/" + username + "/");
-              return response.data;
-        });
-          console.log(Auth.currentUser);
       }
 
       function loginErrorFn(data, status, headers, config) {
@@ -57,12 +57,13 @@
     }
 
     function logout() {
-      Auth.deleteToken();
-      $window.location = '/login';
+        Auth.deleteToken();
+        Auth.deleteUsername();
+        $window.location = '/login';
+        $window.reload();
     }
 
     function register(username, password, email, group) {
-        console.log(username);
         return $http.post('/api/v1/users/', {
         username: username, password: password, email: email, group: group
       }).then(registerSuccessFn);
@@ -75,5 +76,12 @@
     function setToken(token) {
       $window.localStorage.setItem('token', token);
     }
+      function setUsername(username){
+          $window.localStorage.setItem('username', username);
+      }
+
+      function getUsername(){
+          return $window.localStorage.getItem('username');
+      }
   }
 })();

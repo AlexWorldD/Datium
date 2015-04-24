@@ -13,8 +13,8 @@
       vm.isLoggedIn = !!Auth.getToken();
       vm.menuitems = [
           {
-              item: 'Главная',
-              url: '/'
+              item: 'Профиль',
+              url: '/profile'
           },
           {
               item: 'Группа',

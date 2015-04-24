@@ -3,11 +3,7 @@
 
   angular
     .module('application.auth.controllers')
-    .controller('LoginController', LoginController);
-
-  LoginController.$inject = ['Auth'];
-
-  function LoginController(Auth) {
+    .controller('LoginController', function (Auth) {
     var vm = this;
 
     vm.login = login;
@@ -15,5 +11,5 @@
     function login() {
         Auth.login(vm.username, vm.password);
     }
-  }
+  })
 })();

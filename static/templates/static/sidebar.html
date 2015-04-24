@@ -2,15 +2,13 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    Datium
-                </a>
+                <a href="/">Datium</a>
             </li>
             <li ng-repeat="menuitem in vm.menuitems">
                 <a href="{{ menuitem.url }}">{{menuitem.item}}</a>
             </li>
             <li>
-                <a href="javascript:void(0);" ng-click="vm.logout()">Выйти</a></li>
+                <a href="javascript:void(0);" ng-click="vm.logout()">Выйти</a>
             </li>
         </ul>
     </div>
