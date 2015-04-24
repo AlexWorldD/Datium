@@ -3,12 +3,16 @@
 
   angular
     .module('application.profile.controllers')
-    .controller('ProfileController', ProfileController);
+    .controller('ProfileController', function(Profile, $window, $scope) {
 
-  ProfileController.$inject = ['Auth'];
+          var vm = this;
+          Profile.info().then(function(data){
+              vm.profile = data;
+          });
+          vm.update = update;
+          function update(){
+                Profile.update(vm.profile);
+          }
 
-  function ProfileController(Auth) {
-    var vm = this;
-    vm.user = Auth.currentUser;
-  }
+  });
 })();
