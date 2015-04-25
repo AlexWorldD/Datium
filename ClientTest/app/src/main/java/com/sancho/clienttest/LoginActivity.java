@@ -5,13 +5,16 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -25,6 +28,7 @@ public class LoginActivity extends ActionBarActivity {
     String username;
     String password;
     private static final String URL ="http://178.62.42.66/api/v1/auth/login/";
+    SharedPreferences sPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +63,18 @@ public class LoginActivity extends ActionBarActivity {
             public void callback(String url, JSONObject json, AjaxStatus status) {
 
                if(json !=null){
-                   startActivity(new Intent(LoginActivity.this, SuccessLog.class));
+                   try {
+                       sPref = getSharedPreferences("MyPref", MODE_PRIVATE);
+                       SharedPreferences.Editor ed = sPref.edit();
+                       ed.putString("token", json.getString("token"));
+                       ed.commit();
+                       Toast.makeText(LoginActivity.this, "Text saved", Toast.LENGTH_SHORT).show();
+
+                       startActivity(new Intent(LoginActivity.this, SuccessLog.class));
+                   }
+                   catch (JSONException e){
+
+                   }
 
                }
             }

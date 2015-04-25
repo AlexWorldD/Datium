@@ -13,8 +13,8 @@
         android:text="Регистрация"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="78dp" />
+        android:layout_alignRight="@+id/button4"
+        android:layout_alignEnd="@+id/button4" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -22,8 +22,9 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/regEmail"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/regUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -31,10 +32,8 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/regPassword"
-        android:layout_marginTop="46dp"
-        android:layout_below="@+id/regEmail"
-        android:layout_alignLeft="@+id/regEmail"
-        android:layout_alignStart="@+id/regEmail" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -53,9 +52,29 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Зарегистрироваться"
         android:id="@+id/button4"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="48dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/groupSpinner"
+        android:layout_below="@+id/regPassword"
+        android:layout_alignLeft="@+id/regPassword"
+        android:layout_alignStart="@+id/regPassword"
+        android:layout_marginTop="54dp"
+        android:nestedScrollingEnabled="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/groupSpinner"
+        android:layout_alignEnd="@+id/groupSpinner" />
 </RelativeLayout>
