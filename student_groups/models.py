@@ -12,7 +12,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 class Student(models.Model):
     user = models.OneToOneField(User, related_name='student')
     group = models.ForeignKey('StudentGroup', blank=True)
-    avatar = models.ImageField(default=static('images/avatars/default_avatar.png'))
+    avatar = models.ImageField(default=static('images/avatars/default_avatar.png'), upload_to = 'avatars')
     sex = models.CharField(max_length=10, default='unknown') #male,female, unknown
 
     def __str__(self):
@@ -54,10 +54,16 @@ class News(models.Model):
 
 class Tag(models.Model):
     name = models.SlugField(max_length=200, unique=True)
+    def __str__(self):
+        return self.name
 
+
+def group_documents_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/documents/<group_name>/<filename>
+    return 'documents/{0}/{1}'.format(instance.group.name, filename)
 
 class Document(models.Model):
-    file = models.FileField()
+    file = models.FileField(upload_to = group_documents_path)
     name = models.CharField(max_length=200)
     group = models.ForeignKey(StudentGroup)
     tags = models.ManyToManyField(Tag)
