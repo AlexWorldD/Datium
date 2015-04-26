@@ -3,17 +3,11 @@
 
   angular
     .module('application.groups.controllers')
-    .controller('GroupsController', GroupsController);
-
-  GroupsController.$inject = ['Groups', '$http'];
-
-  function GroupsController($scope, $http) {
+    .controller('GroupsController', function (Groups, $scope) {
     var vm = this;
-    vm.hello = "Hello World";
-    vm.groups = [];
 
-      $http.get("/api/v1/groups/").success(function (data) {
-          vm.groups = data;
-      })
-  }
+          Groups.all().then(function (data) {
+              vm.groups = data;
+          })
+  })
 })();
