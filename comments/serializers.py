@@ -20,3 +20,7 @@ class CommentsTableSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommentsTable
         fields = ('id', 'comments')
+
+class CommentsTableObjectRelatedField(serializers.RelatedField):
+    def to_representation(self, value):
+        return value.all()[0].id
