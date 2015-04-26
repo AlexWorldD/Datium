@@ -14,7 +14,6 @@
 
 	<body>
         <div ng-include="'/static/templates/static/sidebar.html'" ng-controller="SidebarController as vm"></div>
-        <div ng-include="'/static/templates/static/logo.html'" ng-controller="NavbarController as vm"></div>
 
 		<div class="container-fluid">
 			<div class="ng-view row"></div>
@@ -48,6 +47,8 @@
         <!--- profile --->
         <script type="text/javascript" src="/static/javascripts/profile/profile.module.js"></script>
         <script type="text/javascript" src="/static/javascripts/profile/controllers/profile.controller.js"></script>
+        <script type="text/javascript" src="/static/javascripts/profile/services/profile.service.js"></script>
+
 
          <!--- groups --->
         <script type="text/javascript" src="/static/javascripts/groups/groups.module.js"></script>
