@@ -6,8 +6,11 @@ import retrofit.client.Response;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Header;
+import retrofit.http.PATCH;
 import retrofit.http.POST;
 import retrofit.RestAdapter;
+import retrofit.http.Path;
+
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -27,10 +30,10 @@ public class SuccessLog extends ActionBarActivity {
     TextView uInfo;
     SharedPreferences sPref;
     SharedPreferences sToken;
-    user []  users;
+    user   users;
     String jwtToken;
     String id, email, group,sex,firstname,lastname;
-    public String name="Ашот";
+    String name;
 
 
     public class user {
@@ -79,11 +82,12 @@ public class SuccessLog extends ActionBarActivity {
 
     public interface Api{
         public static final String URL ="http://178.62.42.66/api/v1";
-        static final String USERS = "/users/";
+        static final String USERS = "/users/{name}/";
 
 
         @GET(USERS)
-       user []  users(@Header("Authorization") String jwtToken );
+       user   users(@Path("name") String name ,@Header("Authorization") String jwtToken );
+
 
     }
 
@@ -92,7 +96,7 @@ public class SuccessLog extends ActionBarActivity {
                 .setEndpoint(Api.URL)
                 .build();
         Api api = restAdapter.create(Api.class);
-        users = api.users(jwtToken);
+        users = api.users(name,jwtToken);
         //api.users(jwtToken);
     }
     private void fillText(){
@@ -105,13 +109,13 @@ public class SuccessLog extends ActionBarActivity {
 
 
                 getUsers(jwtToken);
-                name = users[1].getUsername();
-                id = users[1].getId();
-                group = users[1].getGroup();
-                email = users[1].getEmail();
-                sex = users[1].getSex();
-                firstname = users[1].getFirstname();
-                lastname = users[1].getSecondname();
+                //name = users.getUsername();
+                id = users.getId();
+                group = users.getGroup();
+                email = users.getEmail();
+                sex = users.getSex();
+                firstname = users.getFirstname();
+                lastname = users.getSecondname();
 
 
 
@@ -129,6 +133,7 @@ public class SuccessLog extends ActionBarActivity {
         idTV = (TextView) findViewById(R.id.id);
         usernameTV = (TextView) findViewById(R.id.username);
         emailTV = (TextView) findViewById(R.id.email);
+        groupTV = (TextView) findViewById(R.id.group);
         sexTV = (TextView) findViewById(R.id.sex);
         firstnameTV = (TextView) findViewById(R.id.firstName);
         secondnameTV = (TextView) findViewById(R.id.lastName);
@@ -136,6 +141,7 @@ public class SuccessLog extends ActionBarActivity {
         usernameTV.setText(name);
         emailTV.setText(email);
         sexTV.setText(sex);
+        groupTV.setText(group);
         firstnameTV.setText(firstname);
         secondnameTV.setText(lastname);
 
@@ -155,7 +161,9 @@ public class SuccessLog extends ActionBarActivity {
 
         sPref = getSharedPreferences("MyPref",MODE_PRIVATE);
         String savedText = sPref.getString("token","");
+        String uname = sPref.getString("username","");
         jwtToken = "JWT "+savedText;
+        name = uname;
         fillText();
 
 

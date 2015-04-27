@@ -46,7 +46,7 @@ public class Registration_Activity extends ActionBarActivity {
         regUsername = (EditText) findViewById(R.id.regUsername);
         regEmail = (EditText) findViewById(R.id.regEmail);
         regPassword = (EditText) findViewById(R.id.regPassword);
-        text = (TextView) findViewById(R.id.textView5);
+       // text = (TextView) findViewById(R.id.textView5);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_dropdown_item_1line, groups);
         groupsSpinner.setAdapter(adapter1);

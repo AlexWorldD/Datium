@@ -52,7 +52,7 @@ public class LoginActivity extends ActionBarActivity {
 
     }
 
-    private void sign(String username, String password){
+    private void sign(final String username, String password){
         AQuery aq = new AQuery(this);
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("username", username);
@@ -67,12 +67,14 @@ public class LoginActivity extends ActionBarActivity {
                        sPref = getSharedPreferences("MyPref", MODE_PRIVATE);
                        SharedPreferences.Editor ed = sPref.edit();
                        ed.putString("token", json.getString("token"));
+                       ed.putString("username",username);
                        ed.commit();
                        Toast.makeText(LoginActivity.this, "Text saved", Toast.LENGTH_SHORT).show();
 
                        startActivity(new Intent(LoginActivity.this, SuccessLog.class));
                    }
                    catch (JSONException e){
+                       e.printStackTrace();
 
                    }
 

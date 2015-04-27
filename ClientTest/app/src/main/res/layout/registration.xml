@@ -10,11 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Регистрация"
+        android:text="Registration"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/button4"
-        android:layout_alignEnd="@+id/button4" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -46,13 +45,13 @@
         android:layout_alignStart="@+id/regEmail"
         android:layout_marginTop="46dp"
         android:textIsSelectable="false"
-        android:text="NAme"
+        android:text="Name"
         android:phoneNumber="false" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Зарегистрироваться"
+        android:text="Sign up"
         android:id="@+id/button4"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -66,15 +65,12 @@
         android:layout_alignLeft="@+id/regPassword"
         android:layout_alignStart="@+id/regPassword"
         android:layout_marginTop="54dp"
-        android:nestedScrollingEnabled="true" />
+        android:nestedScrollingEnabled="true"
+        android:background="#ffb0b0b0"
+        android:backgroundTint="#ffb0b0b0"
+        android:touchscreenBlocksFocus="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:popupBackground="#ffb0b0b0" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/groupSpinner"
-        android:layout_alignEnd="@+id/groupSpinner" />
 </RelativeLayout>
