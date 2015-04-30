@@ -1,6 +1,6 @@
-<div class="col-lg-offset-3 col-lg-5">
+<div class="col-lg-offset-3 col-lg-5 content-wrapper">
   <h1>{{ "Teachers" }}</h1>
     <h2 ng-repeat="teacher in vm.teachers">
-        {{ teacher.surname }} {{ teacher.name }}
+        <a href="teachers/{{ teacher.id }}">{{ teacher.surname }} {{ teacher.name }}</a>
     </h2>
 </div>
