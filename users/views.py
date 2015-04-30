@@ -10,11 +10,11 @@ from rest_framework import status
 from django.core.files import File
 from django.conf import settings
 
-from users.permissions import IsOwnerOrReadOnly, IsOwner
+from users.permissions import IsUserOrReadOnly, IsUser, CanViewGrouplist
 
 # Create your views here.
 
-class UserListCreateAPIView(generics.ListCreateAPIView):
+class UserListCreateAPIView(generics.ListAPIView):
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -34,25 +34,25 @@ class UserListCreateAPIView(generics.ListCreateAPIView):
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
-            return permissions.IsAuthenticated(),
-        return permissions.AllowAny(),
+            return [permissions.IsAuthenticated(), CanViewGrouplist(),]
+        return [permissions.AllowAny(),]
 
 
 class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = (permissions.IsAuthenticated, IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated, IsUserOrReadOnly,)
     lookup_field = 'username'
     
 class UserDetailByIDAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = (permissions.IsAuthenticated, IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated, IsUserOrReadOnly,)
 
 class UserAvatarUploadAPIView(generics.CreateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = (permissions.IsAuthenticated, IsOwner,)
+    permission_classes = (permissions.IsAuthenticated, IsUser,)
     parser_classes = (FormParser, MultiPartParser,)
     lookup_field = 'username'
     def post(self, request, *args, **kwargs):
@@ -68,7 +68,7 @@ class UserAvatarUploadAPIView(generics.CreateAPIView):
 class UserAvatarUploadByIDAPIView(generics.CreateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = (permissions.IsAuthenticated, IsOwner,)
+    permission_classes = (permissions.IsAuthenticated, IsUser,)
     parser_classes = (FormParser, MultiPartParser,)
     def post(self, request, *args, **kwargs):
         user = request.user
