@@ -13,19 +13,23 @@
       vm.isLoggedIn = !!Auth.getToken();
       vm.menuitems = [
           {
-              item: 'Профиль',
+              item: 'Main',
+              url: '/index'
+          },
+          {
+              item: 'Profile',
               url: '/profile'
           },
           {
-              item: 'Группа',
+              item: 'Our group',
               url: '/users'
           },
           {
-              item: 'Преподаватели',
+              item: 'Staff',
               url: '/teachers'
           },
           {
-              item: 'Библиотека',
+              item: 'Library',
               url: '/'
           }
       ];

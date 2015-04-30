@@ -32,6 +32,10 @@
               controller: 'TeachersController',
               controllerAs: 'vm',
               templateUrl: '/static/templates/static/teachers.html'
+          }).when('/teachers/:teacherId', {
+              controller: 'TeacherDetailController',
+              controllerAs: 'vm',
+              templateUrl: '/static/templates/static/teacher-detail.html'
           }).otherwise({
               redirectTo: '/'
           });

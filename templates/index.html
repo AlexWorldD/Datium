@@ -7,12 +7,12 @@
 
 		<link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="/static/stylesheets/datium-main.css" />
-        <link rel="stylesheet" href="/static/stylesheets/simple-sidebar.css"/>
-        <link rel="stylesheet" href="/static/stylesheets/datium-login.css" />
+        <link rel="stylesheet" href="/static/stylesheets/datium-auth.css" />
 
 	</head>
 
 	<body>
+        <div ng-include="'/static/templates/static/logo.html'"></div>
         <div ng-include="'/static/templates/static/sidebar.html'" ng-controller="SidebarController as vm"></div>
 
 		<div class="container-fluid">
@@ -25,7 +25,11 @@
 		<script type="text/javascript" src="/static/bower_components/angular/angular.js"></script>
 		<script type="text/javascript" src="/static/bower_components/angular-route/angular-route.js"></script>
 
-		<script type="text/javascript" src="/static/javascripts/app.js"></script>
+        <!--- xeditable --->
+        <script type="text/javascript" src="/static/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+
+        <!--- app --->
+        <script type="text/javascript" src="/static/javascripts/app.js"></script>
 		<script type="text/javascript" src="/static/javascripts/app.config.js"></script>
 		<script type="text/javascript" src="/static/javascripts/app.routes.js"></script>
         <!------ auth --->
@@ -43,6 +47,8 @@
         <script type="text/javascript" src="/static/javascripts/teachers/teachers.module.js"></script>
         <script type="text/javascript" src="/static/javascripts/teachers/services/teachers.service.js"></script>
         <script type="text/javascript" src="/static/javascripts/teachers/controllers/teachers.controller.js"></script>
+        <script type="text/javascript" src="/static/javascripts/teachers/controllers/teacherdetail.controller.js"></script>
+
 
         <!--- profile --->
         <script type="text/javascript" src="/static/javascripts/profile/profile.module.js"></script>

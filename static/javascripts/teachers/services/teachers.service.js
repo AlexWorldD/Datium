@@ -10,6 +10,11 @@
                       console.log(response);
                       return response.data;
                   });
+              },
+              one: function(id){
+                  return $http.get("/api/v1/teachers/" + id).then(function (response) {
+                      return response.data;
+                  });
               }
           };
       });

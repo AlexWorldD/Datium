@@ -1,68 +1,100 @@
-<div class="col-lg-offset-3 col-lg-8">
-    <h1 class="text-center">Мой профиль</h1>
-    <hr>
-    <div class="row">
-        <form role="form" ng-submit="vm.update()">
-            <div class="col-lg-4">
-                <img src="{{ vm.profile.avatar }}" class="img-circle">
+<div class="content-wrapper">
+    <div class="content-header">
+        <h3 class="datium-page-title">My profile</h3>
+    </div>
+    <div class="content-main">
+        <form name="editableForm" onaftersave="vm.update()" editable-form>
+            <div class="datium-profile-title">
+                <div class="row">
+                    <div class="col-md-offset-4 col-md-5">
+                        <h3 class="daitum-teacher-fio">
+                            <span editable-text="vm.profile.first_name" e-name="first_name"><span ng-show="editableForm.$visible">Имя : </span>{{ vm.profile.first_name }}</span>
+                            <b editable-text="vm.profile.last_name" e-name="last_name"><span ng-show="editableForm.$visible">Фамилия : </span>{{ vm.profile.last_name | uppercase}}</b>
+                        </h3>
+                        <h3 class="datium-profile-study-year">2 курс</h3>
+                        <h4 class="datium-profile-study-year">231 группа</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <img src="http://www.murketing.com/journal/wp-content/uploads/2009/04/8tracks.jpg" class="img-circle datium-profile-avatar">
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-7">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <label class="text-center ">Username</label>
+            <div class="datium-profile-contact-info">
+                <h4 class="daitum-teacher-subtitle">Contact info</h4>
+                <hr class="datium">
+                <div class="row content-main">
+                    <div class="col-md-3">
+                        <span class="datium-profile-label">E-mail</span>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text"
-                         name="profile__username"
-                         id="profile__username"
-                         class="form-control"
-                         ng-model="vm.profile.username"/>
+                    <div class="col-md-9">
+                        <span class="datium-profile-field">fff@gmail.cmos</span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <label class="text-center ">Email</label>
+                <div class="row content-main">
+                    <div class="col-md-3">
+                        <span class="datium-profile-label">Phone</span>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="email"
-                         name="profile__email"
-                         id="profile__email"
-                         class="form-control"
-                         ng-model="vm.profile.email">
+                    <div class="col-md-9">
+                        <span class="datium-profile-field">(123)4556234</span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <label class="text-center ">Имя</label>
+                <div class="row content-main">
+                    <div class="col-md-3">
+                        <span class="datium-profile-label">Hall</span>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text"
-                         name="profile__first_name"
-                         id="profile__first_name"
-                         class="form-control"
-                         ng-model="vm.profile.first_name"/>
+                    <div class="col-md-9">
+                        <span class="datium-profile-field">15, 777x</span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <label class="text-center ">Фамилия</label>
+            </div>
+            <div class="datium-profile-contact-info">
+                <h4 class="daitum-teacher-subtitle">Personal info</h4>
+                <hr class="datium">
+                <div class="row content-main">
+                    <div class="col-md-3">
+                        <span class="datium-profile-label">Date of Birth</span>
                     </div>
-                    <div class="col-lg-9">
-                        <input type="text"
-                         name="profile__last_name"
-                         id="profile__last_name"
-                         class="form-control"
-                         ng-model="vm.profile.last_name"/>
+                    <div class="col-md-9">
+                        <span class="datium-profile-field">{{ 1104 | date:'dd/MM' || 'empty'}}</span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-offset-5 col-lg-5">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-default btn-auth">Сохранить</button>
+                <div class="row content-main">
+                    <div class="col-md-3">
+                        <span class="datium-profile-label">City</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="datium-profile-field">Ufa</span>
+                    </div>
+                </div>
+                <div class="row content-main">
+                    <div class="col-md-3">
+                        <span class="datium-profile-label">Hall</span>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="datium-profile-field">15, 777x</span>
+                    </div>
+                </div>
+            </div>
+            <div class="datium-profile-manage">
+                <h4 class="daitum-teacher-subtitle">Manage</h4>
+                <hr class="datium">
+                <div class="content-main">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="datium-profile-button"  ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                            Edit
+                            </button>
+                            <div ng-show="editableForm.$visible">
+                                <button type="submit" class="datium-profile-button" ng-disabled="editableForm.$waiting">
+                                    Save
+                                </button>
+                                <button type="button" class="datium-profile-button" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-offset-9">
+                            <button type="button" class="datium-profile-button" ng-click="vm.remove()">Delete account</button>
                         </div>
                     </div>
                 </div>
