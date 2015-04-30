@@ -1,6 +1,7 @@
 from timetable.models import Subject, Teacher
-from rest_framework import generics
+from rest_framework import generics, permissions
 from timetable.serializers import SubjectSerializer, TeacherSerializer
+from users.permissions import CanViewTimetable, CanAddAndEditSubjects, CanAddAndEditTeachers
 
 # Create your views here.
 
@@ -8,6 +9,11 @@ from timetable.serializers import SubjectSerializer, TeacherSerializer
 class SubjectListAPIView(generics.ListCreateAPIView):
     queryset = Subject.objects.all()
     serializer_class = SubjectSerializer
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return [permissions.IsAuthenticated(), CanViewTimetable(),]
+        return [permissions.IsAuthenticated(), CanAddAndEditSubjects(),]
 
 
 class SubjectDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -23,11 +29,21 @@ class SubjectDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     def delete(self, request, *args, **kwargs):
         return self.destroy(self, request, *args, **kwargs)
 
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return [permissions.IsAuthenticated(), CanViewTimetable(),]
+        return [permissions.IsAuthenticated(), CanAddAndEditSubjects()]
+
 
 
 class TeacherListAPIView(generics.ListCreateAPIView):
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return [permissions.IsAuthenticated(), CanViewTimetable(),]
+        return [permissions.IsAuthenticated(), CanAddAndEditTeachers()]
 
 
 class TeacherDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -42,3 +58,8 @@ class TeacherDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(self, request, *args, **kwargs)
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return [permissions.IsAuthenticated(), CanViewTimetable(),]
+        return [permissions.IsAuthenticated(), CanAddAndEditTeachers(),]
