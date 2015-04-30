@@ -1,49 +1,77 @@
-<div ng-include="'/static/templates/static/logo.html'" ng-controller="NavbarController as vm"></div>
-<div class="col-lg-3 col-lg-offset-4">
+<div class="datium-auth-register">
+    <h1>Create an account</h1>
+    <label>Main info</label>
+    <hr>
   <form role="form" ng-submit="vm.register()">
     <div class="form-group">
-      <label for="register__username">Имя пользователя</label>
-      <input type="text"
-             name="register__username"
-             id="register__username"
-             class="form-control"
-             ng-model="vm.username" />
+        <div class="row">
+            <div class="col-md-3">
+                <label for="register__username">Username</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text"
+                    name="register__username"
+                    id="register__username"
+                    class="form-control"
+                    ng-model="vm.username" />
+            </div>
+        </div>
     </div>
 
     <div class="form-group" ng-controller="GroupsController as ctrl">
-      <label for="register__group">Группа</label>
-      <select id="register__group"
-              class="form-control"
-              ng-model="vm.group">
-        <option ng-repeat="group in ctrl.groups" value="{{ group.name }}">
-            {{ group.name }}
-        </option>
-      </select>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="register__group">Group</label>
+            </div>
+            <div class="col-md-9">
+                <select id="register__group"
+                    class="form-control"
+                    ng-model="vm.group">
+                    <option ng-repeat="group in ctrl.groups" value="{{ group.name }}">
+                        {{ group.name }}
+                    </option>
+            </select>
+            </div>
+        </div>
+
     </div>
 
     <div class="form-group">
-      <label for="register__email">Email</label>
-      <input type="email"
-             name="register__email"
-             id="register__email"
-             class="form-control"
-             ng-model="vm.email" />
+         <div class="row">
+            <div class="col-md-3">
+                <label for="register__email">Email</label>
+            </div>
+             <div class="col-md-9">
+                 <input type="email"
+                     name="register__email"
+                     id="register__email"
+                     class="form-control"
+                     ng-model="vm.email" />
+             </div>
+         </div>
     </div>
 
     <div class="form-group">
-      <label for="register__password">Пароль</label>
-      <input type="password"
-             name="register__password"
-             id="register__password"
-             class="form-control"
-             ng-model="vm.password" />
+        <div class="row">
+            <div class="col-md-3">
+                <label for="register__password">Password</label>
+            </div>
+            <div class="col-md-9">
+                  <input type="password"
+                         name="register__password"
+                         id="register__password"
+                         class="form-control"
+                         ng-model="vm.password" />
+            </div>
+        </div>
+
     </div>
 
     <div class="form-group">
       <button type="submit" class="btn btn-default btn-auth">
-        Создать аккаунт
+            Register
       </button>
     </div>
   </form>
-   <a type="register" href="login">Войти</a>
 </div>
+<a type="register" href="login">Sign in</a>

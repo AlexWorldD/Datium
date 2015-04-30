@@ -1,15 +1,21 @@
 <nav role="navigation" ng-show="vm.isLoggedIn">
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="/">Datium</a>
-            </li>
-            <li ng-repeat="menuitem in vm.menuitems">
-                <a href="{{ menuitem.url }}">{{menuitem.item}}</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" ng-click="vm.logout()">Выйти</a>
-            </li>
-        </ul>
+    <div class="sidebar-wrapper">
+        <div name="ID" ng-controller="ProfileController as profileCtrl">
+            <img name="avatar" class="img-circle" src="{{ profileCtrl.profile.avatar }}">
+            <a href="/profile" name="full_name">{{ profileCtrl.profile.first_name || profileCtrl.profile.username}}
+                {{ profileCtrl.profile.last_name || ""}}</a>
+            <p name="username">@{{ profileCtrl.profile.username }}</p>
+        </div>
+        <div name="Menu" role="navigation">
+            <ul class="nav nav-stacked ">
+                <li role="presentation" ng-repeat="menuitem in vm.menuitems">
+                    <a href="{{ menuitem.url }}">{{ menuitem.item }}
+                        <i class="glyphicon glyphicon-menu-left"></i></a>
+                </li>
+                <li>
+                    <a href="" ng-click="vm.logout()">Log out</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
