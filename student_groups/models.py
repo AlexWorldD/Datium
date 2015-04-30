@@ -27,9 +27,16 @@ class StudentGroup(models.Model):
             ("view_news", "Can see news of the group"), # groups: 'students', 'group admin'
             ("view_homeworks", "Can see homeworks"), # groups: 'students', 'group admin'
             ("view_documents", "Can see documents"), # groups: 'students', 'group admin'
-            ("add_and_edit_news", "Can add and edit news of the group"), # groups: 'group admin'
-            ("add_and_edit_homeworks", "Can add and edit homeworks"), # groups: 'group admin'
-            ("add_and_edit_documents", "Can add and edit documents"), # groups: 'group admin'
+            ("add_and_edit_news", "Can add and edit news of the group"), # groups: 'students', 'group admin'
+            ("add_and_edit_documents", "Can add and edit documents"), # groups: 'students', 'group admin'
+            ("post_comments", "Can post comments"), # groups: 'students', 'group admin'
+            ("add_and_edit_homeworks", "Can add and edit homeworks"), # groups: 'students', 'group admin'
+            ("add_and_edit_teachers", "Can add and edit teachers"), # groups: 'group admin'
+            ("add_and_edit_subjects", "Can add and edit subjects"), # groups: 'group admin'
+            ("edit timetable", "Can edit timetable"), # groups: 'group admin'
+            ("edit_others_news_homeworks_documents", "Can edit news, homeworks and documents created by other users"), # groups: 'group admin'
+            ("change_permissions", "Can change permissions"), # groups: 'group admin'
+            ("delete_users", "Can delete users"), # groups: 'group admin'
         )
     name = models.CharField(max_length=200, unique=True)
     study_year = models.IntegerField()
@@ -38,25 +45,25 @@ class StudentGroup(models.Model):
         return self.name
 
 
-class News(models.Model):
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    pub_date = models.DateTimeField('date published')
-    user = models.ForeignKey(Student)
-    group = models.ForeignKey(StudentGroup)
-    tags = models.ManyToManyField('Tag')
-    comments = GenericRelation(CommentsTable, related_query_name='news')
-    documents = models.ManyToManyField('Document')
-
-    def __str__(self):
-        return self.title
-
 
 class Tag(models.Model):
     name = models.SlugField(max_length=200, unique=True)
     def __str__(self):
         return self.name
 
+
+class News(models.Model):
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    pub_date = models.DateTimeField('date published', auto_now_add=True)
+    user = models.ForeignKey(User)
+    group = models.ForeignKey(StudentGroup)
+    tags = models.ManyToManyField(Tag)
+    comments = GenericRelation(CommentsTable, related_query_name='news')
+    documents = models.ManyToManyField('Document')
+
+    def __str__(self):
+        return self.title
 
 def group_documents_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/<group_name>/<filename>
@@ -66,5 +73,6 @@ class Document(models.Model):
     file = models.FileField(upload_to = group_documents_path)
     name = models.CharField(max_length=200)
     group = models.ForeignKey(StudentGroup)
+    user = models.ForeignKey(User)
     tags = models.ManyToManyField(Tag)
     comments = GenericRelation(CommentsTable, related_query_name='document')
