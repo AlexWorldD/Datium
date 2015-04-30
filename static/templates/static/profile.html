@@ -11,8 +11,8 @@
                             <span editable-text="vm.profile.first_name" e-name="first_name"><span ng-show="editableForm.$visible">Имя : </span>{{ vm.profile.first_name }}</span>
                             <b editable-text="vm.profile.last_name" e-name="last_name"><span ng-show="editableForm.$visible">Фамилия : </span>{{ vm.profile.last_name | uppercase}}</b>
                         </h3>
-                        <h3 class="datium-profile-study-year">2 курс</h3>
-                        <h4 class="datium-profile-study-year">231 группа</h4>
+                        <h3 class="datium-profile-study-year">2 course</h3>
+                        <h4 class="datium-profile-study-year">{{ vm.profile.group }} group</h4>
                     </div>
                     <div class="col-md-2">
                         <img src="http://www.murketing.com/journal/wp-content/uploads/2009/04/8tracks.jpg" class="img-circle datium-profile-avatar">
@@ -27,7 +27,7 @@
                         <span class="datium-profile-label">E-mail</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field">fff@gmail.cmos</span>
+                        <span class="datium-profile-field">{{ vm.profile.email }}</span>
                     </div>
                 </div>
                 <div class="row content-main">
@@ -35,7 +35,7 @@
                         <span class="datium-profile-label">Phone</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field">(123)4556234</span>
+                        <span class="datium-profile-field">{{ vm.profile.phone || "empty" }}</span>
                     </div>
                 </div>
                 <div class="row content-main">
@@ -43,7 +43,7 @@
                         <span class="datium-profile-label">Hall</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field">15, 777x</span>
+                        <span class="datium-profile-field">{{ vm.profile.hall || "empty"}}</span>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <span class="datium-profile-label">Date of Birth</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field">{{ 1104 | date:'dd/MM' || 'empty'}}</span>
+                        <span class="datium-profile-field">{{ vm.profile.birthday || 'empty'}}</span>
                     </div>
                 </div>
                 <div class="row content-main">
@@ -63,15 +63,7 @@
                         <span class="datium-profile-label">City</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field">Ufa</span>
-                    </div>
-                </div>
-                <div class="row content-main">
-                    <div class="col-md-3">
-                        <span class="datium-profile-label">Hall</span>
-                    </div>
-                    <div class="col-md-9">
-                        <span class="datium-profile-field">15, 777x</span>
+                        <span class="datium-profile-field">{{ vm.profile.city || 'empty'}}</span>
                     </div>
                 </div>
             </div>
@@ -82,7 +74,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <button type="button" class="datium-profile-button"  ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
-                            Edit
+                                Edit
                             </button>
                             <div ng-show="editableForm.$visible">
                                 <button type="submit" class="datium-profile-button" ng-disabled="editableForm.$waiting">

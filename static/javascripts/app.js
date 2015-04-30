@@ -11,7 +11,8 @@
         'application.teachers',
         'application.profile',
         'application.groups',
-        'xeditable'
+        'xeditable',
+          'flow'
     ]).run(function(editableOptions) {
         editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
       });
