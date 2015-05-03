@@ -104,11 +104,9 @@ class CanChangePermissions(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.has_perm('student_groups.change_permissions')
 
-class CanDeleteUsers(permissions.BasePermission):
+class IsUserOrCanDeleteUsers(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
-        return request.user.has_perm('student_groups.delete_users')
-    def has_permission(self, request, view):
-        return request.user.has_perm('student_groups.delete_users')
+        return obj == request.user or request.user.has_perm('student_groups.delete_users')
 """
 permissions = (
             ("view_timetable", "Can see timetable of the group"), # groups: 'registered', 'students', 'group admin'

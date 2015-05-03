@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from rest_framework import generics, permissions
 from users.serializers import UserSerializer
 from student_groups.models import Student
@@ -10,11 +10,11 @@ from rest_framework import status
 from django.core.files import File
 from django.conf import settings
 
-from users.permissions import IsUserOrReadOnly, IsUser, CanViewGrouplist
+from users.permissions import IsUserOrReadOnly, IsUser, CanViewGrouplist, CanChangePermissions, IsUserOrCanDeleteUsers
 
 # Create your views here.
 
-class UserListCreateAPIView(generics.ListAPIView):
+class UserListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -40,14 +40,48 @@ class UserListCreateAPIView(generics.ListAPIView):
 
 class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
-    queryset = User.objects.all()
-    permission_classes = (permissions.IsAuthenticated, IsUserOrReadOnly,)
     lookup_field = 'username'
+    def get_permissions(self):
+        if self.request.method == "DELETE":
+            return [permissions.IsAuthenticated(), IsUserOrCanDeleteUsers(),]
+        return [permissions.IsAuthenticated(), IsUserOrReadOnly(),]
+    def get_queryset(self):
+
+        group = self.request.user.student.group
+
+        try:
+            students = Student.objects.filter(group=group)
+        except Student.DoesNotExist:
+            students = None
+
+        queryset = []
+        for student in students:
+            if student.user is not None:
+                queryset.append(student.user)
+        return queryset
+
     
 class UserDetailByIDAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
-    queryset = User.objects.all()
-    permission_classes = (permissions.IsAuthenticated, IsUserOrReadOnly,)
+    def get_permissions(self):
+        if self.request.method == "DELETE":
+            return [permissions.IsAuthenticated(), IsUserOrCanDeleteUsers(),]
+        return [permissions.IsAuthenticated(), IsUserOrReadOnly(),]
+    def get_queryset(self):
+
+        group = self.request.user.student.group
+
+        try:
+            students = Student.objects.filter(group=group)
+        except Student.DoesNotExist:
+            students = None
+
+        queryset = []
+        for student in students:
+            if student.user is not None:
+                queryset.append(student.user)
+        return queryset
+
 
 class UserAvatarUploadAPIView(generics.CreateAPIView):
     serializer_class = UserSerializer
@@ -76,3 +110,80 @@ class UserAvatarUploadByIDAPIView(generics.CreateAPIView):
         user.save()
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class ChangeUserPermissionsAPIView(generics.UpdateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = (permissions.IsAuthenticated, CanChangePermissions,)
+    lookup_field = 'username'
+    def get_queryset(self):
+
+        group = self.request.user.student.group
+
+        try:
+            students = Student.objects.filter(group=group)
+        except Student.DoesNotExist:
+            students = None
+
+        queryset = []
+        for student in students:
+            if student.user is not None:
+                queryset.append(student.user)
+        return queryset
+
+    def patch(self, request, *args, **kwargs):
+        changed_user = self.get_object()
+        group = request.data.get('group', None)
+        if group == 'registered':
+            changed_user.groups.clear()
+            changed_user.groups.add(Group.objects.get(name = 'registered'))
+        elif group == 'students':
+            changed_user.groups.clear()
+            changed_user.groups.add(Group.objects.get(name = 'registered'), Group.objects.get(name = 'students'))
+        elif group == 'group admin':
+            return Response("Can't assign new admin to a group yet", status = status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response("No group provided", status = status.HTTP_400_BAD_REQUEST)
+        changed_user.save()
+        serializer = UserSerializer(changed_user)
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+    def put(self, request, *args, **kwargs):
+        return Response('Please use patch method instead put', status=status.HTTP_400_BAD_REQUEST)
+
+
+class ChangeUserPermissionsByIDAPIView(generics.UpdateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = (permissions.IsAuthenticated, CanChangePermissions,)
+    def get_queryset(self):
+
+        group = self.request.user.student.group
+
+        try:
+            students = Student.objects.filter(group=group)
+        except Student.DoesNotExist:
+            students = None
+
+        queryset = []
+        for student in students:
+            if student.user is not None:
+                queryset.append(student.user)
+        return queryset
+
+    def patch(self, request, *args, **kwargs):
+        changed_user = self.get_object()
+        group = request.data.get('group', None)
+        if group == 'registered':
+            changed_user.groups.clear()
+            changed_user.groups.add(Group.objects.get(name = 'registered'))
+        elif group == 'students':
+            changed_user.groups.clear()
+            changed_user.groups.add(Group.objects.get(name = 'registered'), Group.objects.get(name = 'students'))
+        elif group == 'group admin':
+            return Response("Can't assign new admin to a group yet", status = status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response("No group provided", status = status.HTTP_400_BAD_REQUEST)
+        changed_user.save()
+        serializer = UserSerializer(changed_user)
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+    def put(self, request, *args, **kwargs):
+        return Response('Please use patch method instead put', status=status.HTTP_400_BAD_REQUEST)
