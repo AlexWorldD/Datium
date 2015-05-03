@@ -11,6 +11,7 @@
         'application.teachers',
         'application.profile',
         'application.groups',
+          'application.news',
         'xeditable',
           'flow'
     ]).run(function(editableOptions) {

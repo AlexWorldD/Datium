@@ -35,7 +35,6 @@ class SubjectDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         return [permissions.IsAuthenticated(), CanAddAndEditSubjects()]
 
 
-
 class TeacherListAPIView(generics.ListCreateAPIView):
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer

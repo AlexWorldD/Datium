@@ -10,10 +10,14 @@ class UserSerializer(serializers.ModelSerializer):
     group = serializers.SlugRelatedField(source='student.group', queryset=StudentGroup.objects.all(), slug_field='name')
     avatar = serializers.ImageField(source='student.avatar', default=static('images/avatars/default_avatar.png'))
     sex = serializers.CharField(source='student.sex', default='unknown')
+    phone = serializers.CharField(source='student.phone', default='empty', allow_blank=True)
+    city = serializers.CharField(source='student.city', default='empty', allow_blank=True)
+    hall = serializers.CharField(source='student.hall', default='empty', allow_blank=True)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password', 'group', 'sex', 'avatar', 'first_name', 'last_name')
+        fields = ('id', 'username', 'email', 'password', 'group', 'sex', 'avatar',
+                  'first_name', 'last_name', 'phone', 'city', 'hall')
         write_only_fields = ('password',)
 
     def create(self, validated_data):
@@ -31,6 +35,9 @@ class UserSerializer(serializers.ModelSerializer):
             student = instance.student
             student.sex = student_data.get('sex', student.sex)
             student.avatar = student_data.get('avatar', student.avatar)
+            student.city = student_data.get('city', student.city)
+            student.hall = student_data.get('hall', student.hall)
+            student.phone = student_data.get('phone', student.phone)
             student.save()
         instance.first_name = validated_data.get('first_name', instance.first_name)
         instance.last_name = validated_data.get('last_name', instance.last_name)

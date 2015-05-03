@@ -8,12 +8,12 @@
         </div>
         <div name="Menu" role="navigation">
             <ul class="nav nav-stacked ">
+                <li>
+                    <a href="" ng-click="vm.logout()">Log out</a>
+                </li>
                 <li role="presentation" ng-repeat="menuitem in vm.menuitems">
                     <a href="{{ menuitem.url }}">{{ menuitem.item }}
                         <i class="glyphicon glyphicon-menu-left"></i></a>
-                </li>
-                <li>
-                    <a href="" ng-click="vm.logout()">Log out</a>
                 </li>
             </ul>
         </div>
