@@ -13,11 +13,12 @@ class UserSerializer(serializers.ModelSerializer):
     phone = serializers.CharField(source='student.phone', default='empty', allow_blank=True)
     city = serializers.CharField(source='student.city', default='empty', allow_blank=True)
     hall = serializers.CharField(source='student.hall', default='empty', allow_blank=True)
+    permissions = serializers.SerializerMethodField()
 
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'password', 'group', 'sex', 'avatar',
-                  'first_name', 'last_name', 'phone', 'city', 'hall')
+                  'first_name', 'last_name', 'phone', 'city', 'hall', 'permissions')
         write_only_fields = ('password',)
 
     def create(self, validated_data):
@@ -43,3 +44,15 @@ class UserSerializer(serializers.ModelSerializer):
         instance.last_name = validated_data.get('last_name', instance.last_name)
         instance.save()
         return instance
+
+    def get_permissions(self, obj):
+        group1 = Group.objects.get(name = 'registered')
+        group2 = Group.objects.get(name = 'students')
+        group3 = Group.objects.get(name = 'group admin')
+        if group3 in obj.groups.all():
+            return 'group admin'
+        if group2 in obj.groups.all():
+            return 'students'
+        if group1 in obj.groups.all():
+            return 'registered'
+        return 'undefined'
