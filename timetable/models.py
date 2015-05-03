@@ -16,9 +16,13 @@ class LessonType(models.Model):
 
 
 class Teacher(models.Model):
-    name = models.CharField(max_length=200)
-    surname = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200,)
+    patronymic = models.CharField(max_length=200, blank=True)   #отчество
     department = models.ForeignKey('Department', related_name='department', default=0)
+    email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=20, blank=True)
+    cabinet = models.CharField(max_length=20, blank=True)
 
 
 class Department(models.Model):

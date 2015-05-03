@@ -35,7 +35,7 @@
                         <span class="datium-profile-label">Phone</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field">{{ vm.profile.phone || "empty" }}</span>
+                        <span class="datium-profile-field" editable-text="vm.profile.phone" e-name="phone">{{ vm.profile.phone }}</span>
                     </div>
                 </div>
                 <div class="row content-main">
@@ -43,7 +43,7 @@
                         <span class="datium-profile-label">Hall</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field">{{ vm.profile.hall || "empty"}}</span>
+                        <span class="datium-profile-field" editable-text="vm.profile.hall" e-name="hall">{{ vm.profile.hall }}</span>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <span class="datium-profile-label">Date of Birth</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field">{{ vm.profile.birthday || 'empty'}}</span>
+                        <span class="datium-profile-field">{{ vm.profile.birthday }}</span>
                     </div>
                 </div>
                 <div class="row content-main">
@@ -63,7 +63,7 @@
                         <span class="datium-profile-label">City</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field">{{ vm.profile.city || 'empty'}}</span>
+                        <span class="datium-profile-field" editable-text="vm.profile.city" e-name="city">{{ vm.profile.city }}</span>
                     </div>
                 </div>
             </div>

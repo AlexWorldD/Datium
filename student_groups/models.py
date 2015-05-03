@@ -14,6 +14,9 @@ class Student(models.Model):
     group = models.ForeignKey('StudentGroup', blank=True)
     avatar = models.ImageField(default=static('images/avatars/default_avatar.png'), upload_to = 'avatars')
     sex = models.CharField(max_length=10, default='unknown') #male,female, unknown
+    phone = models.CharField(max_length=20, blank=True)
+    hall = models.CharField(max_length=20, blank=True)
+    city = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -45,9 +48,9 @@ class StudentGroup(models.Model):
         return self.name
 
 
-
 class Tag(models.Model):
     name = models.SlugField(max_length=200, unique=True)
+
     def __str__(self):
         return self.name
 
@@ -65,9 +68,11 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+
 def group_documents_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/documents/<group_name>/<filename>
     return 'documents/{0}/{1}'.format(instance.group.name, filename)
+
 
 class Document(models.Model):
     file = models.FileField(upload_to = group_documents_path)

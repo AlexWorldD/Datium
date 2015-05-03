@@ -36,15 +36,17 @@ class TeacherSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Teacher
-        fields = ('id', 'name', 'surname', 'department')
+        fields = ('id', 'first_name', 'last_name', 'patronymic', 'email', 'phone', 'cabinet')
 
     def create(self, validated_data):
         return Teacher.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.surname = validated_data.get('surname', instance.surname)
-        instance.dept = validated_data.get('department', instance.department)
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
+        instance.patronymic = validated_data.get('patronymic', instance.patronymic)
+        instance.email = validated_data.get('email', instance.email)
+        instance.cabinet = validated_data.get('cabinet', instance.cabinet)
         instance.save()
         return instance
 
