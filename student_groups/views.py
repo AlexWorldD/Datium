@@ -51,9 +51,11 @@ class DocumentRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
             return [permissions.IsAuthenticated(), CanViewDocuments(),]
         return [permissions.IsAuthenticated(), CanAddAndEditDocuments(), IsOwnerOrAdmin()]
 
+
 class NewsListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = NewsSerializer
     parser_classes = (JSONParser,)
+
     def post(self, request, *args, **kwargs):
         data = request.data.copy()
         data['user'] = request.user.id
@@ -63,12 +65,15 @@ class NewsListCreateAPIView(generics.ListCreateAPIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     def get_queryset(self):
-        return News.object.filter(group = self.request.user.student.group)
+        return News.objects.filter(group = self.request.user.student.group)
+
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
             return [permissions.IsAuthenticated(), CanViewNews(),]
         return [permissions.IsAuthenticated(), CanAddAndEditNews(),]
+
 
 class NewsRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = NewsSerializer

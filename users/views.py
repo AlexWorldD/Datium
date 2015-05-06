@@ -46,19 +46,7 @@ class UserDetailByIDAPIView(generics.RetrieveUpdateDestroyAPIView):
             return [permissions.IsAuthenticated(), IsUserOrCanDeleteUsers(),]
         return [permissions.IsAuthenticated(), IsUserOrReadOnly(),]
     def get_queryset(self):
-
-        group = self.request.user.student.group
-
-        try:
-            students = Student.objects.filter(group=group)
-        except Student.DoesNotExist:
-            students = None
-
-        queryset = []
-        for student in students:
-            if student.user is not None:
-                queryset.append(student.user)
-        return queryset
+        return User.objects.filter(student__group = self.request.user.student.group)
 
 
 class UserAvatarUploadAPIView(generics.CreateAPIView):
