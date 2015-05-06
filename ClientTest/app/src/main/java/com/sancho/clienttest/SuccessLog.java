@@ -4,6 +4,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import retrofit.http.Body;
+import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.Header;
 import retrofit.http.PATCH;
@@ -11,13 +12,16 @@ import retrofit.http.POST;
 import retrofit.RestAdapter;
 import retrofit.http.Path;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidquery.AQuery;
 
@@ -25,6 +29,11 @@ import org.w3c.dom.Text;
 
 
 public class SuccessLog extends ActionBarActivity {
+
+    RestAdapter restAdapter = new RestAdapter.Builder()
+            .setEndpoint(Api.URL)
+            .build();
+    Api api = restAdapter.create(Api.class);
 
     TextView text;
     TextView uInfo;
@@ -88,16 +97,119 @@ public class SuccessLog extends ActionBarActivity {
         @GET(USERS)
        user   users(@Path("name") String name ,@Header("Authorization") String jwtToken );
 
+        @DELETE("/users/id/{id}/")
+        String delete(@Path("id") String id ,@Header("Authorization") String jwtToken );
+
+        @PATCH("/users/id/{id}/")
+        void patchUser(@Path("id") String id,@Header("Authorization") String jwtToken, @Body String text, Callback<user> callback  );
+
+
+    }
+
+    private void patchUser( String jwtToken){
+        String sendText="{\"sex\":\"male\"}";
+
+
+
+        api.patchUser(id,jwtToken, sendText,new Callback<user>(){
+
+            @Override
+            public void success(user signResponse, Response response){
+
+                TextView idTV2;
+                idTV2 = (TextView) findViewById(R.id.id);
+                String test;
+                test ="test01";
+                idTV2.setText(test);
+                //String name = signResponse.getToken();
+                //Intent intent = new Intent(Activity3.this, SuccessLog.class);
+                //startActivity(intent);
+
+            }
+
+            @Override
+            public void failure(RetrofitError error){
+                Toast.makeText(SuccessLog.this, "Error", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        /*Runnable runnable = new Runnable() {
+            public void run() {
+
+
+                RestAdapter restAdapter = new RestAdapter.Builder()
+                        .setEndpoint(Api.URL)
+                        .build();
+                Api api = restAdapter.create(Api.class);
+                api.patchUser(id,token, user01,new Callback<user>(){
+
+                    @Override
+                    public void success(user signResponse, Response response){
+
+                        TextView idTV2;
+                        idTV2 = (TextView) findViewById(R.id.id);
+                        String test;
+                        test ="test01";
+                        idTV2.setText(test);
+                        //String name = signResponse.getToken();
+                        //Intent intent = new Intent(Activity3.this, SuccessLog.class);
+                        //startActivity(intent);
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error){
+
+                    }
+                });
+
+
+
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
 
     }
 
     private void getUsers(String jwtToken){
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(Api.URL)
-                .build();
-        Api api = restAdapter.create(Api.class);
+
         users = api.users(name,jwtToken);
         //api.users(jwtToken);
+    }
+
+    private void deleteUser(String jwtToken){
+        final String token = jwtToken;
+
+        Runnable runnable = new Runnable() {
+            public void run() {
+
+
+                RestAdapter restAdapter = new RestAdapter.Builder()
+                        .setEndpoint(Api.URL)
+                        .build();
+                Api api = restAdapter.create(Api.class);
+                api.delete(id, token);
+
+
+
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
     }
     private void fillText(){
 
@@ -165,6 +277,28 @@ public class SuccessLog extends ActionBarActivity {
         jwtToken = "JWT "+savedText;
         name = uname;
         fillText();
+
+
+
+
+                findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteUser(jwtToken);
+                        startActivity(new Intent(SuccessLog.this, LoginActivity.class));
+                    }
+                });
+
+        findViewById(R.id.btnCh).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newID = "101";
+                users.setSex(newID);
+                patchUser( jwtToken);
+            }
+        });
+
+
 
 
 

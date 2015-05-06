@@ -6,6 +6,38 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sancho.clienttest.SuccessLog"/>
+      <point      
+        x = "500"      
+        y = "4240"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sancho.clienttest.SuccessLog"/>
+      <point      
+        x = "1768"      
+        y = "4240"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sancho.clienttest.SuccessReg"/>
+      <point      
+        x = "500"      
+        y = "5620"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sancho.clienttest.SuccessReg"/>
+      <point      
+        x = "1768"      
+        y = "5620"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.sancho.clienttest.MainActivity"/>
       <point      
         x = "500"      

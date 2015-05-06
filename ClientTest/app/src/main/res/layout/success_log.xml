@@ -98,4 +98,23 @@
         android:layout_alignStart="@+id/firstName"
         android:layout_marginTop="38dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete profile"
+        android:id="@+id/btnDelete"
+        android:layout_below="@+id/lastName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Inf"
+        android:id="@+id/btnCh"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/group"
+        android:layout_alignEnd="@+id/group" />
+
+
 </RelativeLayout>
