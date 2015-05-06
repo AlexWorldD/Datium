@@ -13,10 +13,18 @@
 
 	<body>
         <div ng-include="'/static/templates/static/logo.html'"></div>
-        <div ng-include="'/static/templates/static/sidebar.html'" ng-controller="SidebarController as vm"></div>
 
 		<div class="container-fluid">
-			<div class="ng-view row"></div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div ng-include="'/static/templates/static/sidebar.html'" ng-controller="SidebarController as vm"></div>
+                </div>
+                <div class="col-md-8">
+			        <div class="ng-view row">
+                    </div>
+                </div>
+            </div>
+
 		</div>
 
 		<script type="text/javascript" src="/static/bower_components/jquery/dist/jquery.js"></script>
@@ -27,7 +35,7 @@
 
         <!--- xeditable --->
         <script type="text/javascript" src="/static/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
-        <script type="text/javascript" src="/static/bower_components/flow.js/dist/flow.js"></script>
+
         <!--- flow --->
         <script type="text/javascript" src="/static/bower_components/ng-flow/dist/ng-flow.js"></script>
 
