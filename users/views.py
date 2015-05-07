@@ -41,12 +41,14 @@ class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     
 class UserDetailByIDAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
+
     def get_permissions(self):
         if self.request.method == "DELETE":
             return [permissions.IsAuthenticated(), IsUserOrCanDeleteUsers(),]
         return [permissions.IsAuthenticated(), IsUserOrReadOnly(),]
+
     def get_queryset(self):
-        return User.objects.filter(student__group = self.request.user.student.group)
+        return User.objects.filter(student__group=self.request.user.student.group)
 
 
 class UserAvatarUploadAPIView(generics.CreateAPIView):

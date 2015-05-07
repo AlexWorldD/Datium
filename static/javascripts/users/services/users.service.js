@@ -11,9 +11,9 @@
                   });
               },
               getById: function(id){
-                  return $http.get("/api/v1/users/MisterMM/").then(function (response) {
+                  return $http.get("/api/v1/users/id/" + id + "/").then(function (response) {
                       return response.data;
-                  })
+                  });
               }
           };
       });
