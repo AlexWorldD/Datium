@@ -25,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
         student_data = validated_data.pop('student')
         user = User.objects.create(**validated_data)
         user.set_password(validated_data['password'])
-        user.groups.add(Group.objects.get(name='registered'))
+        user.groups.add(Group.objects.get(name='students'))
         user.save()
         Student.objects.create(user=user, group=student_data['group'])
         return user
