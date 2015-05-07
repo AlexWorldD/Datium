@@ -12,6 +12,10 @@
           News.all().then(function (data) {
 
               vm.news = data;
+<<<<<<< HEAD
+=======
+              console.log(data);
+>>>>>>> dc631699d0d78df45585744ed871e301eab6a45c
 
           });
 
@@ -21,7 +25,10 @@
               alert("Hi");
               News.publish(vm.title, vm.text);
           }
+<<<<<<< HEAD
 
+=======
+>>>>>>> dc631699d0d78df45585744ed871e301eab6a45c
 
   });
   angular
