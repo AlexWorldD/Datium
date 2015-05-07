@@ -1,5 +1,8 @@
 .idea/
+<<<<<<< HEAD
 db.sqlite3
 *.pyc
 *.pyc
 *.pyc
+=======
+>>>>>>> origin
