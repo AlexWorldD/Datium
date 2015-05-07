@@ -10,11 +10,9 @@
         vm.users = data;
     });
 
-          vm.profile = function (id) {
-              Users.getById(id).then(function (data) {
-                  return data;
-              })
-          }
+      vm.profile = function (id) {
+        return Users.getById(id);
+      }
 
   });
 })();

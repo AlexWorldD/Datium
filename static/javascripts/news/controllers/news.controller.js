@@ -12,6 +12,7 @@
           News.all().then(function (data) {
 
               vm.news = data;
+              console.log(data);
 
           });
 
@@ -21,7 +22,6 @@
               alert("Hi");
               News.publish(vm.title, vm.text);
           }
-
 
   });
   angular
