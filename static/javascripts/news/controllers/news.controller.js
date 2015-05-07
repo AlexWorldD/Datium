@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+
+
   angular
     .module('application.news.controllers')
     .controller('NewsController', function(News, Users, $window, $scope) {
@@ -9,13 +11,8 @@
 
           News.all().then(function (data) {
 
-                for(var i in data){
-                    Users.getById(data[i].user).then(function (user_info) {
-                        console.log(user_info);
-                        data[i]["user_info"] = user_info;
-                    })
-                }
               vm.news = data;
+
           });
 
           vm.publish = publish;
@@ -27,4 +24,10 @@
 
 
   });
+  angular
+    .module('application.news.controllers').filter('reverse', function() {
+        return function(items) {
+            return items.slice().reverse();
+        };
+    });
 })();
