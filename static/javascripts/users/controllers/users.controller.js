@@ -10,5 +10,11 @@
         vm.users = data;
     });
 
+          vm.profile = function (id) {
+              Users.getById(id).then(function (data) {
+                  return data;
+              })
+          }
+
   });
 })();

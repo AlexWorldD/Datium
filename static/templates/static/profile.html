@@ -3,13 +3,19 @@
         <h3 class="datium-page-title">My profile</h3>
     </div>
     <div class="content-main">
-        <form name="editableForm" onaftersave="vm.update()" editable-form>
+        <form editable-form role="form" name="editableForm" onaftersave="vm.update()" >
             <div class="datium-profile-title">
                 <div class="row">
                     <div class="col-md-offset-4 col-md-5">
                         <h3 class="daitum-teacher-fio">
-                            <span editable-text="vm.profile.first_name" e-name="first_name"><span ng-show="editableForm.$visible">Имя : </span>{{ vm.profile.first_name }}</span>
-                            <b editable-text="vm.profile.last_name" e-name="last_name"><span ng-show="editableForm.$visible">Фамилия : </span>{{ vm.profile.last_name | uppercase}}</b>
+                            <span ng-show="editableForm.$visible">Имя</span>
+                            <span editable-text="vm.profile.first_name" e-name="first_name" ng-show="!editableForm.$visible">
+                                {{ vm.profile.first_name }}
+                            </span>
+                            <span ng-show="editableForm.$visible">Фамилия</span>
+                            <b editable-text="vm.profile.last_name" e-name="last_name" ng-show="!editableForm.$visible">
+                                {{ vm.profile.last_name | uppercase}}
+                            </b>
                         </h3>
                         <h3 class="datium-profile-study-year">2 course</h3>
                         <h4 class="datium-profile-study-year">{{ vm.profile.group }} group</h4>
@@ -35,7 +41,7 @@
                         <span class="datium-profile-label">Phone</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field" editable-text="vm.profile.phone" e-name="phone">{{ vm.profile.phone }}</span>
+                        <span class="datium-profile-field" editable-text="vm.profile.phone" e-name="phone" ng-show="!editableForm.$visible">{{ vm.profile.phone || 'empty' }}</span>
                     </div>
                 </div>
                 <div class="row content-main">
@@ -43,7 +49,7 @@
                         <span class="datium-profile-label">Hall</span>
                     </div>
                     <div class="col-md-9">
-                        <span class="datium-profile-field" editable-text="vm.profile.hall" e-name="hall">{{ vm.profile.hall }}</span>
+                        <span class="datium-profile-field" editable-text="vm.profile.hall" e-name="hall" ng-show="!editableForm.$visible">{{ vm.profile.hall || 'empty' }}</span>
                     </div>
                 </div>
             </div>

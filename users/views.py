@@ -18,19 +18,8 @@ class UserListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
     def get_queryset(self):
+        return User.objects.filter(student__group = self.request.user.student.group)
 
-        group = self.request.user.student.group
-
-        try:
-            students = Student.objects.filter(group=group)
-        except Student.DoesNotExist:
-            students = None
-
-        queryset = []
-        for student in students:
-            if student.user is not None:
-                queryset.append(student.user)
-        return queryset
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
@@ -45,42 +34,21 @@ class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         if self.request.method == "DELETE":
             return [permissions.IsAuthenticated(), IsUserOrCanDeleteUsers(),]
         return [permissions.IsAuthenticated(), IsUserOrReadOnly(),]
+
     def get_queryset(self):
-
-        group = self.request.user.student.group
-
-        try:
-            students = Student.objects.filter(group=group)
-        except Student.DoesNotExist:
-            students = None
-
-        queryset = []
-        for student in students:
-            if student.user is not None:
-                queryset.append(student.user)
-        return queryset
+        return User.objects.filter(student__group = self.request.user.student.group)
 
     
 class UserDetailByIDAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
+
     def get_permissions(self):
         if self.request.method == "DELETE":
             return [permissions.IsAuthenticated(), IsUserOrCanDeleteUsers(),]
         return [permissions.IsAuthenticated(), IsUserOrReadOnly(),]
+
     def get_queryset(self):
-
-        group = self.request.user.student.group
-
-        try:
-            students = Student.objects.filter(group=group)
-        except Student.DoesNotExist:
-            students = None
-
-        queryset = []
-        for student in students:
-            if student.user is not None:
-                queryset.append(student.user)
-        return queryset
+        return User.objects.filter(student__group=self.request.user.student.group)
 
 
 class UserAvatarUploadAPIView(generics.CreateAPIView):
