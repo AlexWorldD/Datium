@@ -238,5 +238,68 @@ hr.datium{
     background-color: #f5f5f5;
     color: #080808;
 }
+/*размер значков-стрелочек*/
+.glyphicon {
+    font-size: 15px;
+}
+/*значки-звездочки*/
+.glyphicon-star,
+.glyphicon-star.active:hover{   /*если хотим снять звезду, при наведении она гаснет*/
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.1);
+}
+.glyphicon-star.active,         /*активные звезды яркие*/
+.glyphicon-star:hover{          /*если хотим поставить звезду, при наведении она становится ярче*/
+    color: rgba(255, 255, 255, 0.7);
+}
+/*заголовочная часть у преподов*/
+.content-header{
+    padding: 0 2%;
+}
+/*никаких маркеров у списков!*/
+ul{
+    list-style-type: none;
+}
+ul[name="letters"]{
+    margin-left: -10px;
+    font-size: 30px;
+}
+hr.teachers{        /*строка подчеркивания*/
+    margin: 10px 0 0;
+}
 
+/*вкладки для учителей*/
+.nav-pills.nav-justified {
+    margin-top: 5px;
+    border-bottom: 1px solid rgba(42, 14, 57, 0.3);
+}
+.nav-pills > li > a {
+    color: rgba(42, 14, 57, 0.67);      /*цвет неактивных*/
+    font-size: 18px;
+    line-height: 0px;  /*межстрочный интервал = высота вкладок*/
+    letter-spacing: 4px;    /*межсимвольное расстояние*/
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+    font-style: normal;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid  #fff;
+}
 
+.nav-pills.teachers_list{
+    margin-left: -30px;
+    width: 100%;
+}
+
+.nav-pills.teachers_list > h2 > a{
+    color: #fff;
+    text-decoration: none;
+}
+.nav-pills.teachers_list > h2 > a:hover{
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.3);
+}

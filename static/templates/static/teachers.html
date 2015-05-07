@@ -2,24 +2,23 @@
     <div class="content-header">
         <h3 class="datium-page-title">
             <i class="glyphicon glyphicon-menu-left"></i>Lecturers </h3>
-        <hr>
-
+        <hr class="teachers">
+        <ul class="nav nav-pills nav-justified">
+            <li><a href="#">Current</a></li>
+            <li><a href="#">Favorite</a></li>
+            <li class="active">
+                <a href="#">All</a>
+            </li>
+        </ul>
     </div>
     <div class="content-main">
         <form name="editableForm" onaftersave="vm.update()" editable-form>
             <div class="content-main-teachers">
-                <ul name="range" class="nav nav-pills nav-justified">
-                    <li><a href="#">Current</a></li>
-                    <li><a href="#">Favorite</a></li>
-                    <li class="active">
-                        <a href="#">All</a>
-                    </li>
-                </ul>
-                <hr>
-                <div class="row content-main">
+
+                <div class="row">
                     <div class="col-xs-1">
                         <ul name="letters">
-                            <li>А</li>s
+                            <li>А</li>
                             <li>Б</li>
                             <li>Г</li>
                             <li>Е</li>
@@ -29,22 +28,23 @@
                             <li>О</li>
                         </ul>
                     </div>
-                    <div class="col-xs-11 content-main">
+                    <div class="col-xs-offset-1 col-xs-9 content-main">
+                        <div class="nav nav-pills teachers_list">
+                            <h2 ng-repeat="teacher in vm.teachers">
+                                <a name="teachers_names" href="/teachers/{{ teacher.id }}">{{ teacher.first_name }} {{ teacher.last_name }}</a>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 content-main">
                         <div class="nav ">
                             <h2 ng-repeat="teacher in vm.teachers">
-                                <a href="/teachers/{{ teacher.id }}">{{ teacher.first_name }} {{ teacher.last_name }} <i class="glyphicon glyphicon-star"></i></a>
+                                 <i class="glyphicon glyphicon-star"></i>
                             </h2>
 
                         </div>
                     </div>
                 </div>
-                <hr>
             </div>
-
-
-
-
-
         </form>
     </div>
 </div>
