@@ -10,6 +10,10 @@
     Teachers.all().then(function (data) {
         vm.teachers = data;
     });
+          
+          vm.add = function () {
+              
+          }
 
   });
 })();

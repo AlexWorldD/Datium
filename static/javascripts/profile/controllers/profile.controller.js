@@ -10,6 +10,10 @@
               vm.profile = data;
           });
 
+          vm.is_admin = function () {
+              return vm.profile.permissions === 'group admin';
+          };
+
           vm.update = update;
           function update(){
                 Profile.update(vm.profile);
@@ -21,6 +25,7 @@
                   Profile.remove();
               }
           };
+
 
   });
 })();
