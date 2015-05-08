@@ -1,0 +1,109 @@
+<div class="content-wrapper">
+    <div class="content-header">
+        <h3 class="datium-page-title">Create new teacher</h3>
+    </div>
+    <div class="content-main">
+        <form role="form" ng-submit="vm.add()">
+            <div class="datium-teacher-fio">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="datium-profile-label">Фамилия</label>
+                            <input type="text" ng-model="vm.new_teacher.last_name"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="datium-profile-label">Имя</label>
+                            <input type="text" ng-model="vm.new_teacher.first_name"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="datium-profile-label">Отчество</label>
+                            <input type="text" ng-model="vm.new_teacher.patronymic"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="datium-teacher-contact-info">
+                <h4 class="daitum-teacher-subtitle">Contact info</h4>
+                <hr class="datium">
+                <div class="row content-main">
+                    <div class="form-group">
+                        <div class="col-xs-3">
+                            <label class="datium-profile-label">E-mail</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="email" ng-model="vm.new_teacher.email"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row content-main">
+                    <div class="form-group">
+                        <div class="col-xs-3">
+                            <label class="datium-profile-label">Phone</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="text" ng-model="vm.new_teacher.phone"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row content-main">
+                    <div class="form-group">
+                        <div class="col-xs-3">
+                            <label class="datium-profile-label">Cabinet</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="text" ng-model="vm.new_teacher.cabinet"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="datium-teacher-liter">
+                <h4 class="daitum-teacher-subtitle">Literature</h4>
+                <hr class="datium">
+                <div class="row content-main">
+                    <div class="col-xs-2">
+                        <span class="datium-teacher-book-authors">Автор 1, Автор 2, Автор3, 259c.</span>
+                    </div>
+                    <div class="col-xs-2 datium-teacher-book">
+                        <span class="datium-teacher-book-title">Классическая механика</span>
+                        <span class="datium-teacher-book-type">Учебное пособие</span>
+                        <span class="datium-teacher-book-year">2013</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="datium-teacher-book-authors">Автор 1, Автор 2, Автор3, 259c.</span>
+                    </div>
+                    <div class="col-xs-2 datium-teacher-book">
+                        <span class="datium-teacher-book-title">Классическая механика</span>
+                        <span class="datium-teacher-book-type">Учебное пособие</span>
+                        <span class="datium-teacher-book-year">2013</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="datium-teacher-book-authors">Автор 1, Автор 2, Автор3, 259c.</span>
+                    </div>
+                    <div class="col-xs-2 datium-teacher-book">
+                        <span class="datium-teacher-book-title">Классическая механика</span>
+                        <span class="datium-teacher-book-type">Учебное пособие</span>
+                        <span class="datium-teacher-book-year">2013</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="datium-teacher-book-authors">Автор 1, Автор 2, Автор3, 259c.</span>
+                    </div>
+                    <div class="col-xs-2 datium-teacher-book">
+                        <span class="datium-teacher-book-title">Классическая механика</span>
+                        <span class="datium-teacher-book-type">Учебное пособие</span>
+                        <span class="datium-teacher-book-year">2013</span>
+                    </div>
+                </div>
+            </div>
+            <div class="datium-profile-manage">
+                <h4 class="daitum-teacher-subtitle">Manage</h4>
+                    <hr class="datium">
+                    <div class="content-main">
+                        <button type="submit" class="datium-profile-button">
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -19,7 +19,6 @@
           vm.publish = publish;
 
           function publish(){
-              alert("Hi");
               News.publish(vm.title, vm.text);
           }
 

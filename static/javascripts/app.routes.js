@@ -37,9 +37,9 @@
               controllerAs: 'vm',
               templateUrl: '/static/templates/static/teacher-detail.html'
           }).when('/add/teacher', {
-              controller: 'TeacherDetailController',
+              controller: 'TeachersController',
               controllerAs: 'vm',
-              templateUrl: '/static/templates/static/teacher-detail.html'
+              templateUrl: '/static/templates/static/teacher-add.html'
           }).otherwise({
                   redirectTo: '/'
               })
