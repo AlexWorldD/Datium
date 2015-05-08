@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('application.news.services')
-        .factory('News',function ($http, $window){
+        .factory('News',function ($http, $route){
             return {
                 all: function () {
                     return $http.get("/api/v1/news/")
@@ -10,7 +10,7 @@
                             return response.data;
                         });
                 },
-                publish: function(title, text){
+                add: function(title, text){
                     $http({
                         method: 'POST',
                         url: '/api/v1/news/',
@@ -19,15 +19,29 @@
                     }).then(loginSuccessFn, loginErrorFn);
 
                     function loginSuccessFn(data, status, headers, config) {
-                        console.log("Success");
+                        $route.reload();
                     }
 
                     function loginErrorFn(data, status, headers, config) {
                         console.error(data);
                     }
+                },
+                remove: function (id) {
+                  return $http({
+                      method: 'DELETE',
+                      url: '/api/v1/news/' + id + "/",
+                      headers: {'Content-Type': 'application/json'}
+                  }).then(removeSuccess, removeError);
 
+                  function removeSuccess(data, status, headers, config){
+                        $route.reload();
+                  }
 
+                  function removeError(data, status, headers, config){
+                      alert(status);
+                  }
                 }
+
             };
         });
     })();

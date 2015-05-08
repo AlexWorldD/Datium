@@ -12,21 +12,21 @@
           News.all().then(function (data) {
 
               vm.news = data;
+              data.reverse();
               console.log(data);
 
           });
 
-          vm.publish = publish;
+          vm.add = add;
 
-          function publish(){
-              News.publish(vm.title, vm.text);
+          function add() {
+              News.add(vm.title, vm.text);
+          }
+
+          vm.remove = function (id) {
+              console.log("click was");
+              News.remove(id);
           }
 
   });
-  angular
-    .module('application.news.controllers').filter('reverse', function() {
-        return function(items) {
-            return items.slice().reverse();
-        };
-    });
 })();
