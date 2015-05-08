@@ -36,9 +36,13 @@
               controller: 'TeacherDetailController',
               controllerAs: 'vm',
               templateUrl: '/static/templates/static/teacher-detail.html'
+          }).when('/add/teacher', {
+              controller: 'TeachersController',
+              controllerAs: 'vm',
+              templateUrl: '/static/templates/static/teacher-add.html'
           }).otherwise({
-              redirectTo: '/'
-          });
+                  redirectTo: '/'
+              })
       }).run(function ($rootScope, $location, Auth) {
           $rootScope.$on("$routeChangeStart", function (event, next, current) {
               if (Auth.getToken() == null){
@@ -51,6 +55,12 @@
                           $location.path("/login");
                       }
                   }
+              }else{
+                  if ((next.templateUrl === "/static/templates/static/register.html") ||
+                        (next.templateUrl === "/static/templates/static/login.html")) {
+                        $location.path("/");
+                  }
+
               }
           })
       });

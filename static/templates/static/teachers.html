@@ -1,10 +1,11 @@
 ﻿<div class="content-wrapper">
     <div class="content-header">
         <h3 class="datium-page-title">
-            <i class="glyphicon glyphicon-menu-left"></i>Lecturers </h3>
+            Teachers
+        </h3>
         <hr class="teachers">
-        <ul class="nav nav-pills nav-justified">
-            <li><a href="#">Current</a></li>
+        <ul class="nav nav-pills nav-justified" ng-controller="ProfileController as ProfileCtrl">
+            <li ng-show="ProfileCtrl.is_admin()"><a href="/add/teacher">New teacher</a></li>
             <li><a href="#">Favorite</a></li>
             <li class="active">
                 <a href="#">All</a>
@@ -12,38 +13,36 @@
         </ul>
     </div>
     <div class="content-main">
-        <form name="editableForm" onaftersave="vm.update()" editable-form>
-            <div class="content-main-teachers">
+        <div class="content-main-teachers">
 
-                <div class="row">
-                    <div class="col-xs-1">
-                        <ul name="letters">
-                            <li>А</li>
-                            <li>Б</li>
-                            <li>Г</li>
-                            <li>Е</li>
-                            <li>К</li>
-                            <li>Л</li>
-                            <li>М</li>
-                            <li>О</li>
-                        </ul>
+            <div class="row">
+                <div class="col-xs-1">
+                    <ul name="letters">
+                        <li>А</li>
+                        <li>Б</li>
+                        <li>Г</li>
+                        <li>Е</li>
+                        <li>К</li>
+                        <li>Л</li>
+                        <li>М</li>
+                        <li>О</li>
+                    </ul>
+                </div>
+                <div class="col-xs-offset-1 col-xs-9 content-main">
+                    <div class="nav nav-pills teachers_list">
+                        <h2 ng-repeat="teacher in vm.teachers">
+                            <a name="teachers_names" href="/teachers/{{ teacher.id }}">{{ teacher.last_name | uppercase}} {{ teacher.first_name }} {{ teacher.patronymic }}</a>
+                        </h2>
                     </div>
-                    <div class="col-xs-offset-1 col-xs-9 content-main">
-                        <div class="nav nav-pills teachers_list">
-                            <h2 ng-repeat="teacher in vm.teachers">
-                                <a name="teachers_names" href="/teachers/{{ teacher.id }}">{{ teacher.first_name }} {{ teacher.last_name }}</a>
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="col-xs-1 content-main">
-                        <div class="nav ">
-                            <h2 ng-repeat="teacher in vm.teachers">
-                                 <i class="glyphicon glyphicon-star"></i>
-                            </h2>
-                        </div>
+                </div>
+                <div class="col-xs-1 content-main">
+                    <div class="nav ">
+                        <h2 ng-repeat="teacher in vm.teachers">
+                             <i class="glyphicon glyphicon-star"></i>
+                        </h2>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
