@@ -1,5 +1,4 @@
-﻿<<<<<<< HEAD
-@font-face {
+﻿@font-face {
     font-family: RobotoThin; /* Гарнитура шрифта */
     src: url("../fonts/roboto-thin.ttf"); /* Путь к файлу со шрифтом */
    }
@@ -19,8 +18,7 @@ body{
 
 .content-wrapper{
     padding: 1%;
-    width: 70%;
-    margin-left: 20%;
+
     background-color: rgba(0,0,0,0.2);
     border-radius: 2px;
 }
@@ -46,7 +44,6 @@ body{
 */
 .sidebar-wrapper {
     z-index: 1000;
-    position: fixed;
     width: 0;
     height: 100%;
     -webkit-transition: all 0.5s ease;
@@ -107,9 +104,8 @@ p[name="username"]{
 
 
 @media(min-width:768px) {
-
     .sidebar-wrapper {
-        width: 250px;
+        width: inherit;
     }
 }
 
@@ -213,10 +209,17 @@ hr.datium{
     color: #ffffff;
     font-size: 30px;
     vertical-align: middle;
+    opacity: 0.8;
+}
+
+.datium-page-title:hover{
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 1.0;
 }
 
 .datium-profile-avatar{
-    width: 150px;
+    width: 110px;
     border: 1px solid #ffffff;
 }
 
@@ -239,6 +242,39 @@ hr.datium{
     background-color: #f5f5f5;
     color: #080808;
 }
+/*
+
+    NEWS
+
+*/
+
+
+.datium-news{
+    border-bottom: 1px solid #ffffff;
+}
+
+.datium-news-title{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 40px;
+}
+.datium-news-body{
+    font-size: 25px;
+}
+
+.datium-news-date{
+    float: left;
+    font-size: 25px;
+}
+
+/*
+
+    TEACHERS LIST
+
+
+*/
+
+
 /*размер значков-стрелочек*/
 .glyphicon {
     font-size: 15px;
@@ -304,3 +340,68 @@ hr.teachers{        /*строка подчеркивания*/
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+
+/*
+
+        CALENDAR
+
+
+*/
+
+.datepicker-days{
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    padding: 3px;
+    text-align: center;
+
+ }
+/*дни недели*/
+.table-condensed > thead.dow{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/*месяцы*/
+.table-condensed > thead.month > tr > th.current{
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.table-condensed > thead.month > tr > th.prev,
+.table-condensed > thead.month > tr > th.next{
+    font-size: 25px;
+}
+.table-condensed > thead.month > tr > th.next {
+   /*здесь должен быть градиентыный цвет текста*/
+}
+.table-condensed > thead.month > tr > th.prev {
+    /*здесь должен быть градиентыный цвет текста*/
+}
+
+/*дни*/
+.table-condensed > tbody > tr > td.old,
+.table-condensed > tbody > tr > td.new{
+    color: rgba(255, 255, 255, 0.3);
+}
+.table-condensed > tbody > tr > td.active.today{
+    color: rgba(255, 255, 255, 1);
+}
+.table-condensed > tbody > tr > td.weekend{
+    color: rgba(255, 0, 6, 0.51); /*хочется как-то выделить выходные дни*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

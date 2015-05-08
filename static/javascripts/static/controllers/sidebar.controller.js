@@ -17,15 +17,15 @@
               url: '/index'
           },
           {
-              item: 'Profile',
+              item: 'My profile',
               url: '/profile'
           },
           {
-              item: 'Our group',
+              item: 'Users',
               url: '/users'
           },
           {
-              item: 'Staff',
+              item: 'Teachers',
               url: '/teachers'
           },
           {
