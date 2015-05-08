@@ -66,6 +66,20 @@
                 </div>
             </div>
         </div>
-
+        <div ng-controller="ProfileController as ProfileCtrl">
+            <div class="datium-profile-manage"  ng-show="ProfileCtrl.is_admin()">
+                <form role="form" name="editableForm" ng-controller="UserDetailController as UserDetailCtrl">
+                    <h4 class="daitum-teacher-subtitle">Manage</h4>
+                    <hr class="datium">
+                    <div class="content-main">
+                        <div class="row">
+                            <div class="col-xs-offset-9">
+                                <button type="button" class="datium-profile-button" ng-click="UserDetailCtrl.remove()">Delete account</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
