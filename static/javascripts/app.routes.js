@@ -36,7 +36,7 @@
               controller: 'TeacherDetailController',
               controllerAs: 'vm',
               templateUrl: '/static/templates/static/teacher-detail.html'
-          }).when('/add_teacher', {
+          }).when('/add/teacher', {
               controller: 'TeacherDetailController',
               controllerAs: 'vm',
               templateUrl: '/static/templates/static/teacher-detail.html'
@@ -55,6 +55,12 @@
                           $location.path("/login");
                       }
                   }
+              }else{
+                  if ((next.templateUrl === "/static/templates/static/register.html") ||
+                        (next.templateUrl === "/static/templates/static/login.html")) {
+                        $location.path("/");
+                  }
+
               }
           })
       });
