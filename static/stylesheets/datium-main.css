@@ -114,6 +114,10 @@ p[name="username"]{
     Teacher profile
 */
 
+.datium-profile-input{
+    width: 100%;
+}
+
 .datium-back{
     margin: 0;
     color: #ffffff;
@@ -249,6 +253,15 @@ hr.datium{
 */
 
 
+.datium-news-remove{
+    opacity: 0.5;
+}
+
+.datium-news-remove:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
 .datium-news{
     border-bottom: 1px solid #ffffff;
 }
@@ -273,7 +286,6 @@ hr.datium{
 
 
 */
-
 
 /*размер значков-стрелочек*/
 .glyphicon {
