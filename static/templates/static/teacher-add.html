@@ -4,21 +4,26 @@
     </div>
     <div class="content-main">
         <form role="form" ng-submit="vm.add()">
-            <div class="datium-teacher-fio">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <div class="form-group">
-                            <label class="datium-profile-label">Фамилия</label>
-                            <input type="text" ng-model="vm.new_teacher.last_name"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="datium-profile-label">Имя</label>
-                            <input type="text" ng-model="vm.new_teacher.first_name"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="datium-profile-label">Отчество</label>
-                            <input type="text" ng-model="vm.new_teacher.patronymic"/>
-                        </div>
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="form-group">
+                        <label  for="teacher_last_name" class="datium-profile-label">Фамилия</label>
+                        <input  id="teacher_last_name"
+                                type="text"
+                                ng-model="vm.new_teacher.last_name"
+                                class="datium-profile-input"/>
+                    </div>
+                    <div class="form-group">
+                        <label  class="datium-profile-label">Имя</label>
+                        <input  class="datium-profile-input"
+                                type="text"
+                                ng-model="vm.new_teacher.first_name"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="datium-profile-label">Отчество</label>
+                        <input  class="datium-profile-input"
+                                type="text"
+                                ng-model="vm.new_teacher.patronymic"/>
                     </div>
                 </div>
             </div>
@@ -30,8 +35,10 @@
                         <div class="col-xs-3">
                             <label class="datium-profile-label">E-mail</label>
                         </div>
-                        <div class="col-xs-9">
-                            <input type="email" ng-model="vm.new_teacher.email"/>
+                        <div class="col-xs-6">
+                            <input  type="email"
+                                    ng-model="vm.new_teacher.email"
+                                    class="datium-profile-input"/>
                         </div>
                     </div>
                 </div>
@@ -40,8 +47,8 @@
                         <div class="col-xs-3">
                             <label class="datium-profile-label">Phone</label>
                         </div>
-                        <div class="col-xs-9">
-                            <input type="text" ng-model="vm.new_teacher.phone"/>
+                        <div class="col-xs-6">
+                            <input type="text" ng-model="vm.new_teacher.phone" class="datium-profile-input"/>
                         </div>
                     </div>
                 </div>
@@ -50,8 +57,8 @@
                         <div class="col-xs-3">
                             <label class="datium-profile-label">Cabinet</label>
                         </div>
-                        <div class="col-xs-9">
-                            <input type="text" ng-model="vm.new_teacher.cabinet"/>
+                        <div class="col-xs-6">
+                            <input type="text" ng-model="vm.new_teacher.cabinet" class="datium-profile-input"/>
                         </div>
                     </div>
                 </div>

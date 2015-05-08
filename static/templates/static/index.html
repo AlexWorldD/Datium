@@ -6,7 +6,7 @@
     <h1 class="datium-page-title">Новости</h1>
     <div class="content-main">
 
-        <form role="form" ng-submit="newsCtrl.publish()">
+        <form role="form" ng-submit="newsCtrl.add()">
                 <div class="form-group">
                     <label for="news-title" class="datium-profile-label">Title</label>
                     <input name="news-title" type="text" ng-model="newsCtrl.title" >
@@ -21,15 +21,18 @@
                 </div>
         </form>
 
-        <div class="datium-news" ng-repeat="new in newsCtrl.news">
+        <div class="datium-news" ng-repeat="new in newsCtrl.news" ng-controller="ProfileController as ctrl">
             <span class="datium-news-title">
                 {{new.title}}
             </span>
             <b class="datium-news-time">( {{ new.pub_date  | date:"dd/MM/yyyy ' ' HH:mm"  }} )</b>
+            <i class="glyphicon glyphicon-remove datium-news-remove"
+               ng-click="newsCtrl.remove(new.id)"
+               ng-show="ctrl.is_admin() || (new.user == ctrl.profile.id)"></i>
+            <div class="clearfix"></div>
             <div class="datium-news-body">
                 {{ new.text }}
             </div>
-            <b class="datium-news-author">{{ new.user_info }}</b>
         </div>
     </div>
 </div>

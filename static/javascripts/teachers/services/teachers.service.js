@@ -39,7 +39,7 @@
                   }).then(removeSuccess, removeError);
 
                   function removeSuccess(data, status, headers, config){
-                      $window.redirectTo("/teachers");
+                        $window.location = '/teachers';
                   }
 
                   function removeError(data, status, headers, config){
