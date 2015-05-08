@@ -5,7 +5,7 @@
     <div class="content-main">
         <div class="datium-profile-title">
             <div class="row">
-                <div class="col-md-offset-4 col-md-5">
+                <div class="col-xs-offset-4 col-xs-5">
                     <h3 class="daitum-teacher-fio">
                         <span>{{ vm.profile.first_name || vm.profile.username}}</span>
                         <b>{{ vm.profile.last_name | uppercase}}</b>
@@ -13,7 +13,7 @@
                     <h3 class="datium-profile-study-year">2 course</h3>
                     <h4 class="datium-profile-study-year">{{ vm.profile.group }} group</h4>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2">
                     <img src="{{ vm.profile.avatar }}" class="img-circle datium-profile-avatar">
                 </div>
             </div>
@@ -22,26 +22,26 @@
             <h4 class="daitum-teacher-subtitle">Contact info</h4>
             <hr class="datium">
             <div class="row content-main">
-                <div class="col-md-3">
+                <div class="col-xs-3">
                     <span class="datium-profile-label">E-mail</span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-xs-9">
                     <span class="datium-profile-field">{{ vm.profile.email }}</span>
                 </div>
             </div>
             <div class="row content-main">
-                <div class="col-md-3">
+                <div class="col-xs-3">
                     <span class="datium-profile-label">Phone</span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-xs-9">
                     <span class="datium-profile-field">{{ vm.profile.phone || 'empty' }}</span>
                 </div>
             </div>
             <div class="row content-main">
-                <div class="col-md-3">
+                <div class="col-xs-3">
                     <span class="datium-profile-label">Hall</span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-xs-9">
                     <span class="datium-profile-field">{{ vm.profile.hall || 'empty' }}</span>
                 </div>
             </div>
@@ -50,18 +50,18 @@
             <h4 class="daitum-teacher-subtitle">Personal info</h4>
             <hr class="datium">
             <div class="row content-main">
-                <div class="col-md-3">
+                <div class="col-xs-3">
                     <span class="datium-profile-label">Date of Birth</span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-xs-9">
                     <span class="datium-profile-field">{{ vm.profile.birthday }}</span>
                 </div>
             </div>
             <div class="row content-main">
-                <div class="col-md-3">
+                <div class="col-xs-3">
                     <span class="datium-profile-label">City</span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-xs-9">
                     <span class="datium-profile-field" editable-text="vm.profile.city" e-name="city">{{ vm.profile.city }}</span>
                 </div>
             </div>

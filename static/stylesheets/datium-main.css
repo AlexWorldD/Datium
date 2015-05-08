@@ -104,9 +104,8 @@ p[name="username"]{
 
 
 @media(min-width:768px) {
-
     .sidebar-wrapper {
-        width: 250px;
+        width: inherit;
     }
 }
 
@@ -220,7 +219,7 @@ hr.datium{
 }
 
 .datium-profile-avatar{
-    width: 150px;
+    width: 110px;
     border: 1px solid #ffffff;
 }
 
