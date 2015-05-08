@@ -30,22 +30,38 @@
 
                     function updateErrorFn(data, status, headers, config){
                     }
-                },
-                remove: function (id) {
-                    return $http({
-                        method: 'DELETE',
-                        url: '/api/v1/teachers/' + id + "/",
-                        headers: {'Content-Type': 'application/json'}
-                    }).then(removeSuccess, removeError);
+              },
+              remove: function (id) {
+                  return $http({
+                      method: 'DELETE',
+                      url: '/api/v1/teachers/' + id + "/",
+                      headers: {'Content-Type': 'application/json'}
+                  }).then(removeSuccess, removeError);
 
-                    function removeSuccess(data, status, headers, config){
-                        $window.redirectTo("/teachers");
-                    }
+                  function removeSuccess(data, status, headers, config){
+                      $window.redirectTo("/teachers");
+                  }
 
-                    function removeError(data, status, headers, config){
-                        alert(status);
-                    }
-                }
+                  function removeError(data, status, headers, config){
+                      alert(status);
+                  }
+              },
+              add: function(data){
+                  $http({
+                      method: 'POST',
+                      url: '/api/v1/teachers/',
+                      data: data,
+                      headers: {'Content-Type': 'application/json'}
+                  }).then(loginSuccessFn, loginErrorFn);
+
+                  function loginSuccessFn(data, status, headers, config) {
+                      console.log("New teacher was added");
+                  }
+
+                  function loginErrorFn(data, status, headers, config) {
+                      console.error(data);
+                  }
+              }
           };
       });
 })();
