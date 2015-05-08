@@ -69,7 +69,7 @@
                         <span class="datium-profile-label">City</span>
                     </div>
                     <div class="col-xs-9">
-                        <span class="datium-profile-field" editable-text="vm.profile.city" e-name="city">{{ vm.profile.city }}</span>
+                        <span class="datium-profile-field" editable-text="vm.profile.city" e-name="city" ng-show="!editableForm.$visible">{{ vm.profile.city }}</span>
                     </div>
                 </div>
             </div>
