@@ -1,5 +1,98 @@
-<div class="content-wrapper">
-    <h1 class="datium-page-title">Здесь будет календарь</h1>
+﻿<div class="content-wrapper">
+    <div class="datepicker-days" >
+        <table class="table-condensed">
+            <thead>
+            <tr>
+                <th class="dow">Su</th>
+                <th class="dow">Mo</th>
+                <th class="dow">Tu</th>
+                <th class="dow">We</th>
+                <th class="dow">Th</th>
+                <th class="dow">Fr</th>
+                <th class="dow">Sa</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td data-action="selectDay" class="day old weekend">26</td>
+                <td data-action="selectDay" class="day old">27</td>
+                <td data-action="selectDay" class="day old">28</td>
+                <td data-action="selectDay" class="day old">29</td>
+                <td data-action="selectDay" class="day old">30</td>
+                <td data-action="selectDay" class="day">1</td>
+                <td data-action="selectDay" class="day weekend">2</td>
+            </tr>
+            <tr>
+                <td data-action="selectDay" class="day weekend">3</td>
+                <td data-action="selectDay" class="day">4</td>
+                <td data-action="selectDay" class="day">5</td>
+                <td data-action="selectDay" class="day">6</td>
+                <td data-action="selectDay" class="day">7</td>
+                <td data-action="selectDay" class="day active today">8</td>
+                <td data-action="selectDay" class="day weekend">9</td>
+            </tr>
+            <tr>
+                <td data-action="selectDay" class="day weekend">10</td>
+                <td data-action="selectDay" class="day">11</td>
+                <td data-action="selectDay" class="day">12</td>
+                <td data-action="selectDay" class="day">13</td>
+                <td data-action="selectDay" class="day">14</td>
+                <td data-action="selectDay" class="day">15</td>
+                <td data-action="selectDay" class="day weekend">16</td>
+            </tr>
+            <tr>
+                <td data-action="selectDay" class="day weekend">17</td>
+                <td data-action="selectDay" class="day">18</td>
+                <td data-action="selectDay" class="day">19</td>
+                <td data-action="selectDay" class="day">20</td>
+                <td data-action="selectDay" class="day">21</td>
+                <td data-action="selectDay" class="day">22</td>
+                <td data-action="selectDay" class="day weekend">23</td>
+            </tr>
+            <tr>
+                <td data-action="selectDay" class="day weekend">24</td>
+                <td data-action="selectDay" class="day">25</td>
+                <td data-action="selectDay" class="day">26</td>
+                <td data-action="selectDay" class="day">27</td>
+                <td data-action="selectDay" class="day">28</td>
+                <td data-action="selectDay" class="day">29</td>
+                <td data-action="selectDay" class="day weekend">30</td>
+            </tr>
+            <tr>
+                <td data-action="selectDay" class="day weekend">31</td>
+                <td data-action="selectDay" class="day new">1</td>
+                <td data-action="selectDay" class="day new">2</td>
+                <td data-action="selectDay" class="day new">3</td>
+                <td data-action="selectDay" class="day new">4</td>
+                <td data-action="selectDay" class="day new">5</td>
+                <td data-action="selectDay" class="day new weekend">6</td>
+            </tr>
+            </tbody>
+            <thead class="month">
+            <tr>
+                <th colspan="7">
+                    <table class="table-condensed">
+                        <thead class="month">
+                        <tr>
+                            <th class="prev" data-action="previous">
+                                April
+                            </th>
+                            <th class="current" data-action="pickerSwitch">
+                                May
+                            </th>
+                            <th class="next" data-action="next">
+                                June
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                </th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+
 </div>
 <br>
 <div class="content-wrapper" ng-controller="NewsController as NewsCtrl">
