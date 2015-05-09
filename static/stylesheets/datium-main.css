@@ -252,6 +252,11 @@ hr.datium{
 
 */
 
+.datium-news-author{
+    color: #ffffff;
+    font-size: 25px;
+}
+
 .datium-news-remove{
     opacity: 0.5;
 }
@@ -268,10 +273,10 @@ hr.datium{
 .datium-news-title{
     color: #ffffff;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 3em;
 }
 .datium-news-body{
-    font-size: 25px;
+    font-size: 2.5em;
 }
 
 .datium-news-date{
@@ -279,6 +284,37 @@ hr.datium{
     font-size: 25px;
 }
 
+.datium-news-comment-author{
+    font-size: 20px;
+}
+
+.datium-news-comment-text{
+    color: white;
+    font-size: 20px;
+}
+
+.datium-news-comment, .datium-news-comment-form{
+    padding-left: 5%;
+}
+.datium-news-comment-form{
+    padding-top: 1%;
+}
+.datium-news-comment-form > form > input,
+.datium-news-comment-form > form > button{
+    font-size: 25px;
+    height: 30px;
+}
+
+.datium-news-comment-form > form > input{
+    padding-top: 2px;
+}
+
+
+.datium-news-comments-title:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+}
 
 
 /*размер значков-стрелочек*/

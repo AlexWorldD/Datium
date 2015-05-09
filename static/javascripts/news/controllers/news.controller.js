@@ -5,7 +5,7 @@
 
   angular
     .module('application.news.controllers')
-    .controller('NewsController', function(News, Users, $window, $scope) {
+    .controller('NewsController', function(News, Users, $http, $scope) {
 
           var vm = this;
 
@@ -13,8 +13,10 @@
 
               vm.news = data;
               data.reverse();
-              console.log(data);
 
+              for(var i in data){
+                  vm.news[i].active = true;
+              }
           });
 
           vm.add = add;
@@ -24,7 +26,12 @@
           }
 
           vm.remove = function (id) {
-              console.log("click was");
+              for(var i in vm.news){
+                  if(vm.news[i].id === id){
+                      vm.news[i].active = false;
+                      break;
+                  }
+              }
               News.remove(id);
           }
 

@@ -11,7 +11,7 @@
                         });
                 },
                 add: function(title, text){
-                    $http({
+                    return $http({
                         method: 'POST',
                         url: '/api/v1/news/',
                         data: {title: title, text: text, documents:[]},
@@ -20,6 +20,7 @@
 
                     function loginSuccessFn(data, status, headers, config) {
                         $route.reload();
+                        return data;
                     }
 
                     function loginErrorFn(data, status, headers, config) {
@@ -34,7 +35,6 @@
                   }).then(removeSuccess, removeError);
 
                   function removeSuccess(data, status, headers, config){
-                        $route.reload();
                   }
 
                   function removeError(data, status, headers, config){
