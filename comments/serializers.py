@@ -1,10 +1,11 @@
 from comments.models import Comment, CommentsTable
-from users.serializers import UserSerializer
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    author = UserSerializer()
+    author = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    table = serializers.PrimaryKeyRelatedField(queryset=CommentsTable.objects.all())
 
     class Meta:
         model = Comment

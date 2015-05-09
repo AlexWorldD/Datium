@@ -11,9 +11,10 @@
         'application.teachers',
         'application.profile',
         'application.groups',
-          'application.news',
+        'application.news',
+        'application.comments',
         'xeditable',
-          'flow'
+        'flow'
     ]).run(function(editableOptions) {
         editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
       });

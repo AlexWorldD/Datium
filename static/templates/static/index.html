@@ -2,36 +2,66 @@
     <h1 class="datium-page-title">Здесь будет календарь</h1>
 </div>
 <br>
-<div class="content-wrapper" ng-controller="NewsController as newsCtrl">
+<div class="content-wrapper" ng-controller="NewsController as NewsCtrl">
     <h1 class="datium-page-title">Новости</h1>
     <div class="content-main">
-
-        <form role="form" ng-submit="newsCtrl.add()">
+        <form role="form" ng-submit="NewsCtrl.add()">
                 <div class="form-group">
                     <label for="news-title" class="datium-profile-label">Title</label>
-                    <input name="news-title" type="text" ng-model="newsCtrl.title" >
+                    <input name="news-title" type="text" ng-model="NewsCtrl.title" >
                 </div>
 
                 <div class="form-group">
                     <label for="news-text" class="datium-profile-label">Text</label>
-                    <input name="news-text" type="text" ng-model="newsCtrl.text">
+                    <input type="text" name="news-text"  ng-model="NewsCtrl.text">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="datium-profile-button">Publish</button>
                 </div>
         </form>
 
-        <div class="datium-news" ng-repeat="new in newsCtrl.news" ng-controller="ProfileController as ctrl">
-            <span class="datium-news-title">
-                {{new.title}}
-            </span>
-            <b class="datium-news-time">( {{ new.pub_date  | date:"dd/MM/yyyy ' ' HH:mm"  }} )</b>
-            <i class="glyphicon glyphicon-remove datium-news-remove"
-               ng-click="newsCtrl.remove(new.id)"
-               ng-show="ctrl.is_admin() || (new.user == ctrl.profile.id)"></i>
-            <div class="clearfix"></div>
-            <div class="datium-news-body">
-                {{ new.text }}
+        <div ng-controller="ProfileController as ProfileCtrl">
+            <div ng-repeat="new in NewsCtrl.news"
+                 ng-show="new.active"
+                 class="datium-news">
+                <div class="datium-news-content">
+                    <a href="/users/{{ new.user }}/" ng-controller="UserDetailController as UserDetailCtrl" ng-init="UserDetailCtrl.init(new.user)" class="datium-news-author">
+                        {{ UserDetailCtrl.profile.first_name || UserDetailCtrl.profile.username }}
+                        {{ UserDetailCtrl.profile.last_name }}
+                    </a>
+                    <span class="datium-news-title">
+                         : {{new.title}}
+                    </span>
+                    <b class="datium-news-time">( {{ new.pub_date  | date:"dd/MM/yyyy ' ' HH:mm"  }} )</b>
+                    <i class="glyphicon glyphicon-remove datium-news-remove"
+                       ng-click="NewsCtrl.remove(new.id)"
+                       ng-show="ctrl.is_admin() || (new.user == ProfileCtrl.profile.id)"></i>
+                    <div class="clearfix"></div>
+                    <div class="datium-news-body">
+                        {{ new.text }}
+                    </div>
+                </div>
+                <div class="datium-news-comments-list"
+                     ng-controller="CommentsController as CommentsCtrl"
+                     ng-init="CommentsCtrl.init(new.comments)">
+                    <h4 ng-click="CommentsCtrl.toggle()"
+                            class="datium-news-comments-title">Comments ( {{ CommentsCtrl.comments.length }} )</h4>
+                    <div    class="datium-news-comment"
+                            ng-repeat="comment in CommentsCtrl.comments"
+                            ng-show="CommentsCtrl.is_active">
+                        <a href="/users/{{ new.user }}/" ng-controller="UserDetailController as UserDetailCtrl" ng-init="UserDetailCtrl.init(comment.author)" class="datium-news-comment-author">
+                            {{ UserDetailCtrl.profile.first_name || UserDetailCtrl.profile.username }}
+                            {{ UserDetailCtrl.profile.last_name }}
+                        </a>
+                        <span class="datium-news-comment-text">: {{ comment.text }}</span>
+                    </div>
+                    <div class="datium-news-comment-form" ng-show="CommentsCtrl.is_active">
+                        <form ng-submit="CommentsCtrl.add()">
+                            <input type="text" ng-model="CommentsCtrl.text"/>
+                            <button type="submit" class="datium-profile-button">Post</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

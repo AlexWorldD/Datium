@@ -6,10 +6,10 @@
     .controller('ProfileController', function(Profile, $window, $scope) {
 
           var vm = this;
+
           Profile.info().then(function(data){
               vm.profile = data;
           });
-
           vm.is_admin = function () {
               return vm.profile.permissions === 'group admin';
           };
