@@ -36,7 +36,7 @@ class StudentGroup(models.Model):
             ("add_and_edit_homeworks", "Can add and edit homeworks"), # groups: 'students', 'group admin'
             ("add_and_edit_teachers", "Can add and edit teachers"), # groups: 'group admin'
             ("add_and_edit_subjects", "Can add and edit subjects"), # groups: 'group admin'
-            ("edit timetable", "Can edit timetable"), # groups: 'group admin'
+            ("edit_timetable", "Can edit timetable"), # groups: 'group admin'
             ("edit_others_news_homeworks_documents", "Can edit news, homeworks and documents created by other users"), # groups: 'group admin'
             ("change_permissions", "Can change permissions"), # groups: 'group admin'
             ("delete_users", "Can delete users"), # groups: 'group admin'

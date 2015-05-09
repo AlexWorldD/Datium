@@ -10,11 +10,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
-class LessonType(models.Model):
-    what_type = models.CharField(max_length=200)
-
-
 class Teacher(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200,)
@@ -31,25 +26,26 @@ class Department(models.Model):
 
 class Subject(models.Model):
     # предмет (Вычислительная математика, Физика и т.п., без типа)
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
 
 
 class Lesson(models.Model):
     # занятие (Вычислительная математика, практика; Физика, лекция и т.п)
     subject = models.ForeignKey(Subject)
     teacher = models.ForeignKey(Teacher)
+    group = models.ForeignKey(StudentGroup)
 
-    NONE = 0
-    PRACTICE = 1
-    LECTION = 2
-    SEMINAR = 3
+    NONE = 'none'
+    PRACTICE = 'practice'
+    LECTION = 'lection'
+    SEMINAR = 'seminar'
     LESSON_TYPE_CHOICES = (
         (NONE, ''),
-        (PRACTICE, 'Практика'),
-        (LECTION, 'Лекция'),
-        (SEMINAR, 'Семинар'),
+        (PRACTICE, 'practice'),
+        (LECTION, 'lection'),
+        (SEMINAR, 'seminar'),
     )
-    lesson_type = models.IntegerField(choices=LESSON_TYPE_CHOICES)
+    lesson_type = models.CharField(max_length=8,  choices=LESSON_TYPE_CHOICES)
 
     MONDAY = 1
     TUESDAY = 2
@@ -58,12 +54,12 @@ class Lesson(models.Model):
     FRIDAY = 5
     SATURDAY = 6
     WEEKDAY = (
-        (MONDAY, 'Понедельник'),
-        (TUESDAY, 'Вторник'),
-        (WEDNESDAY, 'Среда'),
-        (THURSDAY, 'Четверг'),
-        (FRIDAY, 'Пятница'),
-        (SATURDAY, 'Суббота'),
+        (MONDAY, 'Monday'),
+        (TUESDAY, 'Tuesday'),
+        (WEDNESDAY, 'Wednesday'),
+        (THURSDAY, 'Thursday'),
+        (FRIDAY, 'Friday'),
+        (SATURDAY, 'Saturday'),
     )
     day = models.IntegerField(choices=WEEKDAY)
     class_number = models.IntegerField()  # первая пара, вторая пара…
