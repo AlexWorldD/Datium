@@ -50,6 +50,13 @@ class DocumentRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
         if self.request.method in permissions.SAFE_METHODS:
             return [permissions.IsAuthenticated(), CanViewDocuments(),]
         return [permissions.IsAuthenticated(), CanAddAndEditDocuments(), IsOwnerOrAdmin()]
+    def delete(self, request, *args, **kwargs):
+        comments_table = self.get_object().comments.objects.all()[0]
+        comments = comments_table.comments.all()
+        for each in comments:
+            each.delete()
+        comments_table.delete()
+        return self.destroy(self, request, *args, **kwargs)
 
 
 class NewsListCreateAPIView(generics.ListCreateAPIView):
@@ -83,3 +90,10 @@ class NewsRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
         if self.request.method in permissions.SAFE_METHODS:
             return [permissions.IsAuthenticated(), CanViewNews(),]
         return [permissions.IsAuthenticated(), CanAddAndEditNews(), IsOwnerOrAdmin()]
+    def delete(self, request, *args, **kwargs):
+        comments_table = self.get_object().comments.objects.all()[0]
+        comments = comments_table.comments.all()
+        for each in comments:
+            each.delete()
+        comments_table.delete()
+        return self.destroy(self, request, *args, **kwargs)

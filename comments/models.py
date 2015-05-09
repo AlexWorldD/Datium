@@ -21,4 +21,5 @@ class Comment(models.Model):
     text = models.TextField()
     author = models.ForeignKey(User)
     table = models.ForeignKey(CommentsTable, related_name='comments')
+    pub_date = models.DateTimeField('date published', auto_now_add=True)
 
