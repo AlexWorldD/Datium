@@ -315,7 +315,13 @@ hr.datium{
     text-decoration: underline;
     font-weight: bold;
 }
+/*
 
+    TEACHERS LIST
+
+>>>>>>> 774e09d53ecdb1869a0dfc59c6a95e760d4ed09a
+
+*/
 
 /*размер значков-стрелочек*/
 .glyphicon {
@@ -382,3 +388,68 @@ hr.teachers{        /*строка подчеркивания*/
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+
+/*
+
+        CALENDAR
+
+
+*/
+
+.datepicker-days{
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    padding: 3px;
+    text-align: center;
+
+ }
+/*дни недели*/
+.table-condensed > thead.dow{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/*месяцы*/
+.table-condensed > thead.month > tr > th.current{
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.table-condensed > thead.month > tr > th.prev,
+.table-condensed > thead.month > tr > th.next{
+    font-size: 25px;
+}
+.table-condensed > thead.month > tr > th.next {
+   /*здесь должен быть градиентыный цвет текста*/
+}
+.table-condensed > thead.month > tr > th.prev {
+    /*здесь должен быть градиентыный цвет текста*/
+}
+
+/*дни*/
+.table-condensed > tbody > tr > td.old,
+.table-condensed > tbody > tr > td.new{
+    color: rgba(255, 255, 255, 0.3);
+}
+.table-condensed > tbody > tr > td.active.today{
+    color: rgba(255, 255, 255, 1);
+}
+.table-condensed > tbody > tr > td.weekend{
+    color: rgba(255, 0, 6, 0.51); /*хочется как-то выделить выходные дни*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
