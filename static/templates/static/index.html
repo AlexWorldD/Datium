@@ -128,7 +128,7 @@
                     <b class="datium-news-time">( {{ new.pub_date  | date:"dd/MM/yyyy ' ' HH:mm"  }} )</b>
                     <i class="glyphicon glyphicon-remove datium-news-remove"
                        ng-click="NewsCtrl.remove(new.id)"
-                       ng-show="ctrl.is_admin() || (new.user == ProfileCtrl.profile.id)"></i>
+                       ng-show="ProfileCtrl.is_admin() || (new.user == ProfileCtrl.profile.id)"></i>
                     <div class="clearfix"></div>
                     <div class="datium-news-body">
                         {{ new.text }}
