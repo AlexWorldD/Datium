@@ -147,6 +147,7 @@
                             {{ UserDetailCtrl.profile.last_name }}
                         </a>
                         <span class="datium-news-comment-text">: {{ comment.text }}</span>
+                        <span>{{ comment.pub_date | date:"dd/MM/yyyy ' ' HH:mm" }}</span>
                     </div>
                     <div class="datium-news-comment-form" ng-show="CommentsCtrl.is_active">
                         <form ng-submit="CommentsCtrl.add()">
