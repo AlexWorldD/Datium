@@ -13,8 +13,10 @@
         'application.groups',
         'application.news',
         'application.comments',
+        'application.calendar',
         'xeditable',
-        'flow'
+        'flow',
+        '500tech.simple-calendar'
     ]).run(function(editableOptions) {
         editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
       });

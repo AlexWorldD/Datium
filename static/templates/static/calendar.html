@@ -1,0 +1,26 @@
+<div class="datepicker-days">
+    <div>
+        <div ng-repeat="day in weekDays(options.dayNamesLength) track by $index" class="weekday">{{ day }}</div>
+    </div>
+    <div>
+        <div ng-repeat="week in weeks track by $index" class="week">
+            <div class="day"
+                ng-class="{'default': isDefaultDate(date), 'event': date.event, 'disabled': date.disabled || !date}"
+                ng-repeat="date in week  track by $index"
+                ng-click="onClick(date)">
+            <div class="day-number"
+                    ng-class="{'weekend': date.is_weekend }">{{ date.day || "&nbsp;" }}</div>
+                <div class="event-title">{{ date.event.title || "&nbsp;" }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="current-month">
+        <div class="move-month prev-month" ng-click="prevMonth()">
+            <span ng-show="allowedPrevMonth()">{{ prevMonthItem }}</span>
+        </div>
+        <span class="current">{{ selectedMonth }}</span>
+        <div class="move-month next-month" ng-click="nextMonth()">
+            <span ng-show="allowedNextMonth()">{{ nextMonthItem }}</span>
+        </div>
+    </div>
+</div>
