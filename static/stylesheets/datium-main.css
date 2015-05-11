@@ -315,11 +315,115 @@ hr.datium{
     text-decoration: underline;
     font-weight: bold;
 }
+
+/*
+        NEW NEWS
+*/
+.datium-page-title.news{
+    text-align: center;
+}
+/*вкладки для новостей*/
+.nav-pills.nav-justified.news {
+    margin-top: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.nav-pills.news > li > a {
+    color: rgba(255, 255, 255, 0.67); /*цвет неактивных*/
+}
+/*содержимое*/
+.content-main.news{
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-right: 30px;
+    margin: 0 15px;
+}
+.time{
+    margin: 0px;
+    color: rgba(42, 14, 57, 1);
+}
+.news-author{
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-size: 16px;
+    text-align: center;
+}
+.logo{
+    margin-top: 0;
+    font-size: 12px;
+}
+.news-content{
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    font-size: 24px;
+    color: black;
+    text-align: center;
+}
+.news-lecture{
+    margin: 10px -5px;
+    text-align: center;
+}
+.news-lecture.date{
+    color: white;
+    font-size: 18px;
+
+}
+.news-lecture.lecture{
+    background-color: rgba(99,53, 61, 0.5);
+    margin-top: 0;
+    color: white;
+    border-radius: 2px;
+}
+.news-lecture.tegs{
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.news-comments{
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+.lecture-type{
+    font-size: 12px;
+}
+.lecture-name{
+    font-size: 18px;
+}
+.begin-time,
+.end-time,
+.lecture-info,
+.lecture-place{
+    padding: 0;
+}
+.begin-time,
+.end-time{
+    padding-top: 10px;
+}
+/*блок комментариев*/
+.news-comments{
+    padding-top: 20px;
+}
+hr[name="comment-line"]{
+    margin-top: -10px;
+    color: black;
+}
+.item-comment{
+    color: black;
+    font-size: 12px;
+}
+
+.add-news-comment{
+   padding-bottom: 30px;
+}
+
+
+
+
 /*
 
     TEACHERS LIST
 
->>>>>>> 774e09d53ecdb1869a0dfc59c6a95e760d4ed09a
 
 */
 
@@ -407,7 +511,7 @@ hr.teachers{        /*строка подчеркивания*/
  }
 /*дни недели*/
 .table-condensed > thead.dow{
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 0, 255, 0.5);
 }
 
 /*месяцы*/
@@ -435,10 +539,8 @@ hr.teachers{        /*строка подчеркивания*/
     color: rgba(255, 255, 255, 1);
 }
 .table-condensed > tbody > tr > td.weekend{
-    color: rgba(255, 0, 6, 0.51); /*хочется как-то выделить выходные дни*/
+    color: rgba(255, 255, 6, 0.57); /*хочется как-то выделить выходные дни*/
 }
-
-
 
 
 
