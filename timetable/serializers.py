@@ -1,8 +1,9 @@
 __author__ = 'Kirov'
 
-from timetable.models import Subject, Teacher, Department, Lesson
+from timetable.models import Subject, Teacher, Department, Lesson, LessonInTimeTable
 from rest_framework import serializers
 from student_groups.models import StudentGroup
+from django.utils import timezone
 
 
 class SubjectSerializer(serializers.ModelSerializer):
@@ -52,7 +53,6 @@ class TeacherSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
-
 class LessonSerializer(serializers.ModelSerializer):
 
     subject = serializers.SlugRelatedField(slug_field='name', queryset=Subject.objects.all())
@@ -63,7 +63,7 @@ class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = ('subject', 'teacher', 'group', 'lesson_type', 'day', 'class_number')
+        fields = ('subject', 'teacher', 'group', 'semester', 'lesson_type', 'day', 'class_number')
 
     def create(self, validated_data):
         return Lesson.objects.create(**validated_data)
@@ -71,6 +71,7 @@ class LessonSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.subject = validated_data.get('subject', instance.subject)
         instance.teacher = validated_data.get('teacher', instance.teacher)
+        instance.semester = validated_data.get('semester', instance.semester)
         instance.lesson_type = validated_data.get('lesson_type', instance.lesson_type)
         instance.day = validated_data.get('day', instance.day)
         instance.class_number = validated_data.get('class_number', instance.class_number)
@@ -78,5 +79,17 @@ class LessonSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+class DateTimeTzAwareField(serializers.DateTimeField):
+    def to_representation(self, value):
+        value = timezone.localtime(value)
+        return super(DateTimeTzAwareField, self).to_representation(value)
 
+class LessonInTimetableSerializer(serializers.ModelSerializer):
+    lesson = LessonSerializer(read_only=True)
+    date = serializers.DateField(source='day.date')
+    start = DateTimeTzAwareField()
+    end = DateTimeTzAwareField()
 
+    class Meta:
+        model = LessonInTimeTable
+        fields = ('id', 'lesson', 'start', 'end', 'date')
