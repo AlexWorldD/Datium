@@ -1,101 +1,94 @@
-﻿<div class="content-wrapper">
-    <div class="datepicker-days" >
-        <table class="table-condensed">
-            <thead>
-            <tr>
-                <th class="dow">Su</th>
-                <th class="dow">Mo</th>
-                <th class="dow">Tu</th>
-                <th class="dow">We</th>
-                <th class="dow">Th</th>
-                <th class="dow">Fr</th>
-                <th class="dow">Sa</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td data-action="selectDay" class="day old weekend">26</td>
-                <td data-action="selectDay" class="day old">27</td>
-                <td data-action="selectDay" class="day old">28</td>
-                <td data-action="selectDay" class="day old">29</td>
-                <td data-action="selectDay" class="day old">30</td>
-                <td data-action="selectDay" class="day">1</td>
-                <td data-action="selectDay" class="day weekend">2</td>
-            </tr>
-            <tr>
-                <td data-action="selectDay" class="day weekend">3</td>
-                <td data-action="selectDay" class="day">4</td>
-                <td data-action="selectDay" class="day">5</td>
-                <td data-action="selectDay" class="day">6</td>
-                <td data-action="selectDay" class="day">7</td>
-                <td data-action="selectDay" class="day active today">8</td>
-                <td data-action="selectDay" class="day weekend">9</td>
-            </tr>
-            <tr>
-                <td data-action="selectDay" class="day weekend">10</td>
-                <td data-action="selectDay" class="day">11</td>
-                <td data-action="selectDay" class="day">12</td>
-                <td data-action="selectDay" class="day">13</td>
-                <td data-action="selectDay" class="day">14</td>
-                <td data-action="selectDay" class="day">15</td>
-                <td data-action="selectDay" class="day weekend">16</td>
-            </tr>
-            <tr>
-                <td data-action="selectDay" class="day weekend">17</td>
-                <td data-action="selectDay" class="day">18</td>
-                <td data-action="selectDay" class="day">19</td>
-                <td data-action="selectDay" class="day">20</td>
-                <td data-action="selectDay" class="day">21</td>
-                <td data-action="selectDay" class="day">22</td>
-                <td data-action="selectDay" class="day weekend">23</td>
-            </tr>
-            <tr>
-                <td data-action="selectDay" class="day weekend">24</td>
-                <td data-action="selectDay" class="day">25</td>
-                <td data-action="selectDay" class="day">26</td>
-                <td data-action="selectDay" class="day">27</td>
-                <td data-action="selectDay" class="day">28</td>
-                <td data-action="selectDay" class="day">29</td>
-                <td data-action="selectDay" class="day weekend">30</td>
-            </tr>
-            <tr>
-                <td data-action="selectDay" class="day weekend">31</td>
-                <td data-action="selectDay" class="day new">1</td>
-                <td data-action="selectDay" class="day new">2</td>
-                <td data-action="selectDay" class="day new">3</td>
-                <td data-action="selectDay" class="day new">4</td>
-                <td data-action="selectDay" class="day new">5</td>
-                <td data-action="selectDay" class="day new weekend">6</td>
-            </tr>
-            </tbody>
-            <thead class="month">
-            <tr>
-                <th colspan="7">
-                    <table class="table-condensed">
-                        <thead class="month">
-                        <tr>
-                            <th class="prev" data-action="previous">
-                                April
-                            </th>
-                            <th class="current" data-action="pickerSwitch">
-                                May
-                            </th>
-                            <th class="next" data-action="next">
-                                June
-                            </th>
-                        </tr>
-                        </thead>
-                    </table>
-                </th>
-            </tr>
-            </thead>
-
-        </table>
+﻿<div class="content-wrapper" ng-controller="CalendarController as CalendarCtrl">
+    <div class="row">
+        <div class="col-xs-6">
+            <simple-calendar events="CalendarCtrl.events" options="CalendarCtrl.calendarOptions"></simple-calendar>
+        </div>
     </div>
-
 </div>
 <br>
+
 <div class="content-wrapper" ng-controller="NewsController as NewsCtrl">
+    <div class="header row">
+        <div class="col-xs-4">
+            <h1 class="datium-page-title news">News</h1>
+        </div>
+        <div class="col-xs-8">
+            <ul class="nav nav-pills nav-justified news" >
+                <li>
+                    <a href="#">Last</a>
+                </li>
+                <li>
+                    <a href="#">Important</a>
+                </li>
+                <li class="active">
+                    <a href="#">Filter</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content-main news">
+        <h5 class="time">5 min ago</h5>
+        <div class="row news">
+            <div class="col-xs-3 news-author">
+                <div class="col-xs-2"><img src="#"></div>
+                <div class="col-xs-10">
+                    <h4 >МАСЛОВСКАЯ Мария</h4>
+                    <span class="logo">@logotype@</span>
+                </div>
+            </div>
+            <div class="col-xs-9 news-content">
+                <p>В эту субботу физика будет первой парой. Принесите, пожалуйста, камни и ленты для приготовления подарков эльфам.</p>
+            </div>
+        </div>
+        <div class="row news-item">
+            <div class="col-xs-4 news-lecture">
+                <span class="news-lecture date">April, 18</span>
+                <div class="row news-lecture lecture">
+                    <div class="col-lg-2 begin-time">
+                        9:30
+                    </div>
+                    <div class="col-lg-6 lecture-info">
+                        <span class="lecture-type">Практика</span>
+                        <h3 class="lecture-name">Физика</h3>
+                    </div>
+                    <div class="col-lg-2 lecture-place">
+                        <span>ПМ-ПУ</span>
+                        <span>346/к</span>
+                    </div>
+                    <div class="col-lg-2 end-time">
+                        11:15
+                    </div>
+                </div>
+                <div class="news-lecture tegs">#пары</div>
+            </div>
+            <div class="col-xs-8 news-comments">
+                <div class="col-xs-2 photo">
+                    <img src="#">
+                </div>
+                <div class="col-xs-10 item-comment">
+                    <p>| Трататата</p>
+                    <hr name="comment-line">
+                </div>
+                <div class="col-xs-8 col-xs-offset-2 add-new-comment">
+                    <input type="text" name="news-comment" value="Enter your comment">
+                </div>
+                <div class="col-xs-2 add-new-comment">
+                    <h3>Send</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <hr>
+    <br>
     <h1 class="datium-page-title">Новости</h1>
     <div class="content-main">
         <form role="form" ng-submit="NewsCtrl.add()">
@@ -128,7 +121,7 @@
                     <b class="datium-news-time">( {{ new.pub_date  | date:"dd/MM/yyyy ' ' HH:mm"  }} )</b>
                     <i class="glyphicon glyphicon-remove datium-news-remove"
                        ng-click="NewsCtrl.remove(new.id)"
-                       ng-show="ctrl.is_admin() || (new.user == ProfileCtrl.profile.id)"></i>
+                       ng-show="ProfileCtrl.is_admin() || (new.user == ProfileCtrl.profile.id)"></i>
                     <div class="clearfix"></div>
                     <div class="datium-news-body">
                         {{ new.text }}
@@ -147,6 +140,7 @@
                             {{ UserDetailCtrl.profile.last_name }}
                         </a>
                         <span class="datium-news-comment-text">: {{ comment.text }}</span>
+                        <span>{{ comment.pub_date | date:"dd/MM/yyyy ' ' HH:mm" }}</span>
                     </div>
                     <div class="datium-news-comment-form" ng-show="CommentsCtrl.is_active">
                         <form ng-submit="CommentsCtrl.add()">
