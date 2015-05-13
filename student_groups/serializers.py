@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 class StudentGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentGroup
-        fields = ('id', 'name', 'study_year',)
+        fields = ('id', 'name', 'study_year', 'entrance_year')
 
     def create(self, validated_data):
         return StudentGroup.objects.create(**validated_data)
@@ -17,6 +17,7 @@ class StudentGroupSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.name = validated_data.get('name', instance.name)
         instance.study_year = validated_data.get('study_year', instance.study_year)
+        instance.entrance_year = validated_data.get('entrance_year', instance.entrance_year)
         instance.save()
         return instance
 

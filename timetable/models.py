@@ -34,6 +34,7 @@ class Lesson(models.Model):
     subject = models.ForeignKey(Subject)
     teacher = models.ForeignKey(Teacher)
     group = models.ForeignKey(StudentGroup)
+    semester = models.IntegerField()
 
     NONE = 'none'
     PRACTICE = 'practice'
@@ -63,13 +64,16 @@ class Lesson(models.Model):
     )
     day = models.IntegerField(choices=WEEKDAY)
     class_number = models.IntegerField()  # первая пара, вторая пара…
+    class Meta:
+        unique_together   = ('group', 'semester', 'day', 'class_number')
 
 
 class LessonInTimeTable(models.Model):
     # конкретное занятие (лекция по физике 5 марта)
     lesson = models.ForeignKey(Lesson)
-    datetime = models.DateTimeField()
-    timetable = models.ForeignKey('Timetable')
+    start = models.DateTimeField()
+    end = models.DateTimeField()
+    day = models.ForeignKey('DayInTimetable')
 
 
 class Homework(models.Model):
@@ -79,6 +83,18 @@ class Homework(models.Model):
     user = models.ForeignKey(User)
     comments = GenericRelation(CommentsTable, related_query_name='homework')
 
+class DayInTimetable(models.Model):
+    date = models.DateField()
+    weekday = models.IntegerField(choices=Lesson.WEEKDAY)
+    week = models.ForeignKey('WeekInTimetable')
+
+class WeekInTimetable(models.Model):
+    week_number = models.IntegerField()
+    timetable = models.ForeignKey('Timetable')
+
 
 class Timetable(models.Model):
-    student_group = models.ForeignKey(StudentGroup)
+    group = models.ForeignKey(StudentGroup)
+    semester = models.IntegerField()
+    class Meta:
+        unique_together   = ('group', 'semester')
