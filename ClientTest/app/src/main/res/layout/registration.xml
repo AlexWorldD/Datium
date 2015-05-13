@@ -23,7 +23,8 @@
         android:id="@+id/regEmail"
         android:layout_below="@+id/regUsername"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="40dp"
+        android:hint="Email" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -32,7 +33,8 @@
         android:ems="10"
         android:id="@+id/regPassword"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:hint="Password" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -45,8 +47,8 @@
         android:layout_alignStart="@+id/regEmail"
         android:layout_marginTop="46dp"
         android:textIsSelectable="false"
-        android:text="Name"
-        android:phoneNumber="false" />
+        android:phoneNumber="false"
+        android:hint="Login" />
 
     <Button
         android:layout_width="wrap_content"

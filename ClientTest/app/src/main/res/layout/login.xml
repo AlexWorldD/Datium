@@ -24,7 +24,8 @@
         android:id="@+id/logUsername"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp" />
+        android:layout_marginTop="63dp"
+        android:hint="Login" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -34,7 +35,8 @@
         android:id="@+id/logPassword"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/logUsername"
-        android:layout_alignStart="@+id/logUsername" />
+        android:layout_alignStart="@+id/logUsername"
+        android:hint="Password" />
 
     <Button
         android:layout_width="wrap_content"

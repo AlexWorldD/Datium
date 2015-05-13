@@ -266,41 +266,45 @@ public class SuccessLog extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.success_log);
         AQuery aq = new AQuery(this);
-        aq.id(R.id.avatar).image("http://178.62.42.66/static/images/avatars/default_avatar.png");
-       // text = (TextView) findViewById(R.id.textView5);
+
+        // text = (TextView) findViewById(R.id.textView5);
         //uInfo = (TextView) findViewById(R.id.textView6);
 
 
-        sPref = getSharedPreferences("MyPref",MODE_PRIVATE);
-        String savedText = sPref.getString("token","");
-        String uname = sPref.getString("username","");
-        jwtToken = "JWT "+savedText;
+        sPref = getSharedPreferences("MyPref", MODE_PRIVATE);
+        String savedText = sPref.getString("token", "");
+        String uname = sPref.getString("username", "");
+        jwtToken = "JWT " + savedText;
         name = uname;
         fillText();
+        aq.id(R.id.avatar).image(users.getAvatar());
+
+        //aq.id(R.id.avatar).image("http://178.62.42.66/static/images/avatars/default_avatar.png");
 
 
-
-
-                findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        deleteUser(jwtToken);
-                        startActivity(new Intent(SuccessLog.this, LoginActivity.class));
-                    }
-                });
+        findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteUser(jwtToken);
+                startActivity(new Intent(SuccessLog.this, LoginActivity.class));
+            }
+        });
 
         findViewById(R.id.btnCh).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String newID = "101";
                 users.setSex(newID);
-                patchUser( jwtToken);
+                patchUser(jwtToken);
             }
         });
+        findViewById(R.id.btnNews).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-
-
-
+                startActivity(new Intent(SuccessLog.this, News.class));
+            }
+        });
 
 
         // user [] users;

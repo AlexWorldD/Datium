@@ -7,4 +7,5 @@
     <string name="title_activity_registration_">Registration_Activity</string>
     <string name="title_activity_success_log">SuccessLog</string>
     <string name="title_activity_success_reg">SuccessReg</string>
+    <string name="title_activity_news">News</string>
 </resources>
