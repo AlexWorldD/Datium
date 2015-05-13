@@ -86,10 +86,9 @@ class DateTimeTzAwareField(serializers.DateTimeField):
 
 class LessonInTimetableSerializer(serializers.ModelSerializer):
     lesson = LessonSerializer(read_only=True)
-    date = serializers.DateField(source='day.date')
     start = DateTimeTzAwareField()
     end = DateTimeTzAwareField()
 
     class Meta:
         model = LessonInTimeTable
-        fields = ('id', 'lesson', 'start', 'end', 'date')
+        fields = ('id', 'lesson', 'start', 'end')
