@@ -282,29 +282,7 @@ public class SuccessLog extends ActionBarActivity {
         //aq.id(R.id.avatar).image("http://178.62.42.66/static/images/avatars/default_avatar.png");
 
 
-        findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteUser(jwtToken);
-                startActivity(new Intent(SuccessLog.this, LoginActivity.class));
-            }
-        });
 
-        findViewById(R.id.btnCh).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newID = "101";
-                users.setSex(newID);
-                patchUser(jwtToken);
-            }
-        });
-        findViewById(R.id.btnNews).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(SuccessLog.this, News.class));
-            }
-        });
 
 
         // user [] users;
@@ -317,9 +295,15 @@ public class SuccessLog extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_success_log, menu);
-        return true;
+        //getMenuInflater().inflate(R.menu.menu_success_log, menu);
+        menu.add("Profile");
+        menu.add("Delete profile");
+        menu.add("News");
+        menu.add("Teachers");
+        //return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -328,6 +312,21 @@ public class SuccessLog extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if (item.getTitle() == "Profile"){
+            Toast.makeText(SuccessLog.this, "Profile", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(SuccessLog.this, SuccessLog.class));
+        }
+        if (item.getTitle() == "Delete profile"){Toast.makeText(SuccessLog.this, "Delete", Toast.LENGTH_SHORT).show();
+            deleteUser(jwtToken);
+            startActivity(new Intent(SuccessLog.this, LoginActivity.class));
+        }
+        if (item.getTitle() == "News"){Toast.makeText(SuccessLog.this, "News", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(SuccessLog.this, News.class));}
+        if (item.getTitle() == "Teachers"){
+            Toast.makeText(SuccessLog.this, "Teachers", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(SuccessLog.this, Teachers.class));
+        }
+
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {

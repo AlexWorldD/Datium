@@ -36,6 +36,14 @@
             android:name=".News"
             android:label="@string/title_activity_news" >
         </activity>
+        <activity
+            android:name=".MainDrawer"
+            android:label="@string/title_activity_main_drawer" >
+        </activity>
+        <activity
+            android:name=".Teachers"
+            android:label="@string/title_activity_teachers" >
+        </activity>
     </application>
 
 </manifest>

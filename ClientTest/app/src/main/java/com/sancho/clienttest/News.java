@@ -256,9 +256,41 @@ public class News extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_news, menu);
-        return true;
+        //getMenuInflater().inflate(R.menu.menu_success_log, menu);
+        menu.add("Profile");
+        menu.add("News");
+        menu.add("Teachers");
+        //return true;
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (item.getTitle() == "Profile"){
+            Toast.makeText(News.this, "Profile", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(News.this, SuccessLog.class));
+        }
+
+        if (item.getTitle() == "News"){Toast.makeText(News.this, "News", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(News.this, News.class));}
+        if (item.getTitle() == "Teachers"){
+            Toast.makeText(News.this, "Teachers", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(News.this, Teachers.class));
+        }
+
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void sendNews(){
@@ -319,18 +351,5 @@ public class News extends ActionBarActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
