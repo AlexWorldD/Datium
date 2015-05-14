@@ -397,7 +397,8 @@ hr.datium{
     padding: 0;
 }
 .begin-time,
-.end-time{
+.end-time,
+.symbol{
     padding-top: 10px;
 }
 /*блок комментариев*/
@@ -543,15 +544,40 @@ hr.teachers{        /*строка подчеркивания*/
 }
 
 
+/*
+
+        TIMETABLE
+
+*/
 
 
+.row.timetable{
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    margin: 20px 5px 10px 5px;
+    color: white;
 
+}
 
+.row.timetable > .begin-time,
+.row.timetable > .end-time,
+.row.timetable > .lecture-place,
+.row.timetable > .lecture-teacher,
+.row.timetable > .lecture-info > .lecture-type{
+    color: rgb(92, 47, 86);
+   //font-family: Roboto Light, sans-serif;
+}
 
+.lecture-info > .lecture-name{
+    font-family: Roboto Light, sans-serif;
+}
 
+.time-line{
 
-
-
-
+    width: 68%;             /*loading*/
+    float: left;
+    margin-top: -11px;
+}
 
 
