@@ -1,0 +1,85 @@
+<div class="content-wrapper">
+    <div class="content-header">
+        <a href="/users" class="datium-page-title"><i class="glyphicon glyphicon-menu-left"></i>Users</a>
+    </div>
+    <div class="content-main">
+        <div class="datium-profile-title">
+            <div class="row">
+                <div class="col-xs-offset-4 col-xs-5">
+                    <h3 class="daitum-teacher-fio">
+                        <span>{{ vm.profile.first_name || vm.profile.username}}</span>
+                        <b>{{ vm.profile.last_name | uppercase}}</b>
+                    </h3>
+                    <h3 class="datium-profile-study-year">2 course</h3>
+                    <h4 class="datium-profile-study-year">{{ vm.profile.group }} group</h4>
+                </div>
+                <div class="col-xs-2">
+                    <img src="{{ vm.profile.avatar }}" class="img-circle datium-profile-avatar">
+                </div>
+            </div>
+        </div>
+        <div class="datium-profile-contact-info">
+            <h4 class="daitum-teacher-subtitle">Contact info</h4>
+            <hr class="datium">
+            <div class="row content-main">
+                <div class="col-xs-3">
+                    <span class="datium-profile-label">E-mail</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="datium-profile-field">{{ vm.profile.email }}</span>
+                </div>
+            </div>
+            <div class="row content-main">
+                <div class="col-xs-3">
+                    <span class="datium-profile-label">Phone</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="datium-profile-field">{{ vm.profile.phone || 'empty' }}</span>
+                </div>
+            </div>
+            <div class="row content-main">
+                <div class="col-xs-3">
+                    <span class="datium-profile-label">Hall</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="datium-profile-field">{{ vm.profile.hall || 'empty' }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="datium-profile-contact-info">
+            <h4 class="daitum-teacher-subtitle">Personal info</h4>
+            <hr class="datium">
+            <div class="row content-main">
+                <div class="col-xs-3">
+                    <span class="datium-profile-label">Date of Birth</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="datium-profile-field">{{ vm.profile.birthday }}</span>
+                </div>
+            </div>
+            <div class="row content-main">
+                <div class="col-xs-3">
+                    <span class="datium-profile-label">City</span>
+                </div>
+                <div class="col-xs-9">
+                    <span class="datium-profile-field" editable-text="vm.profile.city" e-name="city">{{ vm.profile.city }}</span>
+                </div>
+            </div>
+        </div>
+        <div ng-controller="ProfileController as ProfileCtrl">
+            <div class="datium-profile-manage"  ng-show="ProfileCtrl.is_admin()">
+                <form role="form" name="editableForm" ng-controller="UserDetailController as UserDetailCtrl">
+                    <h4 class="daitum-teacher-subtitle">Manage</h4>
+                    <hr class="datium">
+                    <div class="content-main">
+                        <div class="row">
+                            <div class="col-xs-offset-9">
+                                <button type="button" class="datium-profile-button" ng-click="UserDetailCtrl.remove()">Delete account</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

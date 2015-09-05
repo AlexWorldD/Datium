@@ -1,0 +1,158 @@
+<div class="content-wrapper">
+    <div class="content-header">
+        <a href="/teachers" class="datium-back"><i class="glyphicon glyphicon-menu-left"></i>Teachers</a>
+    </div>
+    <div class="content-main">
+        <form editable-form role="form" name="editableForm" onaftersave="vm.update()" >
+            <div class="datium-teacher-title">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <h3 class="daitum-teacher-fio">
+                            <span ng-show="editableForm.$visible">Фамилия</span>
+                            <b  editable-text="vm.profile.last_name"
+                                e-name="last_name"
+                                ng-show="!editableForm.$visible">{{ vm.profile.last_name }}</b>
+                            <br>
+
+                            <span ng-show="editableForm.$visible">Имя</span>
+                            <span   editable-text="vm.profile.first_name"
+                                    e-name="first_name"
+                                    ng-show="!editableForm.$visible">{{ vm.profile.first_name }}</span>
+
+                            <span ng-show="editableForm.$visible">Отчество</span>
+                            <span   editable-text="vm.profile.patronymic"
+                                    e-name="patronymic"
+                                    ng-show="!editableForm.$visible">{{ vm.profile.patronymic }}</span>
+                        </h3>
+                    </div>
+                    <div class="col-xs-5">
+                        <h4 class="datium-teacher-degree">
+                            Доктор физико-математических наук<br>
+                            Профессор
+                        </h4>
+                    </div>
+                    <div class="col-xs-2">
+                        <img src="http://s.sharecare.com/static/img/default-avatar.jpg" class="img-circle datium-teacher-avatar">
+                    </div>
+                </div>
+            </div>
+            <div class="datium-teacher-contact-info">
+                <h4 class="daitum-teacher-subtitle">Contact info</h4>
+                <hr class="datium">
+                <div class="row content-main">
+                    <div class="col-xs-3">
+                        <span class="datium-profile-label">E-mail</span>
+                    </div>
+                    <div class="col-xs-9">
+                        <span class="datium-profile-field"
+                              editable-text="vm.profile.email"
+                              e-name="email"
+                              ng-show="!editableForm.$visible">{{ vm.profile.email }}</span>
+                    </div>
+                </div>
+                <div class="row content-main">
+                    <div class="col-xs-3">
+                        <span class="datium-profile-label">Phone</span>
+                    </div>
+                    <div class="col-xs-9">
+                        <span class="datium-profile-field"
+                                editable-text="vm.profile.phone"
+                                e-name="phone"
+                                ng-show="!editableForm.$visible">{{ vm.profile.phone }}</span>
+                    </div>
+                </div>
+                <div class="row content-main">
+                    <div class="col-xs-3">
+                        <span class="datium-profile-label">Cabinet</span>
+                    </div>
+                    <div class="col-xs-9">
+                        <span class="datium-profile-field"
+                              editable-text="vm.profile.cabinet"
+                              e-name="cabinet"
+                              ng-show="!editableForm.$visible">{{ vm.profile.cabinet }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="datium-teacher-liter">
+                <h4 class="daitum-teacher-subtitle">Literature</h4>
+                <hr class="datium">
+                <div class="row content-main">
+                    <div class="col-xs-2">
+                        <span class="datium-teacher-book-authors">Автор 1, Автор 2, Автор3, 259c.</span>
+                    </div>
+                    <div class="col-xs-2 datium-teacher-book">
+                        <span class="datium-teacher-book-title">Классическая механика</span>
+                        <span class="datium-teacher-book-type">Учебное пособие</span>
+                        <span class="datium-teacher-book-year">2013</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="datium-teacher-book-authors">Автор 1, Автор 2, Автор3, 259c.</span>
+                    </div>
+                    <div class="col-xs-2 datium-teacher-book">
+                        <span class="datium-teacher-book-title">Классическая механика</span>
+                        <span class="datium-teacher-book-type">Учебное пособие</span>
+                        <span class="datium-teacher-book-year">2013</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="datium-teacher-book-authors">Автор 1, Автор 2, Автор3, 259c.</span>
+                    </div>
+                    <div class="col-xs-2 datium-teacher-book">
+                        <span class="datium-teacher-book-title">Классическая механика</span>
+                        <span class="datium-teacher-book-type">Учебное пособие</span>
+                        <span class="datium-teacher-book-year">2013</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="datium-teacher-book-authors">Автор 1, Автор 2, Автор3, 259c.</span>
+                    </div>
+                    <div class="col-xs-2 datium-teacher-book">
+                        <span class="datium-teacher-book-title">Классическая механика</span>
+                        <span class="datium-teacher-book-type">Учебное пособие</span>
+                        <span class="datium-teacher-book-year">2013</span>
+                    </div>
+                </div>
+            </div>
+            <div class="datium-teacher-extra">
+                <h4 class="daitum-teacher-subtitle">Additional info</h4>
+                <hr class="datium">
+                <div class="row content-main">
+                    <div class="col-xs-3">
+                        <span class="datium-profile-label">Next lesson</span>
+                    </div>
+                    <div class="col-xs-9 datium-profile-field">
+                        <div class="col-xs-3 datium-teacher-next-lesson">21 april</div>
+                        <div class="col-xs-2 datium-teacher-next-lesson">9.30</div>
+                        <div class="col-xs-3 datium-teacher-next-lesson">Физика</div>
+                        <div class="col-xs-2 datium-teacher-next-lesson">ВО, 215 к.</div>
+                        <div class="col-xs-2 datium-teacher-next-lesson">11.05</div>
+                    </div>
+                </div>
+            </div>
+            <div class="datium-profile-manage" ng-controller="ProfileController as ProfileCtrl">
+                <div ng-show="ProfileCtrl.is_admin()">
+                    <h4 class="daitum-teacher-subtitle">Manage</h4>
+                    <hr class="datium">
+                    <div class="content-main">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button type="button" class="datium-profile-button"  ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                    Edit
+                                </button>
+                                <div ng-show="editableForm.$visible">
+                                    <button type="submit" class="datium-profile-button" ng-disabled="editableForm.$waiting">
+                                        Save
+                                    </button>
+                                    <button type="button" class="datium-profile-button" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-xs-offset-9">
+                                <button type="button" class="datium-profile-button" ng-click="vm.remove()">Delete account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

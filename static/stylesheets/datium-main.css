@@ -1,0 +1,583 @@
+﻿@font-face {
+    font-family: RobotoThin; /* Гарнитура шрифта */
+    src: url("../fonts/roboto-thin.ttf"); /* Путь к файлу со шрифтом */
+   }
+
+
+html {
+    height: 100%; /*позволит растянуть сайт на 100% высоты*/
+}
+body{
+    height: 100%;
+    background: linear-gradient(to top left, #5b5997, #b15959, #5b5997) fixed;
+    padding-right: 5%;
+    padding-left: 5%;
+    font-family: RobotoThin;
+
+}
+
+.content-wrapper{
+    padding: 1%;
+
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+.content-main{
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.datium-logo{
+    font-size: 50px;
+    text-align: center;
+    color: #ffffff;                     /*цвет вводимого текста*/
+}
+.datium-user{
+    padding: 1%;
+}
+/*
+
+    SIDEBAR
+
+*/
+.sidebar-wrapper {
+    z-index: 1000;
+    width: 0;
+    height: 100%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+img[name="avatar"]{
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+    border: solid blue 2px;
+}
+
+
+a[name="full_name"]{
+    display: block;
+    padding: 1em;
+    text-decoration: none;
+    color: #fe5859;
+    font-size: 20px;
+    text-align: center;
+  }
+
+p[name="username"]{
+    color: #dcdcdc;
+    text-align: center;
+}
+
+.nav li{
+    text-align: center;
+    height: auto;
+  }
+
+.nav li i{
+    float: right;
+}
+
+
+.nav > li > a{
+    color: white;
+    opacity: 0.8;
+    font-size: 25px;
+    background-color: transparent;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus{
+    background-color: transparent;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.glyphicon-menu-left {
+    text-align: right;
+}
+
+
+@media(min-width:768px) {
+    .sidebar-wrapper {
+        width: inherit;
+    }
+}
+
+
+/*
+    Teacher profile
+*/
+
+.datium-profile-input{
+    width: 100%;
+}
+
+.datium-back{
+    margin: 0;
+    color: #ffffff;
+    opacity: 0.8;
+    font-size: 30px;
+    vertical-align: middle;
+}
+.datium-back:hover{
+    text-decoration: none;
+    font-weight: bold;
+    color: #ffffff;
+    opacity: 1;
+}
+.daitum-teacher-fio{
+    color: #ffffff;
+    text-align: center;
+}
+.datium-teacher-degree{
+    color: #ffffff;
+    text-align: center;
+}
+.datium-teacher-avatar{
+    width: 110px;
+    border: 1px solid #ffffff;
+}
+
+hr.datium{
+    margin: 0;
+}
+
+.daitum-teacher-subtitle{
+    color: #ffffff;
+}
+
+.datium-profile-label {
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.datium-profile-field {
+    color: #ffffff;
+    display: block;
+    border-radius: 2px;
+    background-color: rgba(0,0,0,0.4);
+    font-size: 25px;
+    text-align: center;
+}
+
+.datium-teacher-book{
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 1%;
+    display: block;
+    background-color: rgba(0,0,0,0.4);
+    height: 150px;
+}
+
+
+
+.datium-teacher-book-authors{
+    color: #ffffff;
+    text-align: center;
+    display: block;
+    height: 150px;
+    padding: 3em 0;
+}
+
+.datium-teacher-book-title{
+    color: #000000;
+    display: block;
+    margin: 20% 0 0;
+    font-size: large;
+    background-color: rgba(255,255,255,0.4) ;
+    text-align: center;
+}
+
+.datium-teacher-book-year, .datium-teacher-book-type{
+    color: #ffffff;
+    display: block;
+    text-align: center;
+    padding-top: 10%;
+}
+
+.datium-teacher-next-lesson{
+    padding: 0;
+    padding-top: 1%;
+    font-size: 20px;
+    display: block;
+}
+
+.datium-page-title{
+    margin: 0;
+    color: #ffffff;
+    font-size: 30px;
+    vertical-align: middle;
+    opacity: 0.8;
+}
+
+.datium-page-title:hover{
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 1.0;
+}
+
+.datium-profile-avatar{
+    width: 110px;
+    border: 1px solid #ffffff;
+}
+
+.datium-profile-study-year{
+    color: #ffffff;
+    text-align: center;
+}
+.datium-profile-button{
+    height: 40px;
+    min-width: 150px;
+    margin: 0;
+    background-color: rgba(0,0,0,0.4);
+    border: 0;
+    border-radius: 2px;                 /*скругленные углы*/
+    color: #ffffff;                     /*цвет надписи*/
+    letter-spacing: 1px;
+    font-size: 25px;
+}
+.datium-profile-button:hover{
+    background-color: #f5f5f5;
+    color: #080808;
+}
+/*
+
+    NEWS
+
+*/
+
+.datium-news-author{
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.datium-news-remove{
+    opacity: 0.5;
+}
+
+.datium-news-remove:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.datium-news{
+    border-bottom: 1px solid #ffffff;
+}
+
+.datium-news-title{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 3em;
+}
+.datium-news-body{
+    font-size: 2.5em;
+}
+
+.datium-news-date{
+    float: left;
+    font-size: 25px;
+}
+
+.datium-news-comment-author{
+    font-size: 20px;
+}
+
+.datium-news-comment-text{
+    color: white;
+    font-size: 20px;
+}
+
+.datium-news-comment, .datium-news-comment-form{
+    padding-left: 5%;
+}
+.datium-news-comment-form{
+    padding-top: 1%;
+}
+.datium-news-comment-form > form > input,
+.datium-news-comment-form > form > button{
+    font-size: 25px;
+    height: 30px;
+}
+
+.datium-news-comment-form > form > input{
+    padding-top: 2px;
+}
+
+
+.datium-news-comments-title:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/*
+        NEW NEWS
+*/
+.datium-page-title.news{
+    text-align: center;
+}
+/*вкладки для новостей*/
+.nav-pills.nav-justified.news {
+    margin-top: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.nav-pills.news > li > a {
+    color: rgba(255, 255, 255, 0.67); /*цвет неактивных*/
+}
+/*содержимое*/
+.content-main.news{
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-right: 30px;
+    margin: 0 15px;
+}
+.time{
+    margin: 0px;
+    color: rgba(42, 14, 57, 1);
+}
+.news-author{
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-size: 16px;
+    text-align: center;
+}
+.logo{
+    margin-top: 0;
+    font-size: 12px;
+}
+.news-content{
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    font-size: 24px;
+    color: black;
+    text-align: center;
+}
+.news-lecture{
+    margin: 10px -5px;
+    text-align: center;
+}
+.news-lecture.date{
+    color: white;
+    font-size: 18px;
+
+}
+.news-lecture.lecture{
+    background-color: rgba(99,53, 61, 0.5);
+    margin-top: 0;
+    color: white;
+    border-radius: 2px;
+}
+.news-lecture.tegs{
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.news-comments{
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+.lecture-type{
+    font-size: 12px;
+}
+.lecture-name{
+    font-size: 18px;
+}
+.begin-time,
+.end-time,
+.lecture-info,
+.lecture-place{
+    padding: 0;
+}
+.begin-time,
+.end-time,
+.symbol{
+    padding-top: 10px;
+}
+/*блок комментариев*/
+.news-comments{
+    padding-top: 20px;
+}
+hr[name="comment-line"]{
+    margin-top: -10px;
+    color: black;
+}
+.item-comment{
+    color: black;
+    font-size: 12px;
+}
+
+.add-news-comment{
+   padding-bottom: 30px;
+}
+
+
+
+
+/*
+
+    TEACHERS LIST
+
+
+*/
+
+/*размер значков-стрелочек*/
+.glyphicon {
+    font-size: 15px;
+}
+/*значки-звездочки*/
+.glyphicon-star,
+.glyphicon-star.active:hover{   /*если хотим снять звезду, при наведении она гаснет*/
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.1);
+}
+.glyphicon-star.active,         /*активные звезды яркие*/
+.glyphicon-star:hover{          /*если хотим поставить звезду, при наведении она становится ярче*/
+    color: rgba(255, 255, 255, 0.7);
+}
+/*заголовочная часть у преподов*/
+.content-header{
+    padding: 0 2%;
+}
+/*никаких маркеров у списков!*/
+ul{
+    list-style-type: none;
+}
+ul[name="letters"]{
+    margin-left: -10px;
+    font-size: 30px;
+}
+hr.teachers{        /*строка подчеркивания*/
+    margin: 10px 0 0;
+}
+
+/*вкладки для учителей*/
+.nav-pills.nav-justified {
+    margin-top: 5px;
+    border-bottom: 1px solid rgba(42, 14, 57, 0.3);
+}
+.nav-pills > li > a {
+    color: rgba(42, 14, 57, 0.67);      /*цвет неактивных*/
+    font-size: 18px;
+    line-height: 0px;  /*межстрочный интервал = высота вкладок*/
+    letter-spacing: 4px;    /*межсимвольное расстояние*/
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+    font-style: normal;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid  #fff;
+}
+
+.nav-pills.teachers_list{
+    margin-left: -30px;
+    width: 100%;
+}
+
+.nav-pills.teachers_list > h2 > a{
+    color: #fff;
+    text-decoration: none;
+}
+.nav-pills.teachers_list > h2 > a:hover{
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/*
+
+        CALENDAR
+
+
+*/
+
+.datepicker-days{
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    padding: 3px;
+    text-align: center;
+
+ }
+/*дни недели*/
+.table-condensed > thead.dow{
+    color: rgba(255, 0, 255, 0.5);
+}
+
+/*месяцы*/
+.table-condensed > thead.month > tr > th.current{
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.table-condensed > thead.month > tr > th.prev,
+.table-condensed > thead.month > tr > th.next{
+    font-size: 25px;
+}
+.table-condensed > thead.month > tr > th.next {
+   /*здесь должен быть градиентыный цвет текста*/
+}
+.table-condensed > thead.month > tr > th.prev {
+    /*здесь должен быть градиентыный цвет текста*/
+}
+
+/*дни*/
+.table-condensed > tbody > tr > td.old,
+.table-condensed > tbody > tr > td.new{
+    color: rgba(255, 255, 255, 0.3);
+}
+.table-condensed > tbody > tr > td.active.today{
+    color: rgba(255, 255, 255, 1);
+}
+.table-condensed > tbody > tr > td.weekend{
+    color: rgba(255, 255, 6, 0.57); /*хочется как-то выделить выходные дни*/
+}
+
+
+/*
+
+        TIMETABLE
+
+*/
+
+
+.row.timetable{
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    margin: 20px 5px 10px 5px;
+    color: white;
+
+}
+
+.row.timetable > .begin-time,
+.row.timetable > .end-time,
+.row.timetable > .lecture-place,
+.row.timetable > .lecture-teacher,
+.row.timetable > .lecture-info > .lecture-type{
+    color: rgb(92, 47, 86);
+   //font-family: Roboto Light, sans-serif;
+}
+
+.lecture-info > .lecture-name{
+    font-family: Roboto Light, sans-serif;
+}
+
+.time-line{
+
+    width: 68%;             /*loading*/
+    float: left;
+    margin-top: -11px;
+}
+
+
