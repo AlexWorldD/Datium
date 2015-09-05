@@ -1,0 +1,76 @@
+simple-calendar * {
+  user-select: none;
+}
+
+simple-calendar .calendar{
+  padding: 0;
+  border: 1px solid #dddddd;
+  user-select: none;
+  background-color: #fff;
+}
+
+simple-calendar .move-month {
+  cursor: pointer;
+}
+
+simple-calendar .prev-month {
+    font-size: 25px;
+    float: left;
+}
+
+simple-calendar .next-month {
+    font-size: 25px;
+    float: right;
+}
+
+simple-calendar .current-month {
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+simple-calendar .week {
+  height: 30px;
+}
+
+simple-calendar .weekday {
+  text-align: center;
+}
+
+simple-calendar .week .day:last-child {
+  border-right: none;
+}
+
+simple-calendar .weekday, .day {
+  display: inline-block;
+  width: 35px;
+}
+
+simple-calendar .day {
+  height: 30px;
+  padding: 2px;
+  border-bottom: none;
+  border-left: none;
+  overflow: hidden;
+}
+
+simple-calendar .day:hover {
+  cursor: pointer;
+}
+
+simple-calendar .day.default {
+  color: rgba(255, 255, 255, 1);
+}
+
+simple-calendar .day .event {
+  background-color: #fdf3ea;
+}
+
+simple-calendar .day .disabled {
+  cursor: default;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+simple-calendar .day .weekend{
+    color: rgba(255, 0, 6, 0.51); /*хочется как-то выделить выходные дни*/
+}

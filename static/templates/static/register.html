@@ -1,0 +1,79 @@
+<div class="col-xs-10">
+    <div class="datium-auth-register">
+        <h1>Create an account</h1>
+        <label>Main info</label>
+        <hr>
+      <form role="form" ng-submit="vm.register()">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-3">
+                    <label for="register__username">Username</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="text"
+                        name="register__username"
+                        id="register__username"
+                        class="form-control"
+                        ng-model="vm.username" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-controller="GroupsController as ctrl">
+            <div class="row">
+                <div class="col-xs-3">
+                    <label for="register__group">Group</label>
+                </div>
+                <div class="col-xs-9">
+                    <select id="register__group"
+                        class="form-control"
+                        ng-model="vm.group">
+                        <option ng-repeat="group in ctrl.groups" value="{{ group.name }}">
+                            {{ group.name }}
+                        </option>
+                </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+             <div class="row">
+                <div class="col-xs-3">
+                    <label for="register__email">Email</label>
+                </div>
+                 <div class="col-xs-9">
+                     <input type="email"
+                         name="register__email"
+                         id="register__email"
+                         class="form-control"
+                         ng-model="vm.email" />
+                 </div>
+             </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-3">
+                    <label for="register__password">Password</label>
+                </div>
+                <div class="col-xs-9">
+                      <input type="password"
+                             name="register__password"
+                             id="register__password"
+                             class="form-control"
+                             ng-model="vm.password" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default btn-auth">
+                Register
+          </button>
+        </div>
+      </form>
+    </div>
+    <a type="register" href="login">Sign in</a>
+</div>
