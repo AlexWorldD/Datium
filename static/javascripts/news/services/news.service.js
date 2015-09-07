@@ -38,7 +38,7 @@
                   }
 
                   function removeError(data, status, headers, config){
-                      alert(status);
+
                   }
                 }
 
