@@ -1,3 +1,4 @@
+# coding=utf-8
 from timetable.models import Subject, Teacher, Lesson, Timetable, LessonInTimeTable, DayInTimetable, WeekInTimetable
 from rest_framework import generics, permissions
 from timetable.serializers import SubjectSerializer, TeacherSerializer, LessonSerializer, LessonInTimetableSerializer
