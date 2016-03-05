@@ -38,7 +38,11 @@
                   }
 
                   function removeError(data, status, headers, config){
+<<<<<<< HEAD
                       alert(status);
+=======
+
+>>>>>>> 2cbba293a8151faf009bc8de7cd553dbe1253f5f
                   }
                 }
 

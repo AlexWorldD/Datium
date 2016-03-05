@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+# coding=utf-8
+>>>>>>> 2cbba293a8151faf009bc8de7cd553dbe1253f5f
 from timetable.models import Subject, Teacher, Lesson, Timetable, LessonInTimeTable, DayInTimetable, WeekInTimetable
 from rest_framework import generics, permissions
 from timetable.serializers import SubjectSerializer, TeacherSerializer, LessonSerializer, LessonInTimetableSerializer
