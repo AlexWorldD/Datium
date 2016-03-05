@@ -1,165 +1,114 @@
-from django.contrib.auth.models import User, Group
+from student_groups.models import Student, StudentGroup, Document, News
+from student_groups.serializers import StudentGroupSerializer, DocumentSerializer, NewsSerializer
+from comments.models import CommentsTable, Comment
+from comments.serializers import CommentsTableSerializer
 from rest_framework import generics, permissions
-from users.serializers import UserSerializer
-from student_groups.models import Student
-from django.http import HttpResponse
-from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.parsers import FormParser, MultiPartParser, JSONParser
 from rest_framework.response import Response
-from django.http import Http404
 from rest_framework import status
-from django.core.files import File
-from django.conf import settings
-
-from users.permissions import IsUserOrReadOnly, IsUser, CanViewGrouplist, CanChangePermissions, IsUserOrCanDeleteUsers
+from users.permissions import CanAddAndEditDocuments, CanViewDocuments, IsOwnerOrAdmin, CanViewNews, CanAddAndEditNews
+import datetime
 
 
 # Create your views here.
 
-class UserListCreateAPIView(generics.ListCreateAPIView):
-	serializer_class = UserSerializer
+
+class StudentGroupListAPIView(generics.ListAPIView):
+	queryset = StudentGroup.objects.all()
+	serializer_class = StudentGroupSerializer
+	permission_classes = (permissions.AllowAny,)
+
+
+class StudentGroupDetailAPIView(generics.RetrieveAPIView):
+	queryset = StudentGroup.objects.all()
+	serializer_class = StudentGroupSerializer
+
+
+class DocumentListCreateAPIView(generics.ListCreateAPIView):
+	serializer_class = DocumentSerializer
+	parser_classes = (FormParser, MultiPartParser,)
+
+	def post(self, request, *args, **kwargs):
+		data = request.DATA
+		data['user'] = request.user.id
+		data['group'] = request.user.student.group.name
+		data['file'] = request.FILES['file']
+		serializer = DocumentSerializer(data=data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 	def get_queryset(self):
-		return User.objects.filter(student__group=self.request.user.student.group)
+		return Document.objects.filter(group=self.request.user.student.group)
 
 	def get_permissions(self):
 		if self.request.method in permissions.SAFE_METHODS:
-			return [permissions.IsAuthenticated(), CanViewGrouplist(), ]
-		return [permissions.AllowAny(), ]
+			return [permissions.IsAuthenticated(), CanViewDocuments()]
+		return [permissions.IsAuthenticated(), CanAddAndEditDocuments()]
 
 
-class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-	serializer_class = UserSerializer
-	lookup_field = 'username'
+class DocumentRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+	serializer_class = DocumentSerializer
+
+	def get_queryset(self):
+		return Document.objects.filter(group=self.request.user.student.group)
 
 	def get_permissions(self):
-		if self.request.method == "DELETE":
-			return [permissions.IsAuthenticated(), IsUserOrCanDeleteUsers(), ]
-		return [permissions.IsAuthenticated(), IsUserOrReadOnly(), ]
+		if self.request.method in permissions.SAFE_METHODS:
+			return [permissions.IsAuthenticated(), CanViewDocuments(), ]
+		return [permissions.IsAuthenticated(), CanAddAndEditDocuments(), IsOwnerOrAdmin()]
+
+	def delete(self, request, *args, **kwargs):
+		comments_table = self.get_object().comments.objects.all()[0]
+		comments = comments_table.comments.all()
+		for each in comments:
+			each.delete()
+		comments_table.delete()
+		return self.destroy(self, request, *args, **kwargs)
+
+
+class NewsListCreateAPIView(generics.ListCreateAPIView):
+	serializer_class = NewsSerializer
+	parser_classes = (JSONParser,)
+
+	def post(self, request, *args, **kwargs):
+		data = request.data.copy()
+		data['user'] = request.user.id
+		data['group'] = request.user.student.group.name
+		serializer = NewsSerializer(data=data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 	def get_queryset(self):
-		return User.objects.filter(student__group=self.request.user.student.group)
-
-
-class UserDetailByIDAPIView(generics.RetrieveUpdateDestroyAPIView):
-	serializer_class = UserSerializer
+		return News.objects.filter(group=self.request.user.student.group)
 
 	def get_permissions(self):
-		if self.request.method == "DELETE":
-			return [permissions.IsAuthenticated(), IsUserOrCanDeleteUsers(), ]
-		return [permissions.IsAuthenticated(), IsUserOrReadOnly(), ]
+		if self.request.method in permissions.SAFE_METHODS:
+			return [permissions.IsAuthenticated(), CanViewNews(), ]
+		return [permissions.IsAuthenticated(), CanAddAndEditNews(), ]
+
+
+class NewsRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+	serializer_class = NewsSerializer
 
 	def get_queryset(self):
-		return User.objects.filter(student__group=self.request.user.student.group)
+		return News.objects.filter(group=self.request.user.student.group)
 
+	def get_permissions(self):
+		if self.request.method in permissions.SAFE_METHODS:
+			return [permissions.IsAuthenticated(), CanViewNews(), ]
+		return [permissions.IsAuthenticated(), CanAddAndEditNews(), IsOwnerOrAdmin()]
 
-class UserAvatarUploadAPIView(generics.CreateAPIView):
-	serializer_class = UserSerializer
-	queryset = User.objects.all()
-	permission_classes = (permissions.IsAuthenticated, IsUser,)
-	parser_classes = (FormParser, MultiPartParser,)
-	lookup_field = 'username'
+	def delete(self, request, *args, **kwargs):
+		comments_table = self.get_object().comments.all()[0]
+		comments = comments_table.comments.all()
 
-	def post(self, request, *args, **kwargs):
-		user = request.user
-		given_file = request.FILES.get('file', request.user.student.avatar)
-		print(settings.MEDIA_ROOT)
-		print(given_file.name)
-		user.student.avatar.save(name=given_file.name, content=File(given_file))
-		user.save()
-		serializer = UserSerializer(user)
-		return Response(serializer.data, status=status.HTTP_201_CREATED)
+		for each in comments:
+			each.delete()
 
+		comments_table.delete()
 
-class UserAvatarUploadByIDAPIView(generics.CreateAPIView):
-	serializer_class = UserSerializer
-	queryset = User.objects.all()
-	permission_classes = (permissions.IsAuthenticated, IsUser,)
-	parser_classes = (FormParser, MultiPartParser,)
-
-	def post(self, request, *args, **kwargs):
-		user = request.user
-		user.student.avatar = request.FILES.get('file', request.user.student.avatar)
-		user.save()
-		serializer = UserSerializer(user)
-		return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
-class ChangeUserPermissionsAPIView(generics.UpdateAPIView):
-	serializer_class = UserSerializer
-	permission_classes = (permissions.IsAuthenticated, CanChangePermissions,)
-	lookup_field = 'username'
-
-	def get_queryset(self):
-
-		group = self.request.user.student.group
-
-		try:
-			students = Student.objects.filter(group=group)
-		except Student.DoesNotExist:
-			students = None
-
-		queryset = []
-		for student in students:
-			if student.user is not None:
-				queryset.append(student.user)
-		return queryset
-
-	def patch(self, request, *args, **kwargs):
-		changed_user = self.get_object()
-		group = request.data.get('group', None)
-		if group == 'registered':
-			changed_user.groups.clear()
-			changed_user.groups.add(Group.objects.get(name='registered'))
-		elif group == 'students':
-			changed_user.groups.clear()
-			changed_user.groups.add(Group.objects.get(name='registered'), Group.objects.get(name='students'))
-		elif group == 'group admin':
-			return Response("Can't assign new admin to a group yet", status=status.HTTP_400_BAD_REQUEST)
-		else:
-			return Response("No group provided", status=status.HTTP_400_BAD_REQUEST)
-		changed_user.save()
-		serializer = UserSerializer(changed_user)
-		return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
-
-	def put(self, request, *args, **kwargs):
-		return Response('Please use patch method instead put', status=status.HTTP_400_BAD_REQUEST)
-
-
-class ChangeUserPermissionsByIDAPIView(generics.UpdateAPIView):
-	serializer_class = UserSerializer
-	permission_classes = (permissions.IsAuthenticated, CanChangePermissions,)
-
-	def get_queryset(self):
-
-		group = self.request.user.student.group
-
-		try:
-			students = Student.objects.filter(group=group)
-		except Student.DoesNotExist:
-			students = None
-
-		queryset = []
-		for student in students:
-			if student.user is not None:
-				queryset.append(student.user)
-		return queryset
-
-	def patch(self, request, *args, **kwargs):
-		changed_user = self.get_object()
-		group = request.data.get('group', None)
-		if group == 'registered':
-			changed_user.groups.clear()
-			changed_user.groups.add(Group.objects.get(name='registered'))
-		elif group == 'students':
-			changed_user.groups.clear()
-			changed_user.groups.add(Group.objects.get(name='registered'), Group.objects.get(name='students'))
-		elif group == 'group admin':
-			return Response("Can't assign new admin to a group yet", status=status.HTTP_400_BAD_REQUEST)
-		else:
-			return Response("No group provided", status=status.HTTP_400_BAD_REQUEST)
-		changed_user.save()
-		serializer = UserSerializer(changed_user)
-		return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
-
-	def put(self, request, *args, **kwargs):
-		return Response('Please use patch method instead put', status=status.HTTP_400_BAD_REQUEST)
+		return self.destroy(self, request, *args, **kwargs)
