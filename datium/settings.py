@@ -1,5 +1,5 @@
 """
-Django settings for django_project project.
+Django settings for datium project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -52,9 +52,9 @@ MIDDLEWARE_CLASSES = (
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'django_project.urls'
+ROOT_URLCONF = 'datium.urls'
 
-WSGI_APPLICATION = 'django_project.wsgi.application'
+WSGI_APPLICATION = 'datium.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -94,7 +94,7 @@ STATICFILES_DIRS = (
 	os.path.join(BASE_DIR, 'static'),
 )
 
-# STATIC_ROOT = '/home/django/django_project/django_project/static/'
+# STATIC_ROOT = '/home/django/datium/datium/static/'
 
 
 TEMPLATE_DIRS = (
