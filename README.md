@@ -5,5 +5,6 @@ The Inception of our trip.
 ###Install
 ```bash
 pip install -r requirements.txt
+python manage.py migrate
 ```
 ##Frontend
