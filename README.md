@@ -6,5 +6,11 @@ The Inception of our trip.
 ```bash
 pip install -r requirements.txt
 python manage.py migrate
+=======
+$ pip install -r requirements.txt
+$ python manage.py migrate
 ```
+###Load test data
+```bash
+$ python manage.py test_data
 ##Frontend
