@@ -1,4 +1,5 @@
-###UPDATE 03/16/16 - Address: 46.101.238.242
+###UPDATE 2 03/25/16 - Server's been closed...
+~~###UPDATE 03/16/16 - Address: 46.101.238.242~~
 <hr>
 # Datium
 The Inception of our trip.
